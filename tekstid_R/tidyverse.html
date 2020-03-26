@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Peatükk 4 Tidyverse | Lihtne tekstitöötlus R-is ja tidyverse’is</title>
+  <meta name="description" content="Peatükk 4 Tidyverse | Lihtne tekstitöötlus R-is ja tidyverse’is" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Peatükk 4 Tidyverse | Lihtne tekstitöötlus R-is ja tidyverse’is" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Peatükk 4 Tidyverse | Lihtne tekstitöötlus R-is ja tidyverse’is" />
+  
+  
+  
+
+<meta name="author" content="Peeter Tinits" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="alused.html"/>
+<link rel="next" href="tekstitöötlus-tidyverseis.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Tekstitöötlus R-is ja tidyverse-is</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#juhend"><i class="fa fa-check"></i><b>1.1</b> Juhend</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#sisukord"><i class="fa fa-check"></i><b>1.2</b> Sisukord</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="mis-on-r-mis-on-rstudio.html"><a href="mis-on-r-mis-on-rstudio.html"><i class="fa fa-check"></i><b>2</b> Mis on R? Mis on RStudio?</a><ul>
+<li class="chapter" data-level="2.1" data-path="mis-on-r-mis-on-rstudio.html"><a href="mis-on-r-mis-on-rstudio.html#rstudio-oma-arvutis"><i class="fa fa-check"></i><b>2.1</b> RStudio oma arvutis</a></li>
+<li class="chapter" data-level="2.2" data-path="mis-on-r-mis-on-rstudio.html"><a href="mis-on-r-mis-on-rstudio.html#installimine"><i class="fa fa-check"></i><b>2.2</b> Installimine</a></li>
+<li class="chapter" data-level="2.3" data-path="mis-on-r-mis-on-rstudio.html"><a href="mis-on-r-mis-on-rstudio.html#rstudio-cloud"><i class="fa fa-check"></i><b>2.3</b> Rstudio Cloud</a></li>
+<li class="chapter" data-level="2.4" data-path="mis-on-r-mis-on-rstudio.html"><a href="mis-on-r-mis-on-rstudio.html#materjalide-avamine"><i class="fa fa-check"></i><b>2.4</b> Materjalide avamine</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="mis-on-r-mis-on-rstudio.html"><a href="mis-on-r-mis-on-rstudio.html#isiklikus-arvutis"><i class="fa fa-check"></i><b>2.4.1</b> Isiklikus arvutis</a></li>
+<li class="chapter" data-level="2.4.2" data-path="mis-on-r-mis-on-rstudio.html"><a href="mis-on-r-mis-on-rstudio.html#pilves"><i class="fa fa-check"></i><b>2.4.2</b> Pilves</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="mis-on-r-mis-on-rstudio.html"><a href="mis-on-r-mis-on-rstudio.html#rstudio-tutvustus"><i class="fa fa-check"></i><b>2.5</b> RStudio tutvustus</a></li>
+<li class="chapter" data-level="2.6" data-path="mis-on-r-mis-on-rstudio.html"><a href="mis-on-r-mis-on-rstudio.html#stiilisoovitus"><i class="fa fa-check"></i><b>2.6</b> Stiilisoovitus</a></li>
+<li class="chapter" data-level="2.7" data-path="mis-on-r-mis-on-rstudio.html"><a href="mis-on-r-mis-on-rstudio.html#soovitatav-kirjandus"><i class="fa fa-check"></i><b>2.7</b> Soovitatav kirjandus</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="alused.html"><a href="alused.html"><i class="fa fa-check"></i><b>3</b> Alused</a><ul>
+<li class="chapter" data-level="3.1" data-path="alused.html"><a href="alused.html#r-ja-käsud"><i class="fa fa-check"></i><b>3.1</b> R ja käsud</a></li>
+<li class="chapter" data-level="3.2" data-path="alused.html"><a href="alused.html#r-lihtsa-kalkulaatorina"><i class="fa fa-check"></i><b>3.2</b> R lihtsa kalkulaatorina</a></li>
+<li class="chapter" data-level="3.3" data-path="alused.html"><a href="alused.html#tulemuste-salvestamine"><i class="fa fa-check"></i><b>3.3</b> Tulemuste salvestamine</a></li>
+<li class="chapter" data-level="3.4" data-path="alused.html"><a href="alused.html#tehete-järjekord"><i class="fa fa-check"></i><b>3.4</b> Tehete järjekord</a></li>
+<li class="chapter" data-level="3.5" data-path="alused.html"><a href="alused.html#võrdused-ja-võrratused"><i class="fa fa-check"></i><b>3.5</b> Võrdused ja võrratused</a></li>
+<li class="chapter" data-level="3.6" data-path="alused.html"><a href="alused.html#muutujate-nimed-ja-tekst"><i class="fa fa-check"></i><b>3.6</b> Muutujate nimed ja tekst</a></li>
+<li class="chapter" data-level="3.7" data-path="alused.html"><a href="alused.html#jadad"><i class="fa fa-check"></i><b>3.7</b> Jadad</a></li>
+<li class="chapter" data-level="3.8" data-path="alused.html"><a href="alused.html#r-paketid"><i class="fa fa-check"></i><b>3.8</b> R paketid</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>4</b> Tidyverse</a><ul>
+<li class="chapter" data-level="4.1" data-path="tidyverse.html"><a href="tidyverse.html#paketid"><i class="fa fa-check"></i><b>4.1</b> Paketid</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="tidyverse.html"><a href="tidyverse.html#tidyverse-arvutiklassis"><i class="fa fa-check"></i><b>4.1.1</b> Tidyverse arvutiklassis</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="tidyverse.html"><a href="tidyverse.html#r-ja-andmed"><i class="fa fa-check"></i><b>4.2</b> R ja andmed</a></li>
+<li class="chapter" data-level="4.3" data-path="tidyverse.html"><a href="tidyverse.html#tidy-andmestruktuurid"><i class="fa fa-check"></i><b>4.3</b> Tidy andmestruktuurid</a></li>
+<li class="chapter" data-level="4.4" data-path="tidyverse.html"><a href="tidyverse.html#tidyverse-andmetöötlus"><i class="fa fa-check"></i><b>4.4</b> Tidyverse andmetöötlus</a></li>
+<li class="chapter" data-level="4.5" data-path="tidyverse.html"><a href="tidyverse.html#filter-select-unique-sample_n"><i class="fa fa-check"></i><b>4.5</b> filter(), select(), unique(), sample_n()</a></li>
+<li class="chapter" data-level="4.6" data-path="tidyverse.html"><a href="tidyverse.html#count-group_by"><i class="fa fa-check"></i><b>4.6</b> count(), group_by()</a></li>
+<li class="chapter" data-level="4.7" data-path="tidyverse.html"><a href="tidyverse.html#arrange-mutate-row_number-summarise-n"><i class="fa fa-check"></i><b>4.7</b> arrange(), mutate(), row_number(), summarise(), n()</a></li>
+<li class="chapter" data-level="4.8" data-path="tidyverse.html"><a href="tidyverse.html#group_by-kasutamine"><i class="fa fa-check"></i><b>4.8</b> group_by() kasutamine</a></li>
+<li class="chapter" data-level="4.9" data-path="tidyverse.html"><a href="tidyverse.html#käskude-ühendamine"><i class="fa fa-check"></i><b>4.9</b> Käskude ühendamine</a></li>
+<li class="chapter" data-level="4.10" data-path="tidyverse.html"><a href="tidyverse.html#uue-muutuja-loomine"><i class="fa fa-check"></i><b>4.10</b> Uue muutuja loomine</a></li>
+<li class="chapter" data-level="4.11" data-path="tidyverse.html"><a href="tidyverse.html#sõnastik"><i class="fa fa-check"></i><b>4.11</b> Sõnastik</a></li>
+<li class="chapter" data-level="4.12" data-path="tidyverse.html"><a href="tidyverse.html#harjutusülesanded"><i class="fa fa-check"></i><b>4.12</b> Harjutusülesanded</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="tekstitöötlus-tidyverseis.html"><a href="tekstitöötlus-tidyverseis.html"><i class="fa fa-check"></i><b>5</b> Tekstitöötlus tidyverse’is</a><ul>
+<li class="chapter" data-level="5.1" data-path="tekstitöötlus-tidyverseis.html"><a href="tekstitöötlus-tidyverseis.html#unnest_tokens"><i class="fa fa-check"></i><b>5.1</b> unnest_tokens()</a></li>
+<li class="chapter" data-level="5.2" data-path="tekstitöötlus-tidyverseis.html"><a href="tekstitöötlus-tidyverseis.html#sagedussõnastikud"><i class="fa fa-check"></i><b>5.2</b> Sagedussõnastikud</a></li>
+<li class="chapter" data-level="5.3" data-path="tekstitöötlus-tidyverseis.html"><a href="tekstitöötlus-tidyverseis.html#stopsõnad"><i class="fa fa-check"></i><b>5.3</b> Stopsõnad</a></li>
+<li class="chapter" data-level="5.4" data-path="tekstitöötlus-tidyverseis.html"><a href="tekstitöötlus-tidyverseis.html#võrdlus-teise-korpusega"><i class="fa fa-check"></i><b>5.4</b> Võrdlus teise korpusega</a></li>
+<li class="chapter" data-level="5.5" data-path="tekstitöötlus-tidyverseis.html"><a href="tekstitöötlus-tidyverseis.html#kordused-laulu-sees"><i class="fa fa-check"></i><b>5.5</b> Kordused laulu sees</a></li>
+<li class="chapter" data-level="5.6" data-path="tekstitöötlus-tidyverseis.html"><a href="tekstitöötlus-tidyverseis.html#asukoht-tekstis"><i class="fa fa-check"></i><b>5.6</b> Asukoht tekstis</a></li>
+<li class="chapter" data-level="5.7" data-path="tekstitöötlus-tidyverseis.html"><a href="tekstitöötlus-tidyverseis.html#sõnastik-1"><i class="fa fa-check"></i><b>5.7</b> Sõnastik</a></li>
+<li class="chapter" data-level="5.8" data-path="tekstitöötlus-tidyverseis.html"><a href="tekstitöötlus-tidyverseis.html#harjutusülesanded-1"><i class="fa fa-check"></i><b>5.8</b> Harjutusülesanded</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="mitmikud-regulaaravaldised-ja-märksõnad.html"><a href="mitmikud-regulaaravaldised-ja-märksõnad.html"><i class="fa fa-check"></i><b>6</b> Mitmikud, regulaaravaldised ja märksõnad</a><ul>
+<li class="chapter" data-level="6.1" data-path="mitmikud-regulaaravaldised-ja-märksõnad.html"><a href="mitmikud-regulaaravaldised-ja-märksõnad.html#bigrammid"><i class="fa fa-check"></i><b>6.1</b> Bigrammid</a></li>
+<li class="chapter" data-level="6.2" data-path="mitmikud-regulaaravaldised-ja-märksõnad.html"><a href="mitmikud-regulaaravaldised-ja-märksõnad.html#valimi-parandamine"><i class="fa fa-check"></i><b>6.2</b> Valimi parandamine</a></li>
+<li class="chapter" data-level="6.3" data-path="mitmikud-regulaaravaldised-ja-märksõnad.html"><a href="mitmikud-regulaaravaldised-ja-märksõnad.html#regulaaravaldised"><i class="fa fa-check"></i><b>6.3</b> Regulaaravaldised</a></li>
+<li class="chapter" data-level="6.4" data-path="mitmikud-regulaaravaldised-ja-märksõnad.html"><a href="mitmikud-regulaaravaldised-ja-märksõnad.html#trigrammid"><i class="fa fa-check"></i><b>6.4</b> Trigrammid</a></li>
+<li class="chapter" data-level="6.5" data-path="mitmikud-regulaaravaldised-ja-märksõnad.html"><a href="mitmikud-regulaaravaldised-ja-märksõnad.html#märksõnade-leidmine"><i class="fa fa-check"></i><b>6.5</b> Märksõnade leidmine</a></li>
+<li class="chapter" data-level="6.6" data-path="mitmikud-regulaaravaldised-ja-märksõnad.html"><a href="mitmikud-regulaaravaldised-ja-märksõnad.html#sõnastik-2"><i class="fa fa-check"></i><b>6.6</b> Sõnastik</a></li>
+<li class="chapter" data-level="6.7" data-path="mitmikud-regulaaravaldised-ja-märksõnad.html"><a href="mitmikud-regulaaravaldised-ja-märksõnad.html#harjutusülesanded-2"><i class="fa fa-check"></i><b>6.7</b> Harjutusülesanded</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="graafikute-loomine.html"><a href="graafikute-loomine.html"><i class="fa fa-check"></i><b>7</b> Graafikute loomine</a><ul>
+<li class="chapter" data-level="7.1" data-path="graafikute-loomine.html"><a href="graafikute-loomine.html#graafiku-ülesehitus"><i class="fa fa-check"></i><b>7.1</b> Graafiku ülesehitus</a></li>
+<li class="chapter" data-level="7.2" data-path="graafikute-loomine.html"><a href="graafikute-loomine.html#joonisekihtide-liigid"><i class="fa fa-check"></i><b>7.2</b> Joonisekihtide liigid</a></li>
+<li class="chapter" data-level="7.3" data-path="graafikute-loomine.html"><a href="graafikute-loomine.html#tabeli-viimistlemine"><i class="fa fa-check"></i><b>7.3</b> Tabeli viimistlemine</a></li>
+<li class="chapter" data-level="7.4" data-path="graafikute-loomine.html"><a href="graafikute-loomine.html#sõnastik-3"><i class="fa fa-check"></i><b>7.4</b> Sõnastik</a></li>
+<li class="chapter" data-level="7.5" data-path="graafikute-loomine.html"><a href="graafikute-loomine.html#harjutusülesanded-3"><i class="fa fa-check"></i><b>7.5</b> Harjutusülesanded</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Lihtne tekstitöötlus R-is ja tidyverse’is</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="tidyverse" class="section level1">
+<h1><span class="header-section-number">Peatükk 4</span> Tidyverse</h1>
+<div id="paketid" class="section level2">
+<h2><span class="header-section-number">4.1</span> Paketid</h2>
+<p>Selles peatükis teeme algust tidyverse paketi kasutamisega. Paketid annavad R-i kasutades olulisi lisavõimalusi nagu sai kirjeldatud eelmises peatükis.</p>
+<p>Iga pakett tuleb kõigepealt installida. Tavapakettide puhul piisab selleks käsust install.packages(), millele tuleb sisendiks anda paketi nimi jutumärkides. Käivitage järgnev käsk. Kui tidyverse pole arvutisse varem installitud, installib R selle nüüd. Kui pakett on juba installitud, püüab R seda uuendada.</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</a></code></pre></div>
+<p>Paketi sisselugemiseks kasutame funktsiooni library(). Peaaegu samaväärne funktsioon on require() kui mõnikord skriptides on just seda kasutatud. Loeme kõigepealt sisse library(tidyverse).</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<p>Tidyverse loetleb avamisel avatud paketid ja mainib paari konflikti teiste pakettide pärast, mille pärast Sa ei pea parasjagu muretsema. Kontrolli, kas Su konsoolis näitas midagi sarnast nagu siin juhendis ülal.</p>
+<p>Vajalikud paketid tuleb avada iga kord pärast Rstudio käivitamist, R ei tee eeldusi selle kohta, milliseid pakette Sul võiks vaja minna..</p>
+<div id="tidyverse-arvutiklassis" class="section level3">
+<h3><span class="header-section-number">4.1.1</span> Tidyverse arvutiklassis</h3>
+<p>Mõnede pakettide installimine nõuab arvutis rohkem kui tavakasutaja ligipääsu. Hiljaeaegu sai ka Tidyverse nende pakettide hulka ja kui ligipääsuõiguseid ei ole, nagu näiteks arvutiklassis, siis on vaja teha veel järgmist. Isiklikus arvutis ei ole tõenäoliselt seda vaja teha. Kui tidyverse sisselaadimine ülal töötas, jäta see osa vahele.</p>
+<p>JUHUL KUI eelolev ei töötanud täpselt nii nagu oodatud, siis väljuge Rstudiost ja käivitage see uuesti ning kontrollige järgmist:</p>
+<ol style="list-style-type: decimal">
+<li>Mine kohta: “C:/Users/Public/Documents/” (kopeeri see asukohareale)</li>
+<li>Kas on kataloog nimega “Rstudio_packages”. Kui seda ei ole, siis tee see.</li>
+<li>Jooksuta järgmist käsku.</li>
+</ol>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" data-line-number="1"><span class="kw">.libPaths</span>(<span class="st">&quot;C:/Users/Public/Documents/Rstudio_packages&quot;</span>)</a></code></pre></div>
+<p>See määrab, et R otsib oma pakette just sealt kataloogist. Ja ka uued paketid installitakse sinna. Arvutiklassis on seda vaja, kuna sinu kasutajal ei ole arvuti juures kõiki õigusi. Juhul kui paketid olid varem installitud mujale, ei pruugi R neid enam üles leida ning vastavalt proovib neid sinna installida. Isiklikul arvutil seda tõenäoliselt ei ole vaja teha ning kui ligipääsuprobleeme pole, ärge seda käsku käivitage.</p>
+<p>Pärast selle määramist proovi installida <em>tidyverse</em> paketti uuesti. Uue asukohaga peaks installimine töötama ja paketi saab siis sisse lugeda.</p>
+</div>
+</div>
+<div id="r-ja-andmed" class="section level2">
+<h2><span class="header-section-number">4.2</span> R ja andmed</h2>
+<p>Kuigi R-i võib kasutada ka lihtsateks numbriarvutusteks, siis üldiselt kasutatakse R-i tööks andmistekega. Andmestikud on enamasti salvestatud failidesse teatud formaadis (näiteks .csv, .tsv või .xls). Faili sisse lugemiseks on hulk erinevaid käske ja on vähe failitüüpe, millest R pakettide abiga jagu ei saa. Praegu on meil fail .tsv formaadis ja selle lugemiseks sobib meile käsk read_tsv().</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" data-line-number="1"><span class="kw">read_tsv</span>(<span class="st">&quot;data/eesti_top40/eesti_skyplus_top40_1994-2018.tsv&quot;</span>)</a></code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   year = col_double(),
+##   rank = col_double(),
+##   votes = col_double(),
+##   artist = col_character(),
+##   song = col_character(),
+##   filename = col_character(),
+##   source = col_double(),
+##   lyrics = col_character(),
+##   language = col_character()
+## )</code></pre>
+<pre><code>## # A tibble: 1,000 x 9
+##     year  rank votes artist   song    filename     source lyrics        language
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;   
+##  1  1994     1    NA Ummamuu… Kõnõtr… lyrics-umma…      1 &quot;:,:Välän kü… et      
+##  2  1994     2    NA Vennask… Pille-… lyrics-venn…      1 &quot;Taevas sine… et      
+##  3  1994     3    NA Jam      See 5   lyrics-jam-…      1 &quot;See viis ha… et      
+##  4  1994     4    NA The Tub… Lillek… lyrics-the_…      1 &quot;Tüdruk vaat… et      
+##  5  1994     5    NA The Tub… Põhjam… lyrics-the_…      1 &quot;Kui käes on… et      
+##  6  1994     6    NA Jam      Su Jär… lyrics-jam-…      1 &quot;Enne sind e… et      
+##  7  1994     7    NA 2 Quick… Olen L… lyrics-2_qu…      1 &quot;1. PÕHJUST … et      
+##  8  1994     8    NA Termina… Torm    lyrics-term…      1 &quot;Olen tulnud… et      
+##  9  1994     9    NA 2 Quick… Sinu J… lyrics-2_qu…      1 &quot;1. EKSISIN … et      
+## 10  1994    10    NA D-Gän    Seib    lyrics-d-ga…      1 &quot;ELASID KOOS… et      
+## # … with 990 more rows</code></pre>
+<p>Siit saime kaks väljatrükki. Esiteks tabeli enda kohta - read_tsv() ütleb, mis tüüpi andmetulpasid ta failist leidis. Siin antud juhul col_character() ehk tekstitulp ja col_double() ehk numbritulp. Oodatavat tüüpi saab ka lugemisel ise määrata. Ja teise asjana trükkis ta välja andmestiku enda, kus näeme, et andmed näevad välja, nagu oodata.</p>
+<p>Andmestiku salvestamiseks kasutame tuttavat noole &lt;- tähist. Siis on meil edaspidi andmestik kättesaadav muutuja <em>edetabel</em> all.</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" data-line-number="1">edetabel &lt;-<span class="st"> </span><span class="kw">read_tsv</span>(<span class="st">&quot;data/eesti_top40/eesti_skyplus_top40_1994-2018.tsv&quot;</span>)</a></code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   year = col_double(),
+##   rank = col_double(),
+##   votes = col_double(),
+##   artist = col_character(),
+##   song = col_character(),
+##   filename = col_character(),
+##   source = col_double(),
+##   lyrics = col_character(),
+##   language = col_character()
+## )</code></pre>
+<p>RStudios näete nüüd “environment” väljal, paremal ülal, et sinna on ilmunud sektsioon ‘data’ ning selle alla muutuja ’edetabel, kus on 1000 vaatlust ja 9 muutujat ehk 1000 rida ja 9 tulpa. Kui vajutate RStudios hiirega selle peale, avaneb see tabelina ülevaatuseks. Skriptiaknas, vaskul ülal, on nüüd uus sälk andmetele ning tagasi koodifaili saab vajutades koodifaili sälgule. (Selleks saab kasutada ka Ctrl+Tab ja Shift+Ctrl+Tab).</p>
+<p>Muu hulgas näete, et konsoolis jooksis uus käsk</p>
+<pre><code>View(edetabel)</code></pre>
+<p>View käsk näitab andmemuutuja sisu eraldi aknas. Proovi kirjutada konsooli sama käsk.</p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" data-line-number="1"><span class="kw">View</span>(edetabel)</a></code></pre></div>
+<p>Ülevaatest on näha, et tabelis on järgmised tulbad.</p>
+<ul>
+<li>year - edetabeli aasta</li>
+<li>rank - koht edetabelis</li>
+<li>votes - häälte arv (kui on)</li>
+<li>artist - esineja</li>
+<li>song - loo pealkiri</li>
+<li>filename - faili nimi hoidlas</li>
+<li>source - sõnade allikas (1 - Sasslantis, 2 - muu)</li>
+<li>lyrics - laulusõnad</li>
+<li>language - keel (et - eesti, en - inglise)</li>
+</ul>
+</div>
+<div id="tidy-andmestruktuurid" class="section level2">
+<h2><span class="header-section-number">4.3</span> Tidy andmestruktuurid</h2>
+<p>Tidy ehk puhtad andmestruktuurid on kujunenud välja andmeanalüütikute vajadustest. Nimelt taipasid mõned neist, et kui andmestikke salvestatakse pidevalt väga erinevatel kujudel - igaüks mõtleb välja oma viisi - siis andmeanalüüsi jaoks on hea kui nad on suhteliselt samas formaadis ja ehk mida lihtsam seda parem. Tidy andmeloogika on võtnu omaks põhimõtte, et iga andmepunkti kohta võiks olla üks rida ja iga mõõdiku kohta üks tulp. Vastavalt sellele, mida me täpselt tahame teada saada võib erineda see, mis on meie andmepunkt. Andmepunktiks võiks olla näiteks majandusnäitajate Harju keskmine 1990ndate jooksul või siis Eesti riigi koondnäitaja 2019 aasta esimeses kvartalis. Meid võib huvitada üks tekst, üks lause või üks sõna.</p>
+<p>Tidy andmeloogika järgi püütakse siis andmestik ümber kujundada selliselt, et ükskõik mida me teada tahame oleks sel sama struktuur</p>
+<ul>
+<li>Iga rida on üks vaatlus (selle kohta, mida me tahame vaadelda).</li>
+<li>Iga tulp on üks vaatluse omadus või omadustekomplekt.</li>
+</ul>
+<p>Illustratsioon sellest on juhendis all. Kui seda vaadata, võiks mõelda, et kuidas saaks üldse teisiti. Aga andmestikke on koostatud ja koostatakse pidevalt väga erinevates viisides, mis toimivad ehk ühe koostaja või sisestaja jaoks, aga ei pruugi tunduda teistele sama head. Tidy andmeloogika üritab pakkuda lihtsaimat reeglit, mille järgi orienteeruda.</p>
+<p><img src="figures/tidy_data.png" /></p>
+</div>
+<div id="tidyverse-andmetöötlus" class="section level2">
+<h2><span class="header-section-number">4.4</span> Tidyverse andmetöötlus</h2>
+<p>Tidyverse üritab leida ühise aluse ka andmetöötlusele. Eelkõige üritab tidyverse andmetöötluse jaotada selgelt järjestikku operatsioonidest ning järgida <em>literate programming</em> loogikat. Selle loogika järgi peaks masinale mõeldud kood olema lihtsalt ja selgelt loetav ka inimese jaoks. Tidyverse püüab ühtse käskude grammatika järgi aidata nii algajal oskusi omandada kui panna andmeid omavahel ühtima. Kuigi tidyverse kood püüab hoida lihtsat ja arusaadavat kuju, ei tähenda, et selle võimekus oleks piiratud. Peaaegu iga käsku on võimalik kirjutada ka tidyverse viisil.</p>
+<p>Tidyverse stiilis töötlusel näeb üks R-i käskudekomplekt välja järgmine.</p>
+<pre><code>andmed %&gt;%
+  protsess1() %&gt;%
+  protsess2()</code></pre>
+<p>Alustuseks on R-is sisse loetud andmed, siis nendega tehakse protsess1() ja siis protsess2(). Selle järjestuse juhendamiseks kasutab tidyverse toru %&gt;% funktsiooni mis suunab andmestiku protsessi ning selle protsessi tulemuse omakorda protsessi. Üks viis selles mõelda on nii, et muutujad on nimisõnad ja protsessid on tegusõnad ja kokkuvõttes huvitab meid, mis algsest nimisõnalisest tegelasest saab.</p>
+<p>Andmete töötlemiseks kasutame niisiis rea lõpus toru %&gt;% funktsiooni. Selle võib trükkida välja või võib vajutada korraga ka Ctrl+Shift+M mis asetab %&gt;% torumärgi teksti.</p>
+<p>Töötluse näites, kui me trükime edetabel %&gt;% names(), saame andmestiku kõikide tulpade nimed jadana. Proovi järgi: mine reale ja vajuta Ctrl+Enter. R teab, et %&gt;% torumärgile peaks järgnema veel käsk ja ta loeb seda edasi, isegi kui selleks peab minema järgmisele reale. Seda ära kasutades ning töötluse loetavuse nimel paigutatakse tidyverse stiilis iga käsk eraldi reale. Kui koostad keerulise funktsiooni, võid küll sellest ise kergesti aru saada, aga juhuslikule lugejale on palju kergem kui kõik operatsioonid on selgelt eraldatud.</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb119-2" data-line-number="2"><span class="st">  </span><span class="kw">names</span>()</a></code></pre></div>
+<pre><code>## [1] &quot;year&quot;     &quot;rank&quot;     &quot;votes&quot;    &quot;artist&quot;   &quot;song&quot;     &quot;filename&quot; &quot;source&quot;  
+## [8] &quot;lyrics&quot;   &quot;language&quot;</code></pre>
+</div>
+<div id="filter-select-unique-sample_n" class="section level2">
+<h2><span class="header-section-number">4.5</span> filter(), select(), unique(), sample_n()</h2>
+<p>Teades põhiprintsiipi lähebki vaja hakata operatsioone omavahel kombineerima ja järjestama, et saada andmestikust kätte täpselt seda informatsiooni, mida vaja. Võtame alustuseks neli käsku, mis on mõeldud tabeli osade valimiseks ja loendamiseks. Nimelt filter(), count(), select(), unique().</p>
+<ul>
+<li>%&gt;% - viib andmed järgmisesse protsessi</li>
+<li>select() valib tunnused andmestikust</li>
+<li>filter() viib andmestiku läbi filtri/sõela</li>
+<li>unique() - võtab tabelist ainult unikaalsed read</li>
+<li>sample_n() - võtab ettemääratud suurusega hulga ridu tabelist</li>
+</ul>
+<p>Käsk select() valib andmestikust teatud tulbad. Seda võib teha nime kaudu või mingil muul alusel, nii võib saada ühe või mitu tulpa. Kirjutades select(year) toru järgi valime siis year-nimelise tulba, ehk tulba kus on aastaarvud.</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb121-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(year)</a></code></pre></div>
+<pre><code>## # A tibble: 1,000 x 1
+##     year
+##    &lt;dbl&gt;
+##  1  1994
+##  2  1994
+##  3  1994
+##  4  1994
+##  5  1994
+##  6  1994
+##  7  1994
+##  8  1994
+##  9  1994
+## 10  1994
+## # … with 990 more rows</code></pre>
+<p>Käsk unique() valib andmestikust kõik read, mis on unikaalse. Näiteks valides unikaalsed read aasta tulbast saame jada 25-st erinevast aastast, mis on andmestikus.</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb123-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(year) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb123-3" data-line-number="3"><span class="st">  </span><span class="kw">unique</span>()</a></code></pre></div>
+<pre><code>## # A tibble: 25 x 1
+##     year
+##    &lt;dbl&gt;
+##  1  1994
+##  2  1995
+##  3  1996
+##  4  1997
+##  5  1998
+##  6  1999
+##  7  2000
+##  8  2001
+##  9  2002
+## 10  2003
+## # … with 15 more rows</code></pre>
+<p>Kui me võtame unikaalsed read tervest andmestikust, saame vastuseks sama andmestiku, kuna kõik read on seal unikaalsed.</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb125-2" data-line-number="2"><span class="st">  </span><span class="kw">unique</span>()</a></code></pre></div>
+<pre><code>## # A tibble: 1,000 x 9
+##     year  rank votes artist   song    filename     source lyrics        language
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;   
+##  1  1994     1    NA Ummamuu… Kõnõtr… lyrics-umma…      1 &quot;:,:Välän kü… et      
+##  2  1994     2    NA Vennask… Pille-… lyrics-venn…      1 &quot;Taevas sine… et      
+##  3  1994     3    NA Jam      See 5   lyrics-jam-…      1 &quot;See viis ha… et      
+##  4  1994     4    NA The Tub… Lillek… lyrics-the_…      1 &quot;Tüdruk vaat… et      
+##  5  1994     5    NA The Tub… Põhjam… lyrics-the_…      1 &quot;Kui käes on… et      
+##  6  1994     6    NA Jam      Su Jär… lyrics-jam-…      1 &quot;Enne sind e… et      
+##  7  1994     7    NA 2 Quick… Olen L… lyrics-2_qu…      1 &quot;1. PÕHJUST … et      
+##  8  1994     8    NA Termina… Torm    lyrics-term…      1 &quot;Olen tulnud… et      
+##  9  1994     9    NA 2 Quick… Sinu J… lyrics-2_qu…      1 &quot;1. EKSISIN … et      
+## 10  1994    10    NA D-Gän    Seib    lyrics-d-ga…      1 &quot;ELASID KOOS… et      
+## # … with 990 more rows</code></pre>
+<p>Kui me soovime kätte saada mingeid konkreetseid ridu, mis vastavad teatud tunnustele, võime andmestiku läbi lasta filter() käsust. Sellisel juhul peame filter() sisse kirjutama tingimuse, mis peab vastama kas tõele või väärale ehk see peab kontrollima võrdsust nagu eelmises tükis sai näidatud.</p>
+<p>Näiteks, kui me tahame leida kõiki Smilersi lugusid võime me otsida välja kõik read, kus tunnus artist on sama kui tekst “Smilers”. Tähtis on selle päringu juures, et see tunnus peab olema täpselt sama. Pane tähele ka, et siin on siis kasutatud topeltvõrdumärki ==.</p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb127-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(artist<span class="op">==</span><span class="st">&quot;Smilers&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 47 x 9
+##     year  rank votes artist  song    filename    source lyrics          language
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt;   
+##  1  1996     4  1192 Smilers Tahan … lyrics-smi…      1 hellalt luban … et      
+##  2  1997    23   216 Smilers Viis K… lyrics-smi…      1 tunne on hea j… et      
+##  3  1997    30   146 Smilers Lähme … lyrics-smi…      1 sa väljakutsuv… et      
+##  4  1998     1  1216 Smilers Tantsi… lyrics-smi…      1 Kuu on täis is… et      
+##  5  1998    12   267 Smilers Mõtlen… lyrics-smi…      1 täna ärkasin v… et      
+##  6  1998    18   169 Smilers Ära Vi… lyrics-smi…      1 Tahan olla su … et      
+##  7  1998    21   133 Smilers Mõistu… lyrics-smi…      1 suhe meil suju… et      
+##  8  1998    22   129 Smilers Nagu H… lyrics-smi…      1 Ma tean et see… et      
+##  9  1998    28   101 Smilers Aega P… lyrics-smi…      1 ma ennast jäll… et      
+## 10  1998    29   100 Smilers Sinu K… lyrics-smi…      1 Oma kolmteist … et      
+## # … with 37 more rows</code></pre>
+<p>Kui me kasutame nime smilers väikse algustähega, siis me neid tulemusi ei leia, kuna tulemus pole täpselt sama. Kui me suurest või väiksest algustähest ei hooli, võime muuta terve tunnuse selliseks, et tal on väike algustäht või kasutada regulaaravaldisi vaste leidmiseks. Sellest on näiteid hiljem.</p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb129-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(artist<span class="op">==</span><span class="st">&quot;smilers&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 0 x 9
+## # … with 9 variables: year &lt;dbl&gt;, rank &lt;dbl&gt;, votes &lt;dbl&gt;, artist &lt;chr&gt;,
+## #   song &lt;chr&gt;, filename &lt;chr&gt;, source &lt;dbl&gt;, lyrics &lt;chr&gt;, language &lt;chr&gt;</code></pre>
+<p>Proovi nüüd ise leida kõik Ummamuudu lood, kirjutades sarnane koodijupp siia alla.</p>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb131-1" data-line-number="1"><span class="co">#---------------------------------------------</span></a>
+<a class="sourceLine" id="cb131-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb131-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb131-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb131-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb131-6" data-line-number="6"><span class="co">#---------------------------------------------</span></a></code></pre></div>
+<p>Me võime ka kombineerida omavahel filter() ja select(), et saata väiksema ülevaate tabelist. Näiteks võime võtta välja kõikide Smilersi lugude aastad ja pealkirjad.</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" data-line-number="1">edetabel<span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb132-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(artist<span class="op">==</span><span class="st">&quot;Smilers&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb132-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>(year,song)</a></code></pre></div>
+<pre><code>## # A tibble: 47 x 2
+##     year song                 
+##    &lt;dbl&gt; &lt;chr&gt;                
+##  1  1996 Tahan Sind           
+##  2  1997 Viis Kasti Õlut      
+##  3  1997 Lähme sõidame        
+##  4  1998 Tantsin Sinuga Taevas
+##  5  1998 Mõtlen Sinust        
+##  6  1998 Ära Viska Mind Ära   
+##  7  1998 Mõistus On Kadunud   
+##  8  1998 Nagu Hunt            
+##  9  1998 Aega Parajaks Teen   
+## 10  1998 Sinu Küljes Kinni    
+## # … with 37 more rows</code></pre>
+<p>Neid käske võib ka korduvalt lisada. Näiteks saame võtta kõigepealt Smilersi lood ja siis nende seast välja ainult lood, mis olid edetabelis aastal 1998.</p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" data-line-number="1">edetabel<span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb134-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(artist<span class="op">==</span><span class="st">&quot;Smilers&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb134-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>(year,song) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb134-4" data-line-number="4"><span class="st">  </span><span class="kw">filter</span>(year<span class="op">==</span><span class="dv">1998</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 7 x 2
+##    year song                 
+##   &lt;dbl&gt; &lt;chr&gt;                
+## 1  1998 Tantsin Sinuga Taevas
+## 2  1998 Mõtlen Sinust        
+## 3  1998 Ära Viska Mind Ära   
+## 4  1998 Mõistus On Kadunud   
+## 5  1998 Nagu Hunt            
+## 6  1998 Aega Parajaks Teen   
+## 7  1998 Sinu Küljes Kinni</code></pre>
+<p>Või näiteks 2000 ja 2008 aasta vahel.</p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" data-line-number="1">edetabel<span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb136-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(artist<span class="op">==</span><span class="st">&quot;Smilers&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb136-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>(year,song) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb136-4" data-line-number="4"><span class="st">  </span><span class="kw">filter</span>(year<span class="op">&gt;</span><span class="dv">2000</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb136-5" data-line-number="5"><span class="st">  </span><span class="kw">filter</span>(year<span class="op">&lt;</span><span class="dv">2008</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 23 x 2
+##     year song                      
+##    &lt;dbl&gt; &lt;chr&gt;                     
+##  1  2001 Mina, Pets, Margus &amp; Priit
+##  2  2001 Jalgpall on parem kui seks
+##  3  2001 Kalamaja cowboy           
+##  4  2001 Upun su silmadesse        
+##  5  2001 Mõtlen sinust             
+##  6  2001 Meteoriitide sajus        
+##  7  2002 Meteoriitide sajus        
+##  8  2002 Jalgpall on parem kui sex 
+##  9  2002 Kvaliteetaeg              
+## 10  2003 Käime katuseid mööda      
+## # … with 13 more rows</code></pre>
+<p>Soovi korral võib mitu filtrit ka ühendada ühte käsku. Sel juhul tuleb kasutada &amp; märki nende ühendamiseks.</p>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" data-line-number="1">edetabel<span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb138-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(artist<span class="op">==</span><span class="st">&quot;Smilers&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb138-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>(year,song) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb138-4" data-line-number="4"><span class="st">  </span><span class="kw">filter</span>(year<span class="op">&gt;</span><span class="dv">2000</span> <span class="op">&amp;</span><span class="st"> </span>year<span class="op">&lt;</span><span class="dv">2008</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 23 x 2
+##     year song                      
+##    &lt;dbl&gt; &lt;chr&gt;                     
+##  1  2001 Mina, Pets, Margus &amp; Priit
+##  2  2001 Jalgpall on parem kui seks
+##  3  2001 Kalamaja cowboy           
+##  4  2001 Upun su silmadesse        
+##  5  2001 Mõtlen sinust             
+##  6  2001 Meteoriitide sajus        
+##  7  2002 Meteoriitide sajus        
+##  8  2002 Jalgpall on parem kui sex 
+##  9  2002 Kvaliteetaeg              
+## 10  2003 Käime katuseid mööda      
+## # … with 13 more rows</code></pre>
+<p>Me võime ka kõik filtrid panna kokku ühte käsku</p>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" data-line-number="1">edetabel<span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb140-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(artist<span class="op">==</span><span class="st">&quot;Smilers&quot;</span> <span class="op">&amp;</span><span class="st"> </span>year<span class="op">&gt;</span><span class="dv">2000</span> <span class="op">&amp;</span><span class="st"> </span>year<span class="op">&lt;</span><span class="dv">2008</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb140-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>(year,song)</a></code></pre></div>
+<pre><code>## # A tibble: 23 x 2
+##     year song                      
+##    &lt;dbl&gt; &lt;chr&gt;                     
+##  1  2001 Mina, Pets, Margus &amp; Priit
+##  2  2001 Jalgpall on parem kui seks
+##  3  2001 Kalamaja cowboy           
+##  4  2001 Upun su silmadesse        
+##  5  2001 Mõtlen sinust             
+##  6  2001 Meteoriitide sajus        
+##  7  2002 Meteoriitide sajus        
+##  8  2002 Jalgpall on parem kui sex 
+##  9  2002 Kvaliteetaeg              
+## 10  2003 Käime katuseid mööda      
+## # … with 13 more rows</code></pre>
+<p>Filtrite puhul võime kasutada ka või | märki. Näiteks võime sama käsku väljedada ka mitte piirkondadega, vaid andes ette võimalikud variandi võiga.</p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" data-line-number="1">edetabel<span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb142-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(artist<span class="op">==</span><span class="st">&quot;Smilers&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb142-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>(year,song) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb142-4" data-line-number="4"><span class="st">  </span><span class="kw">filter</span>(year<span class="op">==</span><span class="dv">2001</span> <span class="op">|</span><span class="st"> </span>year<span class="op">==</span><span class="dv">2002</span> <span class="op">|</span><span class="st"> </span>year<span class="op">==</span><span class="dv">2003</span> <span class="op">|</span><span class="st"> </span>year<span class="op">==</span><span class="dv">2004</span> <span class="op">|</span><span class="st"> </span>year<span class="op">==</span><span class="dv">2005</span> <span class="op">|</span><span class="st"> </span>year<span class="op">==</span><span class="dv">2006</span> <span class="op">|</span><span class="st"> </span>year<span class="op">==</span><span class="dv">2007</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 23 x 2
+##     year song                      
+##    &lt;dbl&gt; &lt;chr&gt;                     
+##  1  2001 Mina, Pets, Margus &amp; Priit
+##  2  2001 Jalgpall on parem kui seks
+##  3  2001 Kalamaja cowboy           
+##  4  2001 Upun su silmadesse        
+##  5  2001 Mõtlen sinust             
+##  6  2001 Meteoriitide sajus        
+##  7  2002 Meteoriitide sajus        
+##  8  2002 Jalgpall on parem kui sex 
+##  9  2002 Kvaliteetaeg              
+## 10  2003 Käime katuseid mööda      
+## # … with 13 more rows</code></pre>
+<p>Viimaks võime kasutada ka eelpool mainitud %in% käsku, mis kontrollib väärtuse olemasolu jadas.</p>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" data-line-number="1">edetabel<span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb144-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(artist<span class="op">==</span><span class="st">&quot;Smilers&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb144-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>(year,song) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb144-4" data-line-number="4"><span class="st">  </span><span class="kw">filter</span>(year <span class="op">%in%</span><span class="st"> </span><span class="dv">2001</span><span class="op">:</span><span class="dv">2007</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 23 x 2
+##     year song                      
+##    &lt;dbl&gt; &lt;chr&gt;                     
+##  1  2001 Mina, Pets, Margus &amp; Priit
+##  2  2001 Jalgpall on parem kui seks
+##  3  2001 Kalamaja cowboy           
+##  4  2001 Upun su silmadesse        
+##  5  2001 Mõtlen sinust             
+##  6  2001 Meteoriitide sajus        
+##  7  2002 Meteoriitide sajus        
+##  8  2002 Jalgpall on parem kui sex 
+##  9  2002 Kvaliteetaeg              
+## 10  2003 Käime katuseid mööda      
+## # … with 13 more rows</code></pre>
+<p>Proovi nüüd kätte saada kõik lood mis olnud smilersil küll esikümnes, aga mitte esiviies. (Vihje: vaata tulpa rank.)</p>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" data-line-number="1"><span class="co">#---------------------------------------------</span></a>
+<a class="sourceLine" id="cb146-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb146-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb146-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb146-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb146-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb146-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb146-8" data-line-number="8"><span class="co">#---------------------------------------------</span></a></code></pre></div>
+<p>Proovi leida ka kõik lood, mis olid 1990ndatel tabelis inglise keeles. (Vihje: vaata tulpa language.)</p>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb147-1" data-line-number="1"><span class="co">#---------------------------------------------</span></a>
+<a class="sourceLine" id="cb147-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb147-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb147-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb147-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb147-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb147-7" data-line-number="7"><span class="co">#---------------------------------------------</span></a></code></pre></div>
+<p>Tihti soovime näha või kasutada mitte tervet andmestikku, vaid juhuslikku osa sellest. Lihtsa valimi tekitamiseks on ka olemas omaette käsk. sample_n() võtab hulgast välja juhusliku n rida, kus n-i väärtuse me määrame sulgude sees. Teeme väikse katse iseendaga, trükime välja 10 lugu aastast 1997 ja 10 lugu aastast 2017. Vaatame ja võrdleme. Mitu lugu ja esinejat tunneme ära rohkem kui 20 aastat tagasi, mitu esinejat tunneme ära hiljutisest edetabelist. Tulemused ütlevad siinkohal küll rohkem lugeja enda kohta kui andmestiku kohta.</p>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb148-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(year<span class="op">==</span><span class="dv">1997</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb148-3" data-line-number="3"><span class="st">  </span><span class="kw">sample_n</span>(<span class="dv">10</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 10 x 9
+##     year  rank votes artist   song     filename     source lyrics       language
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;   
+##  1  1997    21   234 2 Quick… Oled Ku… lyrics-2_qu…      1 &quot;Ma nägin p… et      
+##  2  1997    19   264 Maarja   Rainbow… lyrics-maar…      1 &quot;Two hours … en      
+##  3  1997     3   844 Mari Li… Teine D… lyrics-mari…      1 &quot;ref: miks … et      
+##  4  1997    14   320 Click OO Öö On K… lyrics-clic…      1 &quot;Siis kui ö… et      
+##  5  1997     8   707 Code One Nüüd Võ… lyrics-code…      1 &quot;Ühel hetke… et      
+##  6  1997    18   265 Caater   80       &lt;NA&gt;             NA  &lt;NA&gt;        &lt;NA&gt;    
+##  7  1997    15   299 The Tub… Hiline … &lt;NA&gt;             NA  &lt;NA&gt;        &lt;NA&gt;    
+##  8  1997    38    84 Dallas   Your Ne… &lt;NA&gt;             NA  &lt;NA&gt;        &lt;NA&gt;    
+##  9  1997    39    78 Termina… Kristal… lyrics-term…      1 &quot;Ma tean et… et      
+## 10  1997    33   122 Rumal N… Sweet K… lyrics-noor…      1 &quot;I want you… en</code></pre>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb150-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(year<span class="op">==</span><span class="dv">2017</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb150-3" data-line-number="3"><span class="st">  </span><span class="kw">sample_n</span>(<span class="dv">10</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 10 x 9
+##     year  rank votes artist   song    filename    source lyrics         language
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;   
+##  1  2017    29    82 Miljard… Vilkuv… lyrics-mil…      1 &quot;kasvab lapsi… et      
+##  2  2017    20   118 Grete P… Wasted… &lt;NA&gt;            NA  &lt;NA&gt;          &lt;NA&gt;    
+##  3  2017    37    55 DND      Kontse… lyrics-dnd…      1 &quot;Ma nägin su … et      
+##  4  2017     7   423 Merlyn … Jälle … lyrics-mer…      1 &quot;Minu uksele … et      
+##  5  2017    16   163 Getter   Someth… &lt;NA&gt;            NA  &lt;NA&gt;          &lt;NA&gt;    
+##  6  2017     4   512 Respekt  Peapeal lyrics-res…      1 &quot;Meid nähti s… et      
+##  7  2017    27    84 Karl-Er… Seitse… lyrics-kar…      1 &quot;iga päev tor… et      
+##  8  2017    33    65 Horror … Ships   &lt;NA&gt;            NA  &lt;NA&gt;          &lt;NA&gt;    
+##  9  2017    34    58 Arop     Lase m… lyrics-aro…      1 &quot;Süda toppab,… et      
+## 10  2017    14   172 Trad.At… Kallim… &lt;NA&gt;            NA  &lt;NA&gt;          &lt;NA&gt;</code></pre>
+<p>Proovi ise! Võta andmestikust välja 10 juhuslikku esikohalugu. Vaata, kas neid tead?</p>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb152-1" data-line-number="1"><span class="co">#---------------------------------------------</span></a>
+<a class="sourceLine" id="cb152-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb152-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb152-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb152-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb152-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb152-7" data-line-number="7"><span class="co">#---------------------------------------------</span></a></code></pre></div>
+</div>
+<div id="count-group_by" class="section level2">
+<h2><span class="header-section-number">4.6</span> count(), group_by()</h2>
+<p>Et meil on tegemist edetabeliga, siis püüame kõigepealt selle tippudest aru saada. Selle jaoks on tidyverse andmetöötluses olemas eraldi käsk count(). Kasulik on siin vaadata ka käsku group_by().</p>
+<ul>
+<li>count() - loeb esinemiste arvu</li>
+<li>group_by() - grupeerib tabeli mingi tunnuse alusel.</li>
+</ul>
+<p>Et saada tabelist ja selle sisust paremat ülevaadet, on võimalik selles esinevaid väärtusi ka loendada. Näiteks vaatame artistide esinemiskordasid top 40s. Esinemiskordade arv sai salvestatud tulpa n.</p>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" data-line-number="1">edetabel <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb153-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(artist)</a></code></pre></div>
+<pre><code>## # A tibble: 348 x 2
+##    artist                            n
+##    &lt;chr&gt;                         &lt;int&gt;
+##  1 2 Quick Start                    24
+##  2 2 Quick Start &amp; Hedvig Hanson     1
+##  3 4 Ever                            1
+##  4 5miinust                          1
+##  5 5MIINUST                          1
+##  6 5MIINUST x Sass Henno             1
+##  7 6-Pack                            1
+##  8 A-Rühm                            7
+##  9 Agape                             1
+## 10 Agent M                           1
+## # … with 338 more rows</code></pre>
+<p>Käskudele saab ka lisada parameetreid. Need on eraldatud sisendist komaga. Näiteks count() puhul on võimalik lisada parameeter sort=T, mis järjestab loenduse tulemused suurest väiksemani. Täpsemalt ütleme siis käsule, et lugegu sort väärtuseks T, kui vaikimisi võib ta olla midagi muud.</p>
+<p>Nii saame kätte artistid, kes said kõige enam tabelisse.</p>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" data-line-number="1">edetabel <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb155-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(artist,<span class="dt">sort=</span>T)</a></code></pre></div>
+<pre><code>## # A tibble: 348 x 2
+##    artist                    n
+##    &lt;chr&gt;                 &lt;int&gt;
+##  1 Smilers                  47
+##  2 Terminaator              46
+##  3 2 Quick Start            24
+##  4 Ines                     21
+##  5 Tanel Padar &amp; The Sun    16
+##  6 Ott Lepland              15
+##  7 Caater                   14
+##  8 Põhja-Tallinn            14
+##  9 Jam                      12
+## 10 Laura                    12
+## # … with 338 more rows</code></pre>
+<p>Selliseid lisavõimalusi leiab iga käsu juhendist, mida saab vaadata lisades käsu ette küsimärgi. Näiteks ?count. Proovi seda! All vasakul avaneb seepeale juhend Help aknas. Failivaatele tagasi saab vajutades sälgule Files.</p>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb157-1" data-line-number="1">?count</a></code></pre></div>
+<p>Niiviisi võime loendada ka ükskõik mida. Näiteks, palju oli lugusid eri keeltes.</p>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb158-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb158-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(language,<span class="dt">sort=</span>T)</a></code></pre></div>
+<pre><code>## # A tibble: 6 x 2
+##   language     n
+##   &lt;chr&gt;    &lt;int&gt;
+## 1 et         686
+## 2 &lt;NA&gt;       178
+## 3 en         133
+## 4 es           1
+## 5 fr           1
+## 6 it           1</code></pre>
+<p>Näeme et 686 lugu on eestikeelset, 133 lugu on ingliskeelset ja 178 loo puhul ei tea me täpselt, mis keeles need on. See on andmestiku eripära, enamikes andmestikes on puuduvaid andmeid. Andmete puuduvuse kontrollimine ei käi võrdusmärkidega, aga funktsiooniga is.na(). Näiteks filter(is.na(language)) annab meile kõik lood, kus on keel puudu.</p>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb160-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb160-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">is.na</span>(language))</a></code></pre></div>
+<pre><code>## # A tibble: 178 x 9
+##     year  rank votes artist        song          filename source lyrics language
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;   
+##  1  1994    13    NA Nancy         Mul luba loo… &lt;NA&gt;         NA &lt;NA&gt;   &lt;NA&gt;    
+##  2  1994    16    NA Kuldne Trio   Ütlen Sulle A &lt;NA&gt;         NA &lt;NA&gt;   &lt;NA&gt;    
+##  3  1994    20    NA Kuldne Trio   Ulla-Tralla   &lt;NA&gt;         NA &lt;NA&gt;   &lt;NA&gt;    
+##  4  1994    27    NA Evelin Samuel Vari Ja Roos  &lt;NA&gt;         NA &lt;NA&gt;   &lt;NA&gt;    
+##  5  1994    29    NA Jam           Öised Teed    &lt;NA&gt;         NA &lt;NA&gt;   &lt;NA&gt;    
+##  6  1994    32    NA Kuldne Trio   Vana roosa    &lt;NA&gt;         NA &lt;NA&gt;   &lt;NA&gt;    
+##  7  1994    36    NA Evelin Samuel Flight        &lt;NA&gt;         NA &lt;NA&gt;   &lt;NA&gt;    
+##  8  1994    37    NA MC Leo        Keegi Veel    &lt;NA&gt;         NA &lt;NA&gt;   &lt;NA&gt;    
+##  9  1994    39    NA Double +      Sel Tänaval   &lt;NA&gt;         NA &lt;NA&gt;   &lt;NA&gt;    
+## 10  1994    40    NA Agape         Grungemees    &lt;NA&gt;         NA &lt;NA&gt;   &lt;NA&gt;    
+## # … with 168 more rows</code></pre>
+<p>Võime salvestada tulemuse, et seda lähemalt vaadata.</p>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb162-1" data-line-number="1">puuduvad &lt;-<span class="st"> </span>edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb162-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">is.na</span>(language))</a></code></pre></div>
+<p>Ja vaatame talle sisse.</p>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb163-1" data-line-number="1"><span class="kw">View</span>(puuduvad)</a></code></pre></div>
+<p>Selgub, et keel on puudu, sellepärast et lauludel ei ole sõnu lisatud. Sellega tuleb andmestikes arvestada. Samas artistide või laulupealkirjade loendamiseks sobivad need siiski.</p>
+<p>Katsetame veel count() funktsiooni. Võime näiteks kokku lugeda, mitu korda esineb iga aastat, ehk et mitu lugu on igas aastas. Näeme, et kenasti 40 lugu aastas on top 40-s.</p>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb164-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb164-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(year)</a></code></pre></div>
+<pre><code>## # A tibble: 25 x 2
+##     year     n
+##    &lt;dbl&gt; &lt;int&gt;
+##  1  1994    40
+##  2  1995    40
+##  3  1996    40
+##  4  1997    40
+##  5  1998    40
+##  6  1999    40
+##  7  2000    40
+##  8  2001    40
+##  9  2002    40
+## 10  2003    40
+## # … with 15 more rows</code></pre>
+<p>Me võime loendada mitut gruppi korraga. Näiteks loendades, mitu korda on artist ja aastaarv koos, saame teada mitu lugu artistilt sel aastal edetabelis oli.</p>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb166-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb166-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(artist,year,<span class="dt">sort =</span>T) </a></code></pre></div>
+<pre><code>## # A tibble: 687 x 3
+##    artist                 year     n
+##    &lt;chr&gt;                 &lt;dbl&gt; &lt;int&gt;
+##  1 Jam                    1994     7
+##  2 Smilers                1998     7
+##  3 Smilers                2001     6
+##  4 Tanel Padar @ The Sun  2007     6
+##  5 Tanel Padar &amp; The Sun  2006     6
+##  6 Terminaator            2003     6
+##  7 2 Quick Start          1994     5
+##  8 Ines                   2005     5
+##  9 Nancy                  1995     5
+## 10 Nexus                  2005     5
+## # … with 677 more rows</code></pre>
+<p>Me võime ka loendada neid gruppe korduvalt. Näiteks loendades seal veelkord aastaarvu, saame teada, mitu erinevat artisti oli konkreetsel aastal edetabelis.</p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb168-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb168-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(artist,year) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb168-3" data-line-number="3"><span class="st">  </span><span class="kw">count</span>(year)</a></code></pre></div>
+<pre><code>## # A tibble: 25 x 2
+##     year     n
+##    &lt;dbl&gt; &lt;int&gt;
+##  1  1994    20
+##  2  1995    25
+##  3  1996    25
+##  4  1997    23
+##  5  1998    23
+##  6  1999    26
+##  7  2000    31
+##  8  2001    25
+##  9  2002    29
+## 10  2003    20
+## # … with 15 more rows</code></pre>
+<p>Võime seda kombineerida ka filtritega. Näiteks võime vaadata iga aasta kohta, mitu eesti popmuusika lipulaevade lugu edetabelis oli.</p>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb170-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb170-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(artist<span class="op">==</span><span class="st">&quot;Smilers&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb170-3" data-line-number="3"><span class="st">  </span><span class="kw">count</span>(year)</a></code></pre></div>
+<pre><code>## # A tibble: 19 x 2
+##     year     n
+##    &lt;dbl&gt; &lt;int&gt;
+##  1  1996     1
+##  2  1997     2
+##  3  1998     7
+##  4  1999     3
+##  5  2000     1
+##  6  2001     6
+##  7  2002     3
+##  8  2003     3
+##  9  2004     4
+## 10  2005     3
+## 11  2006     1
+## 12  2007     3
+## 13  2008     1
+## 14  2009     2
+## 15  2011     2
+## 16  2013     2
+## 17  2014     1
+## 18  2015     1
+## 19  2016     1</code></pre>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb172-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb172-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(artist<span class="op">==</span><span class="st">&quot;Terminaator&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb172-3" data-line-number="3"><span class="st">  </span><span class="kw">count</span>(year)</a></code></pre></div>
+<pre><code>## # A tibble: 17 x 2
+##     year     n
+##    &lt;dbl&gt; &lt;int&gt;
+##  1  1994     2
+##  2  1995     3
+##  3  1996     4
+##  4  1997     4
+##  5  1998     4
+##  6  1999     1
+##  7  2000     3
+##  8  2001     5
+##  9  2002     1
+## 10  2003     6
+## 11  2004     1
+## 12  2005     1
+## 13  2006     4
+## 14  2007     3
+## 15  2008     1
+## 16  2009     2
+## 17  2017     1</code></pre>
+<p>Nad mõlemad alustasid 1990ndate keskel, aga on hitte teinud veel 2016 ja 2017 aastail.</p>
+<p>Proovi veel ühe enda valitud artistiga, mis aastail kui palju lugusid neil on olnud.</p>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb174-1" data-line-number="1"><span class="co">#---------------------------------------------</span></a>
+<a class="sourceLine" id="cb174-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb174-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb174-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb174-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb174-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb174-7" data-line-number="7"><span class="co">#---------------------------------------------</span></a></code></pre></div>
+<p>Proovi ka teada saada, mitu lugu oli mis keeles 1994 aastal ja 2014 aastal.</p>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb175-1" data-line-number="1"><span class="co">#---------------------------------------------</span></a>
+<a class="sourceLine" id="cb175-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb175-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb175-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb175-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb175-6" data-line-number="6"><span class="co">#---------------------------------------------</span></a></code></pre></div>
+<p>Võib märgata, et kui me loendame tunnuste väärtuseid tabelis, siis me jaotame oma andmestiku gruppideks ja ütleme kui palju seal väärtuseid on. Selleks on olemas R-is ka üldisem funktsioon group_by(). Kui me loendasime artiste aasta peale kasutades count() käsus kaht tunnust, nagu all, siis võime seda teisiti sõnastada ka, et me grupeerisime andmestiku artistide kaupa ja loendasime esinemisi aastas.</p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb176-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb176-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(artist,year,<span class="dt">sort =</span>T) </a></code></pre></div>
+<pre><code>## # A tibble: 687 x 3
+##    artist                 year     n
+##    &lt;chr&gt;                 &lt;dbl&gt; &lt;int&gt;
+##  1 Jam                    1994     7
+##  2 Smilers                1998     7
+##  3 Smilers                2001     6
+##  4 Tanel Padar @ The Sun  2007     6
+##  5 Tanel Padar &amp; The Sun  2006     6
+##  6 Terminaator            2003     6
+##  7 2 Quick Start          1994     5
+##  8 Ines                   2005     5
+##  9 Nancy                  1995     5
+## 10 Nexus                  2005     5
+## # … with 677 more rows</code></pre>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb178-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb178-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(artist) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb178-3" data-line-number="3"><span class="st">  </span><span class="kw">count</span>(year,<span class="dt">sort =</span>T) </a></code></pre></div>
+<pre><code>## # A tibble: 687 x 3
+## # Groups:   artist [348]
+##    artist                 year     n
+##    &lt;chr&gt;                 &lt;dbl&gt; &lt;int&gt;
+##  1 Jam                    1994     7
+##  2 Smilers                1998     7
+##  3 Smilers                2001     6
+##  4 Tanel Padar @ The Sun  2007     6
+##  5 Tanel Padar &amp; The Sun  2006     6
+##  6 Terminaator            2003     6
+##  7 2 Quick Start          1994     5
+##  8 Ines                   2005     5
+##  9 Nancy                  1995     5
+## 10 Nexus                  2005     5
+## # … with 677 more rows</code></pre>
+<p>Kui count() on spetsiaalne käsk loendamiseks, siis group_by() on laiema kasutusega käsk, kuidas grupeerida ka teisi operatsioone.</p>
+<p>Me võime grupeerimist ka filtritega. Näiteks võime võrrelda, kui palju oli lugusid eri keeltes 1990ndate aastate keskel ja 2010ndate aastate keskel.</p>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb180-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb180-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(year<span class="op">%in%</span><span class="kw">c</span>(<span class="dv">1994</span>,<span class="dv">2014</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb180-3" data-line-number="3"><span class="st">  </span><span class="kw">count</span>(language,year)</a></code></pre></div>
+<pre><code>## # A tibble: 6 x 3
+##   language  year     n
+##   &lt;chr&gt;    &lt;dbl&gt; &lt;int&gt;
+## 1 en        1994     2
+## 2 en        2014     8
+## 3 et        1994    28
+## 4 et        2014    28
+## 5 &lt;NA&gt;      1994    10
+## 6 &lt;NA&gt;      2014     4</code></pre>
+<p>Ja sama võrdlus group_by() funktsiooniga.</p>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb182-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb182-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(year<span class="op">%in%</span><span class="kw">c</span>(<span class="dv">1994</span>,<span class="dv">2014</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb182-3" data-line-number="3"><span class="st">  </span><span class="kw">group_by</span>(year) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb182-4" data-line-number="4"><span class="st">  </span><span class="kw">count</span>(language)</a></code></pre></div>
+<pre><code>## # A tibble: 6 x 3
+## # Groups:   year [2]
+##    year language     n
+##   &lt;dbl&gt; &lt;chr&gt;    &lt;int&gt;
+## 1  1994 en           2
+## 2  1994 et          28
+## 3  1994 &lt;NA&gt;        10
+## 4  2014 en           8
+## 5  2014 et          28
+## 6  2014 &lt;NA&gt;         4</code></pre>
+<p>Proovi ise! Grupeeri andmestik lugude kaupa ning vaata, mitmel aastal nad tabelisse said.</p>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb184-1" data-line-number="1"><span class="co">#---------------------------------------------</span></a>
+<a class="sourceLine" id="cb184-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb184-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb184-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb184-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb184-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb184-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb184-8" data-line-number="8"><span class="co">#---------------------------------------------</span></a></code></pre></div>
+</div>
+<div id="arrange-mutate-row_number-summarise-n" class="section level2">
+<h2><span class="header-section-number">4.7</span> arrange(), mutate(), row_number(), summarise(), n()</h2>
+<p>R-i tõeline väärtus aga tuleb ette kui see, mida me teada tahame, ei ole lihtsalt andmestikus sees, vaid see tuleb sealt alles välja arvutada. Andmestiku muutmiseks on lihtsamad käsud arrange(), mutate(), row_number(), summarise(), n().</p>
+<ul>
+<li>arrange() - muudab tabeli elementide järjekorda, vähim väärtus ees</li>
+<li>arrange(desc()) - muudab tabeli elementide järjekorda, suurim väärtus ees</li>
+<li>mutate() - lisab tabelile uue tulba</li>
+<li>row_number() - väljastab rea järjekorranumbri</li>
+<li>summarise() - teeb tabelist kokkuvõtte</li>
+<li>n() - loendab kokku, mitu tunnust grupis on</li>
+</ul>
+<p>arrange() käsk järjestab andmestiku mingi tunnuse järgi. Näiteks järjestame tabeli nii, et tipus on kõik esikohad, järgnevad teised kohad ja nii edasi.</p>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb185-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb185-2" data-line-number="2"><span class="st">  </span><span class="kw">arrange</span>(rank)</a></code></pre></div>
+<pre><code>## # A tibble: 1,000 x 9
+##     year  rank votes artist  song    filename     source lyrics         language
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;   
+##  1  1994     1    NA Ummamu… Kõnõtr… lyrics-umma…      1 &quot;:,:Välän kül… et      
+##  2  1995     1  1132 Termin… Juulik… lyrics-term…      1 &quot;Kõik ei ole … et      
+##  3  1996     1  1940 Best B4 Ma Arm… lyrics-best…      1 &quot;Nagu varju e… et      
+##  4  1997     1  1923 Black … 17      lyrics-blac…      1 &quot;On õhtu häma… et      
+##  5  1998     1  1216 Smilers Tantsi… lyrics-smil…      1 &quot;Kuu on täis … et      
+##  6  1999     1  1125 Caater  Osi Ne… &lt;NA&gt;             NA  &lt;NA&gt;          &lt;NA&gt;    
+##  7  2000     1  2097 Ines    Once I… lyrics-ines…      1 &quot;I don&#39;t wish… en      
+##  8  2001     1  2149 2 Quic… Ühega … lyrics-2_qu…      1 &quot;Võin niimood… et      
+##  9  2002     1  1882 Termin… Romula  lyrics-term…      1 &quot;Õhtu saabunu… et      
+## 10  2003     1  2262 Nexus   Nii Ku… lyrics-nexu…      1 &quot;Üksikuna lei… et      
+## # … with 990 more rows</code></pre>
+<p>Me võime järjestada ka mitme tunnuse alusel. Järjestame nad kõigepealt edetabelikoha järgi, aga lisame, et uuemad lood võiksid olla ees. Selle jaoks saame lisada lihtsalt komaga eraldatult uue tunnuse. desc() funktsioon pöörab tunnuse järjestuse ümber, nii et suurim väärtus on eespool</p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb187-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb187-2" data-line-number="2"><span class="st">  </span><span class="kw">arrange</span>(rank, <span class="kw">desc</span>(year))</a></code></pre></div>
+<pre><code>## # A tibble: 1,000 x 9
+##     year  rank votes artist    song   filename     source lyrics        language
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;   
+##  1  2018     1   877 Nublu     Mina … lyrics-nubl…      1 Sest sa ei t… et      
+##  2  2017     1   845 Põhja-Ta… Alati… lyrics-pohj…      1 Pole ma eale… et      
+##  3  2016     1   837 Shanon    Suvi … lyrics-shan…      1 Kuumus tõsta… et      
+##  4  2015     1  1609 Karl-Eri… Segas… lyrics-karl…      1 Me vahel sõd… et      
+##  5  2014     1   702 Curly St… Kauge… lyrics-curl…      1 Kauges külas… et      
+##  6  2013     1   796 Smilers   Mojito lyrics-smil…      1 Kahte pikka … et      
+##  7  2012     1  1385 Põhja-Ta… Meil … lyrics-pohj…      1 Refrään (2x)… et      
+##  8  2011     1  1166 Ewert An… Good … lyrics-ewer…      1 Here is a st… en      
+##  9  2010     1  1583 Koit Too… Mäles… lyrics-koit…      1 leidsin saht… et      
+## 10  2009     1  1296 Koit Too… Kauge… lyrics-koit…      1 Olen tagasi … et      
+## # … with 990 more rows</code></pre>
+<p>Samuti ei pruugi järjestada ainult numbrite alusel, vaid saab järjestada ka tekstijuppe tähestiku alusel. Näiteks saame asetada lood tähestiku järjekorda. Seejuures numbrid ja sümbolid on sellistes järjestustes enamasti paigutatud tähtedest ettepoole.</p>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb189-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb189-2" data-line-number="2"><span class="st">  </span><span class="kw">arrange</span>(song)</a></code></pre></div>
+<pre><code>## # A tibble: 1,000 x 9
+##     year  rank votes artist   song     filename     source lyrics       language
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;   
+##  1  2018    24   124 Frankie… (Can&#39;t … lyrics-fran…      1 &quot;You were m… en      
+##  2  2011     6   716 Ewert A… (In The… lyrics-ewer…      1 &quot;shake me u… en      
+##  3  2000    13   261 Vennask… 101.Kil… lyrics-venn…      1 &quot;Käisid tüd… et      
+##  4  2013    31    88 Metsaku… 11       &lt;NA&gt;             NA  &lt;NA&gt;        &lt;NA&gt;    
+##  5  2017    30    77 Termina… 13 sammu lyrics-term…      1 &quot;Kord kokku… et      
+##  6  1997     9   446 Vennask… 15       lyrics-venn…      1 &quot;Kuigi juba… et      
+##  7  2005    26   447 Ines     15 maga… lyrics-ines…      1 &quot;iseendale … et      
+##  8  1997     1  1923 Black V… 17       lyrics-blac…      1 &quot;On õhtu hä… et      
+##  9  2003     7   780 Sõpruse… 1905     lyrics-sopr…      1 &quot;Vabrikute … et      
+## 10  2008    40   130 Mari-Le… 1987     lyrics-mari…      1 &quot;Ma pühin t… et      
+## # … with 990 more rows</code></pre>
+<p>Kui me tahaksime kätte saada kõik kolmanda koha lood, võime kasutada käsku filter().</p>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb191-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb191-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(rank<span class="op">==</span><span class="dv">3</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 25 x 9
+##     year  rank votes artist  song    filename     source lyrics         language
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;   
+##  1  1994     3    NA Jam     See 5   lyrics-jam-…      1 See viis haar… et      
+##  2  1995     3   613 Ummamu… Tunnen… lyrics-umma…      1 Ma tunnen ära… et      
+##  3  1996     3  1393 Code O… On Kül… lyrics-code…      1 On küll hilja… et      
+##  4  1997     3   844 Mari L… Teine … lyrics-mari…      1 ref: miks mee… et      
+##  5  1998     3    NA 2 Quic… Teine … lyrics-2_qu…      1 Su pilk on tu… et      
+##  6  1999     3   958 2 Quic… C&#39;est … lyrics-2_qu…      1 Pilk peale jä… et      
+##  7  2000     3   960 Caater  Dance … &lt;NA&gt;             NA &lt;NA&gt;           &lt;NA&gt;    
+##  8  2001     3  1160 Hannah  Salaja  lyrics-hann…      1 Salaja kuulas… et      
+##  9  2002     3  1258 Tanel … Unistus lyrics-tane…      1 Iga päevaga r… et      
+## 10  2003     3  1425 Smilers Käime … lyrics-smil…      1 Käime katusei… et      
+## # … with 15 more rows</code></pre>
+<p>Kui me aga tahaksime kätte saada populaarsuselt kolmanda artisti, siis ei ole meil filtreerimiseks kohe alust.</p>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb193-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb193-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(artist,<span class="dt">sort=</span>T)</a></code></pre></div>
+<pre><code>## # A tibble: 348 x 2
+##    artist                    n
+##    &lt;chr&gt;                 &lt;int&gt;
+##  1 Smilers                  47
+##  2 Terminaator              46
+##  3 2 Quick Start            24
+##  4 Ines                     21
+##  5 Tanel Padar &amp; The Sun    16
+##  6 Ott Lepland              15
+##  7 Caater                   14
+##  8 Põhja-Tallinn            14
+##  9 Jam                      12
+## 10 Laura                    12
+## # … with 338 more rows</code></pre>
+<p>Me võiksime küll peale vaadata, et kolmanda koha artistil oli edetabelis laule täpselt 24 korda või rohkem kui 21 ja vähem kui 46 korda aga see lahendus toimib juhtumisi ainult selles andmestikus ja ainult praegu. Võimalik, et meil on näiteks artisti nimedes vigu ja lõplikud väärtused ei ole täpselt sellised.</p>
+<p>Et saada kätte kolmanda koha, peame lisama andmestikule uut informatsiooni, näiteks järjekorranumbri. Selleks on tidyverse pakettides käsk mutate(), mis muudab üht andmestiku tulpa. Kui anda sisendiks tulba nimi, mis veel ei eksisteeri, saab käsk selle lisada. Ja teine käsk, mida me saame siin kasutada on row_number(). See tekitab jada, mis algab ühest ja lõppeb rea pikkusega. Tulba lisamiseks märgime nii mutate(tulbanimi = sisend) ehk praegu mutate(rownr = row_number()).</p>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb195-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb195-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(artist,<span class="dt">sort=</span>T) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb195-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">rownr =</span> <span class="kw">row_number</span>())</a></code></pre></div>
+<pre><code>## # A tibble: 348 x 3
+##    artist                    n rownr
+##    &lt;chr&gt;                 &lt;int&gt; &lt;int&gt;
+##  1 Smilers                  47     1
+##  2 Terminaator              46     2
+##  3 2 Quick Start            24     3
+##  4 Ines                     21     4
+##  5 Tanel Padar &amp; The Sun    16     5
+##  6 Ott Lepland              15     6
+##  7 Caater                   14     7
+##  8 Põhja-Tallinn            14     8
+##  9 Jam                      12     9
+## 10 Laura                    12    10
+## # … with 338 more rows</code></pre>
+<p>Näeme, et uus tulp on lisatud. Nüüd saame selle alusel omakorda võtta välja täpselt kolmanda koha selles tabelis, ükskõik, mis väärtusega n ka parasjagu ei ole.</p>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb197-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb197-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(artist,<span class="dt">sort=</span>T) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb197-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">rownr =</span> <span class="kw">row_number</span>()) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb197-4" data-line-number="4"><span class="st">  </span><span class="kw">filter</span>(rownr <span class="op">==</span><span class="st"> </span><span class="dv">3</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 1 x 3
+##   artist            n rownr
+##   &lt;chr&gt;         &lt;int&gt; &lt;int&gt;
+## 1 2 Quick Start    24     3</code></pre>
+<p>Tidyverse lubab siinkohal ka natuke lõigata. Nimelt filtrisse minev number ei pruugi olla arvutatud, vaid selle võib ka filtreerimise käigus arvutada. Nii saab täpselt samad tulemused jättes ka mutate() käsu kõrvale. Sisuliselt siiski arvutab filter andmestikus uue muutuja, seda lihtsalt ei jäädvustata kusagile.</p>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb199-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb199-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(artist,<span class="dt">sort=</span>T) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb199-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">row_number</span>() <span class="op">==</span><span class="st"> </span><span class="dv">3</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 1 x 2
+##   artist            n
+##   &lt;chr&gt;         &lt;int&gt;
+## 1 2 Quick Start    24</code></pre>
+<p>mutate() võib kohaldada igal pool. Näiteks võime lisada tabelisse väärtuse artisti kohast tähestiku jä</p>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb201-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb201-2" data-line-number="2"><span class="st">  </span><span class="kw">arrange</span>(artist) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb201-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">alphabet_rank =</span> <span class="kw">row_number</span>())</a></code></pre></div>
+<pre><code>## # A tibble: 1,000 x 10
+##     year  rank votes artist  song  filename source lyrics language alphabet_rank
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;            &lt;int&gt;
+##  1  1994     7    NA 2 Quic… Olen… lyrics-…      1 &quot;1. P… et                   1
+##  2  1994     9    NA 2 Quic… Sinu… lyrics-…      1 &quot;1. E… et                   2
+##  3  1994    12    NA 2 Quic… Neiu… lyrics-…      1 &quot;On t… et                   3
+##  4  1994    15    NA 2 Quic… King… lyrics-…      1 &quot;Olle… et                   4
+##  5  1994    17    NA 2 Quic… Kaks… lyrics-…      1 &quot;Silm… et                   5
+##  6  1995    14   287 2 Quic… Kirg… lyrics-…      1 &quot;enda… et                   6
+##  7  1995    18   253 2 Quic… Siis… lyrics-…      1 &quot;Elu … et                   7
+##  8  1995    33   110 2 Quic… King… lyrics-…      1 &quot;Olle… et                   8
+##  9  1996    10   578 2 Quic… Lõpu… lyrics-…      1 &quot;Välg… et                   9
+## 10  1996    18   290 2 Quic… Nii … lyrics-…      1 &quot;Sinu… et                  10
+## # … with 990 more rows</code></pre>
+<p>Ja võime sellest filtreerida välja esimesed 100 artisti tähestikus.</p>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb203-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb203-2" data-line-number="2"><span class="st">  </span><span class="kw">arrange</span>(artist) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb203-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">alphabet_rank =</span> <span class="kw">row_number</span>()) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb203-4" data-line-number="4"><span class="st">  </span><span class="kw">filter</span>(alphabet_rank<span class="op">&lt;</span><span class="dv">101</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 100 x 10
+##     year  rank votes artist  song  filename source lyrics language alphabet_rank
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;            &lt;int&gt;
+##  1  1994     7    NA 2 Quic… Olen… lyrics-…      1 &quot;1. P… et                   1
+##  2  1994     9    NA 2 Quic… Sinu… lyrics-…      1 &quot;1. E… et                   2
+##  3  1994    12    NA 2 Quic… Neiu… lyrics-…      1 &quot;On t… et                   3
+##  4  1994    15    NA 2 Quic… King… lyrics-…      1 &quot;Olle… et                   4
+##  5  1994    17    NA 2 Quic… Kaks… lyrics-…      1 &quot;Silm… et                   5
+##  6  1995    14   287 2 Quic… Kirg… lyrics-…      1 &quot;enda… et                   6
+##  7  1995    18   253 2 Quic… Siis… lyrics-…      1 &quot;Elu … et                   7
+##  8  1995    33   110 2 Quic… King… lyrics-…      1 &quot;Olle… et                   8
+##  9  1996    10   578 2 Quic… Lõpu… lyrics-…      1 &quot;Välg… et                   9
+## 10  1996    18   290 2 Quic… Nii … lyrics-…      1 &quot;Sinu… et                  10
+## # … with 90 more rows</code></pre>
+<p>mutate() naaberkäsk on summarise(). Nad mõlemad püüavad tabelit muuta, mutate() teeb seda info lisamise või asendamise kaudu. summarise() teeb seda info kokkuvõtmise kaudu. Näiteks võime tabelist välja võtta selle esimese aasta ja viimase aasta min() ja max() kaudu.</p>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb205-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb205-2" data-line-number="2"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">first=</span><span class="kw">min</span>(year), <span class="dt">last=</span><span class="kw">max</span>(year))</a></code></pre></div>
+<pre><code>## # A tibble: 1 x 2
+##   first  last
+##   &lt;dbl&gt; &lt;dbl&gt;
+## 1  1994  2018</code></pre>
+<p>Või võime ka kokku lugeda, mitu rida andmestikus on käsuga n().</p>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb207-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb207-2" data-line-number="2"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>())</a></code></pre></div>
+<pre><code>## # A tibble: 1 x 1
+##       n
+##   &lt;int&gt;
+## 1  1000</code></pre>
+<p>mutate() ja summarise() käsud muudavad oluliselt oma käitumist kui andmestik on kuidagi grupeeritud. Nimelt kui andmestik on grupeeritud, tehakse neid arvutusi gruppide sees. Näiteks grupeerime andmestiku artistide kaupa ja võtame siis kokku, mitu rida seal on.</p>
+</div>
+<div id="group_by-kasutamine" class="section level2">
+<h2><span class="header-section-number">4.8</span> group_by() kasutamine</h2>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb209-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb209-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(artist) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb209-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n=</span><span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb209-4" data-line-number="4"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(n))</a></code></pre></div>
+<pre><code>## # A tibble: 348 x 2
+##    artist                    n
+##    &lt;chr&gt;                 &lt;int&gt;
+##  1 Smilers                  47
+##  2 Terminaator              46
+##  3 2 Quick Start            24
+##  4 Ines                     21
+##  5 Tanel Padar &amp; The Sun    16
+##  6 Ott Lepland              15
+##  7 Caater                   14
+##  8 Põhja-Tallinn            14
+##  9 Jam                      12
+## 10 Laura                    12
+## # … with 338 more rows</code></pre>
+<p>Tähelepanelik lugeja märkab, et me saime täpselt sama tulemuse kui eelnevalt count() käsuga ning need käsud ongi täpselt samad. group_by() ja summarise() käskude kombinatsiooniga saab aga teha ka enamat.</p>
+<p>Näiteks võime välja võtta andmestikust info iga artisti esimese ja viimase aasta kohta kui nad said andmestikku. Nii saame ülevaate artistide kestvusest.</p>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb211-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb211-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(artist) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb211-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">first=</span><span class="kw">min</span>(year), <span class="dt">last=</span><span class="kw">max</span>(year))</a></code></pre></div>
+<pre><code>## # A tibble: 348 x 3
+##    artist                        first  last
+##    &lt;chr&gt;                         &lt;dbl&gt; &lt;dbl&gt;
+##  1 2 Quick Start                  1994  2011
+##  2 2 Quick Start &amp; Hedvig Hanson  1995  1995
+##  3 4 Ever                         1998  1998
+##  4 5miinust                       2017  2017
+##  5 5MIINUST                       2016  2016
+##  6 5MIINUST x Sass Henno          2018  2018
+##  7 6-Pack                         1997  1997
+##  8 A-Rühm                         1998  2008
+##  9 Agape                          1994  1994
+## 10 Agent M                        2006  2006
+## # … with 338 more rows</code></pre>
+<p>Võime selle tabeli reastada algusaja järgi, et näha tabelis uusi tulijaid eespool.</p>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb213-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(artist) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb213-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">first=</span><span class="kw">min</span>(year), <span class="dt">last=</span><span class="kw">max</span>(year)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb213-4" data-line-number="4"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(last))</a></code></pre></div>
+<pre><code>## # A tibble: 348 x 3
+##    artist                       first  last
+##    &lt;chr&gt;                        &lt;dbl&gt; &lt;dbl&gt;
+##  1 5MIINUST x Sass Henno         2018  2018
+##  2 Ans. Andur                    2015  2018
+##  3 DND                           2017  2018
+##  4 Egert Milder                  2018  2018
+##  5 Elina Born ja Jüri Pootsmann  2018  2018
+##  6 Elina Nechayeva               2018  2018
+##  7 Evestus                       2018  2018
+##  8 Frankie Animal                2018  2018
+##  9 Iiris                         2011  2018
+## 10 Jüri Pootsmann                2015  2018
+## # … with 338 more rows</code></pre>
+<p>mutate() käsuga võib andmestikust kätte saada täpselt sama info, aga selle asemel, et kokku võtta, lisab ta selle andmestikule. Näiteks eelmised käsud lisavad siis põhiandmestikule uued tulbad.</p>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb215-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(artist) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb215-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">first=</span><span class="kw">min</span>(year), <span class="dt">last=</span><span class="kw">max</span>(year))</a></code></pre></div>
+<pre><code>## # A tibble: 1,000 x 11
+## # Groups:   artist [348]
+##     year  rank votes artist  song   filename source lyrics  language first  last
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;
+##  1  1994     1    NA Ummamu… Kõnõt… lyrics-…      1 &quot;:,:Vä… et        1994  1995
+##  2  1994     2    NA Vennas… Pille… lyrics-…      1 &quot;Taeva… et        1994  2000
+##  3  1994     3    NA Jam     See 5  lyrics-…      1 &quot;See v… et        1994  2004
+##  4  1994     4    NA The Tu… Lille… lyrics-…      1 &quot;Tüdru… et        1994  2000
+##  5  1994     5    NA The Tu… Põhja… lyrics-…      1 &quot;Kui k… et        1994  2000
+##  6  1994     6    NA Jam     Su Jä… lyrics-…      1 &quot;Enne … et        1994  2004
+##  7  1994     7    NA 2 Quic… Olen … lyrics-…      1 &quot;1. PÕ… et        1994  2011
+##  8  1994     8    NA Termin… Torm   lyrics-…      1 &quot;Olen … et        1994  2017
+##  9  1994     9    NA 2 Quic… Sinu … lyrics-…      1 &quot;1. EK… et        1994  2011
+## 10  1994    10    NA D-Gän   Seib   lyrics-…      1 &quot;ELASI… et        1994  1994
+## # … with 990 more rows</code></pre>
+<p>Samamoodi võib ka andmestikule lisada kui palju oli ühes grupis liikmeid.</p>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb217-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb217-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(artist) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb217-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">n=</span><span class="kw">n</span>())</a></code></pre></div>
+<pre><code>## # A tibble: 1,000 x 10
+## # Groups:   artist [348]
+##     year  rank votes artist  song    filename   source lyrics     language     n
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;    &lt;int&gt;
+##  1  1994     1    NA Ummamu… Kõnõtr… lyrics-um…      1 &quot;:,:Välän… et           2
+##  2  1994     2    NA Vennas… Pille-… lyrics-ve…      1 &quot;Taevas s… et           8
+##  3  1994     3    NA Jam     See 5   lyrics-ja…      1 &quot;See viis… et          12
+##  4  1994     4    NA The Tu… Lillek… lyrics-th…      1 &quot;Tüdruk v… et           7
+##  5  1994     5    NA The Tu… Põhjam… lyrics-th…      1 &quot;Kui käes… et           7
+##  6  1994     6    NA Jam     Su Jär… lyrics-ja…      1 &quot;Enne sin… et          12
+##  7  1994     7    NA 2 Quic… Olen L… lyrics-2_…      1 &quot;1. PÕHJU… et          24
+##  8  1994     8    NA Termin… Torm    lyrics-te…      1 &quot;Olen tul… et          46
+##  9  1994     9    NA 2 Quic… Sinu J… lyrics-2_…      1 &quot;1. EKSIS… et          24
+## 10  1994    10    NA D-Gän   Seib    lyrics-d-…      1 &quot;ELASID K… et           1
+## # … with 990 more rows</code></pre>
+<p>Sellisel juhul võime seda edasi töödelda ja võtta mitte ainult nimed, vaid ka kõik laulud tippartistidelt, kus artist oli tabelis rohkem kui kümne looga.</p>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb219-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb219-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(artist) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb219-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">n=</span><span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb219-4" data-line-number="4"><span class="st">  </span><span class="kw">filter</span>(n<span class="op">&gt;</span><span class="dv">10</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 267 x 10
+## # Groups:   artist [14]
+##     year  rank votes artist  song    filename   source lyrics     language     n
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;    &lt;int&gt;
+##  1  1994     3    NA Jam     See 5   lyrics-ja…      1 &quot;See viis… et          12
+##  2  1994     6    NA Jam     Su Jär… lyrics-ja…      1 &quot;Enne sin… et          12
+##  3  1994     7    NA 2 Quic… Olen L… lyrics-2_…      1 &quot;1. PÕHJU… et          24
+##  4  1994     8    NA Termin… Torm    lyrics-te…      1 &quot;Olen tul… et          46
+##  5  1994     9    NA 2 Quic… Sinu J… lyrics-2_…      1 &quot;1. EKSIS… et          24
+##  6  1994    12    NA 2 Quic… Neiu M… lyrics-2_…      1 &quot;On tähin… et          24
+##  7  1994    15    NA 2 Quic… Kingit… lyrics-2_…      1 &quot;Olles kä… et          24
+##  8  1994    17    NA 2 Quic… Kaksik… lyrics-2_…      1 &quot;Silmade … et          24
+##  9  1994    18    NA Jam     Tants … lyrics-ja…      1 &quot;Mis pane… et          12
+## 10  1994    22    NA Jam     Miks M… lyrics-ja…      1 &quot;Kui sind… et          12
+## # … with 257 more rows</code></pre>
+<p>Ja kokkuvõttes võime näiteks välja arvutada nende lugude keskmise koha. Siis kui me soovime gruppe jälle laiali lahutada, tuleb kasutada funktsiooni ungroup()</p>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb221-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb221-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(artist) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb221-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">n=</span><span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb221-4" data-line-number="4"><span class="st">  </span><span class="kw">filter</span>(n<span class="op">&gt;</span><span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb221-5" data-line-number="5"><span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb221-6" data-line-number="6"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean=</span><span class="kw">mean</span>(rank))</a></code></pre></div>
+<pre><code>## # A tibble: 1 x 1
+##    mean
+##   &lt;dbl&gt;
+## 1  17.5</code></pre>
+<p>Kui me gruppe laiali ei lahuta, mõõdame nii iga tippartisti keskmist tulemust</p>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb223-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb223-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(artist) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb223-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">n=</span><span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb223-4" data-line-number="4"><span class="st">  </span><span class="kw">filter</span>(n<span class="op">&gt;</span><span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb223-5" data-line-number="5"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean=</span><span class="kw">mean</span>(rank))</a></code></pre></div>
+<pre><code>## # A tibble: 14 x 2
+##    artist                 mean
+##    &lt;chr&gt;                 &lt;dbl&gt;
+##  1 2 Quick Start          17.9
+##  2 Caater                 14.1
+##  3 Ines                   20.2
+##  4 Jam                    19.8
+##  5 Karl-Erik Taukar       17  
+##  6 Laura                  15.6
+##  7 Nexus                  21.3
+##  8 Ott Lepland            15.4
+##  9 Põhja-Tallinn          11.3
+## 10 Shanon                 12.8
+## 11 Smilers                17.1
+## 12 Tanel Padar &amp; The Sun  16.3
+## 13 Terminaator            20.2
+## 14 Vanilla Ninja          19.8</code></pre>
+<p>group_by() muudab veidi ka teiste käskude käitumist. Kuivõrd filter võib viidata otse arvutusele ja mitte ainult tulbale, saab group_by() muuta ka selle käitumist. Näiteks kui me grupeeritud andmestikus kasutame filtrit ja arvutame sinna uue väärtuse, siis teeb ta seda grupi kaupa. Nii võime näiteks leida iga artisti esimesed lood, ilma uut tulpa tekitamata.</p>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb225-1" data-line-number="1">edetabel <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb225-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(artist) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb225-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(year<span class="op">==</span><span class="kw">min</span>(year))</a></code></pre></div>
+<pre><code>## # A tibble: 477 x 9
+## # Groups:   artist [348]
+##     year  rank votes artist   song    filename     source lyrics        language
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;   
+##  1  1994     1    NA Ummamuu… Kõnõtr… lyrics-umma…      1 &quot;:,:Välän kü… et      
+##  2  1994     2    NA Vennask… Pille-… lyrics-venn…      1 &quot;Taevas sine… et      
+##  3  1994     3    NA Jam      See 5   lyrics-jam-…      1 &quot;See viis ha… et      
+##  4  1994     4    NA The Tub… Lillek… lyrics-the_…      1 &quot;Tüdruk vaat… et      
+##  5  1994     5    NA The Tub… Põhjam… lyrics-the_…      1 &quot;Kui käes on… et      
+##  6  1994     6    NA Jam      Su Jär… lyrics-jam-…      1 &quot;Enne sind e… et      
+##  7  1994     7    NA 2 Quick… Olen L… lyrics-2_qu…      1 &quot;1. PÕHJUST … et      
+##  8  1994     8    NA Termina… Torm    lyrics-term…      1 &quot;Olen tulnud… et      
+##  9  1994     9    NA 2 Quick… Sinu J… lyrics-2_qu…      1 &quot;1. EKSISIN … et      
+## 10  1994    10    NA D-Gän    Seib    lyrics-d-ga…      1 &quot;ELASID KOOS… et      
+## # … with 467 more rows</code></pre>
+<p>group_by() muudab ka select() veidi, kuna grupeerivaid faktoreid ei saa kõrvale jätta. Näiteks proovime seda eelmisel tabelil.</p>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb227-1" data-line-number="1">edetabel <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb227-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(artist) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb227-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(year<span class="op">==</span><span class="kw">min</span>(year)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb227-4" data-line-number="4"><span class="st">  </span><span class="kw">select</span>(year,song)</a></code></pre></div>
+<pre><code>## Adding missing grouping variables: `artist`</code></pre>
+<pre><code>## # A tibble: 477 x 3
+## # Groups:   artist [348]
+##    artist             year song                       
+##    &lt;chr&gt;             &lt;dbl&gt; &lt;chr&gt;                      
+##  1 Ummamuudu          1994 Kõnõtraat                  
+##  2 Vennaskond         1994 Pille-Riin                 
+##  3 Jam                1994 See 5                      
+##  4 The Tuberkuloited  1994 Lilleke Rohus              
+##  5 The Tuberkuloited  1994 Põhjamaa Neid              
+##  6 Jam                1994 Su Järele Igatsen Ma       
+##  7 2 Quick Start      1994 Olen Loobuda Sust Proovinud
+##  8 Terminaator        1994 Torm                       
+##  9 2 Quick Start      1994 Sinu Jaoks                 
+## 10 D-Gän              1994 Seib                       
+## # … with 467 more rows</code></pre>
+<p>Soovitav on sellisel juhul pärast igat grupeerimist andmestiku salvestamisel grupid uuesti lahti haakida. See aitab kaasa sellele, et vigu ei tekiks ja samas mõned funktsioonid ei tööta hästi grupeeritud andmetega - nad võivad üldse mitte toimida või muutuda väga aeglaselt kui töötluse peab tegema grupeeritud andmetega näiteks tuhandes väikses grupis ühe suure grupi asemel.</p>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb230-1" data-line-number="1">edetabel <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb230-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(artist) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb230-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(year<span class="op">==</span><span class="kw">min</span>(year)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb230-4" data-line-number="4"><span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb230-5" data-line-number="5"><span class="st">  </span><span class="kw">select</span>(year,song)</a></code></pre></div>
+<pre><code>## # A tibble: 477 x 2
+##     year song                       
+##    &lt;dbl&gt; &lt;chr&gt;                      
+##  1  1994 Kõnõtraat                  
+##  2  1994 Pille-Riin                 
+##  3  1994 See 5                      
+##  4  1994 Lilleke Rohus              
+##  5  1994 Põhjamaa Neid              
+##  6  1994 Su Järele Igatsen Ma       
+##  7  1994 Olen Loobuda Sust Proovinud
+##  8  1994 Torm                       
+##  9  1994 Sinu Jaoks                 
+## 10  1994 Seib                       
+## # … with 467 more rows</code></pre>
+</div>
+<div id="käskude-ühendamine" class="section level2">
+<h2><span class="header-section-number">4.9</span> Käskude ühendamine</h2>
+<p>Mõtleme nüüd, kuidas võiks saada parima tulemuse saanud loo iga artisti kohta. Alustame andmete grupeerimisest artisti kaupa.</p>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb232-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb232-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(artist)</a></code></pre></div>
+<pre><code>## # A tibble: 1,000 x 9
+## # Groups:   artist [348]
+##     year  rank votes artist   song    filename     source lyrics        language
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;   
+##  1  1994     1    NA Ummamuu… Kõnõtr… lyrics-umma…      1 &quot;:,:Välän kü… et      
+##  2  1994     2    NA Vennask… Pille-… lyrics-venn…      1 &quot;Taevas sine… et      
+##  3  1994     3    NA Jam      See 5   lyrics-jam-…      1 &quot;See viis ha… et      
+##  4  1994     4    NA The Tub… Lillek… lyrics-the_…      1 &quot;Tüdruk vaat… et      
+##  5  1994     5    NA The Tub… Põhjam… lyrics-the_…      1 &quot;Kui käes on… et      
+##  6  1994     6    NA Jam      Su Jär… lyrics-jam-…      1 &quot;Enne sind e… et      
+##  7  1994     7    NA 2 Quick… Olen L… lyrics-2_qu…      1 &quot;1. PÕHJUST … et      
+##  8  1994     8    NA Termina… Torm    lyrics-term…      1 &quot;Olen tulnud… et      
+##  9  1994     9    NA 2 Quick… Sinu J… lyrics-2_qu…      1 &quot;1. EKSISIN … et      
+## 10  1994    10    NA D-Gän    Seib    lyrics-d-ga…      1 &quot;ELASID KOOS… et      
+## # … with 990 more rows</code></pre>
+<p>Kasutame funktsiooni arrange tulemuse alusel reastamiseks.</p>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb234-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb234-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(artist) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb234-3" data-line-number="3"><span class="st">  </span><span class="kw">arrange</span>(artist,rank)</a></code></pre></div>
+<pre><code>## # A tibble: 1,000 x 9
+## # Groups:   artist [348]
+##     year  rank votes artist  song     filename     source lyrics        language
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;   
+##  1  2001     1  2149 2 Quic… Ühega M… lyrics-2_qu…      1 &quot;Võin niimoo… et      
+##  2  1998     3    NA 2 Quic… Teine P… lyrics-2_qu…      1 &quot;Su pilk on … et      
+##  3  1999     3   958 2 Quic… C&#39;est L… lyrics-2_qu…      1 &quot;Pilk peale … et      
+##  4  1994     7    NA 2 Quic… Olen Lo… lyrics-2_qu…      1 &quot;1. PÕHJUST … et      
+##  5  1994     9    NA 2 Quic… Sinu Ja… lyrics-2_qu…      1 &quot;1. EKSISIN … et      
+##  6  1996    10   578 2 Quic… Lõpuks … lyrics-2_qu…      1 &quot;Välgu valgu… et      
+##  7  1994    12    NA 2 Quic… Neiu Mu… lyrics-2_qu…      1 &quot;On tähine t… et      
+##  8  1995    14   287 2 Quic… Kirg su… lyrics-2_qu…      1 &quot;endale miks… et      
+##  9  1994    15    NA 2 Quic… Kingitus lyrics-2_qu…      1 &quot;Olles käsi … et      
+## 10  2002    15   319 2 Quic… Sa tead… lyrics-2_qu…      1 &quot;Läksin välj… et      
+## # … with 990 more rows</code></pre>
+<p>Nüüd me peaksime kätte saama, mitmes paremuselt oli mõni lugu ühe grupi jaoks. Selleks lisame mutate() käsuga uue tulba. row_number() annab meile järjekorranumbri. Niisiis saame tulemused järjestatud artisti kaupa paremuse alusel.</p>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb236-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb236-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(artist) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb236-3" data-line-number="3"><span class="st">  </span><span class="kw">arrange</span>(artist,rank) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb236-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">artistbest=</span><span class="kw">row_number</span>())</a></code></pre></div>
+<pre><code>## # A tibble: 1,000 x 10
+## # Groups:   artist [348]
+##     year  rank votes artist  song  filename  source lyrics   language artistbest
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;         &lt;int&gt;
+##  1  2001     1  2149 2 Quic… Üheg… lyrics-2…      1 &quot;Võin n… et                1
+##  2  1998     3    NA 2 Quic… Tein… lyrics-2…      1 &quot;Su pil… et                2
+##  3  1999     3   958 2 Quic… C&#39;es… lyrics-2…      1 &quot;Pilk p… et                3
+##  4  1994     7    NA 2 Quic… Olen… lyrics-2…      1 &quot;1. PÕH… et                4
+##  5  1994     9    NA 2 Quic… Sinu… lyrics-2…      1 &quot;1. EKS… et                5
+##  6  1996    10   578 2 Quic… Lõpu… lyrics-2…      1 &quot;Välgu … et                6
+##  7  1994    12    NA 2 Quic… Neiu… lyrics-2…      1 &quot;On täh… et                7
+##  8  1995    14   287 2 Quic… Kirg… lyrics-2…      1 &quot;endale… et                8
+##  9  1994    15    NA 2 Quic… King… lyrics-2…      1 &quot;Olles … et                9
+## 10  2002    15   319 2 Quic… Sa t… lyrics-2…      1 &quot;Läksin… et               10
+## # … with 990 more rows</code></pre>
+<p>Nüüd saame teha filtri ainult parimate lugude jaoks ja saamegi tulemuse kätte.</p>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb238-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb238-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(artist) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb238-3" data-line-number="3"><span class="st">  </span><span class="kw">arrange</span>(artist, rank) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb238-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">artistbest=</span><span class="kw">row_number</span>()) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb238-5" data-line-number="5"><span class="st">  </span><span class="kw">filter</span>(artistbest<span class="op">==</span><span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb238-6" data-line-number="6"><span class="st">  </span><span class="kw">ungroup</span>()</a></code></pre></div>
+<pre><code>## # A tibble: 348 x 10
+##     year  rank votes artist  song   filename source lyrics   language artistbest
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;         &lt;int&gt;
+##  1  2001     1  2149 2 Quic… Ühega… lyrics-…      1 &quot;Võin n… et                1
+##  2  1995    27   158 2 Quic… I Fee… &lt;NA&gt;         NA  &lt;NA&gt;    &lt;NA&gt;              1
+##  3  1998    34    76 4 Ever  Selle… &lt;NA&gt;         NA  &lt;NA&gt;    &lt;NA&gt;              1
+##  4  2017     6   453 5miinu… Eroot… lyrics-…      1 &quot;Reede … et                1
+##  5  2016    19    96 5MIINU… Kuum   lyrics-…      1 &quot;Nii ku… et                1
+##  6  2018    10   223 5MIINU… Trena… lyrics-…      1 &quot;KOREA:… et                1
+##  7  1997     2  1049 6-Pack  Seest… &lt;NA&gt;         NA  &lt;NA&gt;    &lt;NA&gt;              1
+##  8  1998     2    NA A-Rühm  Popmu… lyrics-…      1 &quot;Kozy: … et                1
+##  9  1994    40    NA Agape   Grung… &lt;NA&gt;         NA  &lt;NA&gt;    &lt;NA&gt;              1
+## 10  2006    20   397 Agent M Šokol… lyrics-…      1 &quot;Kas tu… et                1
+## # … with 338 more rows</code></pre>
+<p>Proovi ise! Kas suudad välja mõelda, kuidas eelmist tulemust saaks kätte ka vähema hulga ridade ja käskudega.</p>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb240-1" data-line-number="1"><span class="co">#---------------------------------------------</span></a>
+<a class="sourceLine" id="cb240-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb240-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb240-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb240-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb240-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb240-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb240-8" data-line-number="8"><span class="co">#---------------------------------------------</span></a></code></pre></div>
+<p>Proovi ise! Kuidas saad kätte iga artisti paremuselt kümnenda loo?</p>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb241-1" data-line-number="1"><span class="co">#---------------------------------------------</span></a>
+<a class="sourceLine" id="cb241-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb241-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb241-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb241-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb241-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb241-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb241-8" data-line-number="8"><span class="co">#---------------------------------------------</span></a></code></pre></div>
+<p>Kuidas saaks kätte iga artisti viimasena tabelisse pääsenud loo?</p>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb242-1" data-line-number="1"><span class="co">#---------------------------------------------</span></a>
+<a class="sourceLine" id="cb242-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb242-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb242-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb242-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb242-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb242-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb242-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb242-9" data-line-number="9"><span class="co">#---------------------------------------------</span></a></code></pre></div>
+</div>
+<div id="uue-muutuja-loomine" class="section level2">
+<h2><span class="header-section-number">4.10</span> Uue muutuja loomine</h2>
+<p>Lõpuks võib proovida mutate() kaudu arvutada välja mõne uue väärtuse. Näiteks, ütleme, et anname lugudele punkte, nii, et esimene koht annab 40 punkti ja 40. koht 1 punkti. Siis on punkti väärtus 41 miinus koht.</p>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb243-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb243-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">skoor=</span><span class="dv">41</span><span class="op">-</span>rank)</a></code></pre></div>
+<pre><code>## # A tibble: 1,000 x 10
+##     year  rank votes artist  song    filename   source lyrics     language skoor
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;    &lt;dbl&gt;
+##  1  1994     1    NA Ummamu… Kõnõtr… lyrics-um…      1 &quot;:,:Välän… et          40
+##  2  1994     2    NA Vennas… Pille-… lyrics-ve…      1 &quot;Taevas s… et          39
+##  3  1994     3    NA Jam     See 5   lyrics-ja…      1 &quot;See viis… et          38
+##  4  1994     4    NA The Tu… Lillek… lyrics-th…      1 &quot;Tüdruk v… et          37
+##  5  1994     5    NA The Tu… Põhjam… lyrics-th…      1 &quot;Kui käes… et          36
+##  6  1994     6    NA Jam     Su Jär… lyrics-ja…      1 &quot;Enne sin… et          35
+##  7  1994     7    NA 2 Quic… Olen L… lyrics-2_…      1 &quot;1. PÕHJU… et          34
+##  8  1994     8    NA Termin… Torm    lyrics-te…      1 &quot;Olen tul… et          33
+##  9  1994     9    NA 2 Quic… Sinu J… lyrics-2_…      1 &quot;1. EKSIS… et          32
+## 10  1994    10    NA D-Gän   Seib    lyrics-d-…      1 &quot;ELASID K… et          31
+## # … with 990 more rows</code></pre>
+<p>Ja kui meil on olemas selline koondindeks võime proovida kokkku arvutada näiteks parima loo või parima artisti. Selleks saame kasutada funktsiooni summarise(). Näiteks terve tabeli peale saab võtta miinimum ja maksimum positsiooni. Kui me tahame saada parimat lugu selle punktisumma järgi, võime need punktisummad näiteks kokku liita iga loo kohta</p>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb245-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb245-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">skoor=</span><span class="dv">41</span><span class="op">-</span>rank) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb245-3" data-line-number="3"><span class="st">  </span><span class="kw">group_by</span>(song) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb245-4" data-line-number="4"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">summa=</span><span class="kw">sum</span>(skoor)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb245-5" data-line-number="5"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(summa))</a></code></pre></div>
+<pre><code>## # A tibble: 934 x 2
+##    song                 summa
+##    &lt;chr&gt;                &lt;dbl&gt;
+##  1 Käime katuseid mööda    99
+##  2 Salaja                  85
+##  3 Mälestused              83
+##  4 On Küll Hilja           74
+##  5 Torm                    74
+##  6 Lootusetus              72
+##  7 Kaitseta                65
+##  8 Kingitus                60
+##  9 Mis Tegema Nüüd Pean    60
+## 10 Romula                  60
+## # … with 924 more rows</code></pre>
+<p>Käime katuseid mööda võidab suisa 99 punkti, mis tähendab et ta oli tabelis vähemalt kolmel aastal. Ja võime teha sama ka artisti kaupa ja arvutada välja populaarsuse määra, mis arvestab ka positsiooniga tabelis. Kui muidu oli lugude arvult Smilers ja Terminaator üsna ligi teineteisele, siis selle punktisumma järgi on Smilers siiski tublisti Terminaatorist ees. Terminaator vajaks veel 5-t esikümnehitti rohkem kui smilers, et talle järgi tulla.</p>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb247-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb247-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">skoor=</span><span class="dv">41</span><span class="op">-</span>rank) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb247-3" data-line-number="3"><span class="st">  </span><span class="kw">group_by</span>(artist) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb247-4" data-line-number="4"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">summa=</span><span class="kw">sum</span>(skoor)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb247-5" data-line-number="5"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(summa))</a></code></pre></div>
+<pre><code>## # A tibble: 348 x 2
+##    artist                summa
+##    &lt;chr&gt;                 &lt;dbl&gt;
+##  1 Smilers                1124
+##  2 Terminaator             958
+##  3 2 Quick Start           555
+##  4 Ines                    436
+##  5 Põhja-Tallinn           416
+##  6 Tanel Padar &amp; The Sun   395
+##  7 Ott Lepland             384
+##  8 Caater                  377
+##  9 Shanon                  339
+## 10 Laura                   305
+## # … with 338 more rows</code></pre>
+<p>Proovi ise! Mõtle välja uus muutuja, mida võiks arvutada ning mille alusel artiste järjestada. (Vihje: votes tulpa pole me siiani kasutanud.)</p>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb249-1" data-line-number="1"><span class="co">#---------------------------------------------</span></a>
+<a class="sourceLine" id="cb249-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb249-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb249-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb249-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb249-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb249-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb249-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb249-9" data-line-number="9"><span class="co">#---------------------------------------------</span></a></code></pre></div>
+</div>
+<div id="sõnastik" class="section level2">
+<h2><span class="header-section-number">4.11</span> Sõnastik</h2>
+<ul>
+<li>%&gt;% - vii andmed järgmisesse protsessi</li>
+<li>select() vali muutujad</li>
+<li>filter() vii andmestik läbi filtri/sõela</li>
+<li>unique() - võtab tabelist ainult unikaalsed read</li>
+<li>count() - loeb esinemiste arvu (võib panna mitu tulpa korraga)</li>
+<li>group_by() - grupeeri andmestik mingi muutuja alusel (võib panna mitu tulpa korraga)</li>
+<li>ungroup() - vii andmestik taas grupeerimata seisu</li>
+<li>n() - grupi suurus</li>
+<li>row_number() - rea number</li>
+<li>mutate() - loo uus muutuja</li>
+<li>arrange() - järjesta andmed, lisafunktsioon desc()</li>
+<li>summarise() - loob uue, kokkuvõtva, tulba</li>
+</ul>
+</div>
+<div id="harjutusülesanded" class="section level2">
+<h2><span class="header-section-number">4.12</span> Harjutusülesanded</h2>
+<ol style="list-style-type: decimal">
+<li><p>Leidke artistid, kes olid kõige populaarsemad 2000ndatel.</p></li>
+<li><p>Leidke kõik lood, mis olid üle ühe aasta edetabelis.</p></li>
+<li><p>Leidke artistid, kel oli iga tabelisoldud aasta kohta kõige rohkem lugusid.</p></li>
+<li><p>Leidke lood, mis olid edetabelis mitu aastat.</p></li>
+<li><p>Nende lugude seast leidke lood, mille maksimaalne häälte hulk ületas nende minimaalse hääle hulga rohkem kui 5 korda.</p></li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="alused.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="tekstitöötlus-tidyverseis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

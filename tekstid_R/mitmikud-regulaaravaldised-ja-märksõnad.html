@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Peatükk 6 Mitmikud, regulaaravaldised ja märksõnad | Lihtne tekstitöötlus R-is ja tidyverse’is</title>
+  <meta name="description" content="Peatükk 6 Mitmikud, regulaaravaldised ja märksõnad | Lihtne tekstitöötlus R-is ja tidyverse’is" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Peatükk 6 Mitmikud, regulaaravaldised ja märksõnad | Lihtne tekstitöötlus R-is ja tidyverse’is" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Peatükk 6 Mitmikud, regulaaravaldised ja märksõnad | Lihtne tekstitöötlus R-is ja tidyverse’is" />
+  
+  
+  
+
+<meta name="author" content="Peeter Tinits" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="tekstitöötlus-tidyverseis.html"/>
+<link rel="next" href="graafikute-loomine.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Tekstitöötlus R-is ja tidyverse-is</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#juhend"><i class="fa fa-check"></i><b>1.1</b> Juhend</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#sisukord"><i class="fa fa-check"></i><b>1.2</b> Sisukord</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="mis-on-r-mis-on-rstudio.html"><a href="mis-on-r-mis-on-rstudio.html"><i class="fa fa-check"></i><b>2</b> Mis on R? Mis on RStudio?</a><ul>
+<li class="chapter" data-level="2.1" data-path="mis-on-r-mis-on-rstudio.html"><a href="mis-on-r-mis-on-rstudio.html#rstudio-oma-arvutis"><i class="fa fa-check"></i><b>2.1</b> RStudio oma arvutis</a></li>
+<li class="chapter" data-level="2.2" data-path="mis-on-r-mis-on-rstudio.html"><a href="mis-on-r-mis-on-rstudio.html#installimine"><i class="fa fa-check"></i><b>2.2</b> Installimine</a></li>
+<li class="chapter" data-level="2.3" data-path="mis-on-r-mis-on-rstudio.html"><a href="mis-on-r-mis-on-rstudio.html#rstudio-cloud"><i class="fa fa-check"></i><b>2.3</b> Rstudio Cloud</a></li>
+<li class="chapter" data-level="2.4" data-path="mis-on-r-mis-on-rstudio.html"><a href="mis-on-r-mis-on-rstudio.html#materjalide-avamine"><i class="fa fa-check"></i><b>2.4</b> Materjalide avamine</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="mis-on-r-mis-on-rstudio.html"><a href="mis-on-r-mis-on-rstudio.html#isiklikus-arvutis"><i class="fa fa-check"></i><b>2.4.1</b> Isiklikus arvutis</a></li>
+<li class="chapter" data-level="2.4.2" data-path="mis-on-r-mis-on-rstudio.html"><a href="mis-on-r-mis-on-rstudio.html#pilves"><i class="fa fa-check"></i><b>2.4.2</b> Pilves</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="mis-on-r-mis-on-rstudio.html"><a href="mis-on-r-mis-on-rstudio.html#rstudio-tutvustus"><i class="fa fa-check"></i><b>2.5</b> RStudio tutvustus</a></li>
+<li class="chapter" data-level="2.6" data-path="mis-on-r-mis-on-rstudio.html"><a href="mis-on-r-mis-on-rstudio.html#stiilisoovitus"><i class="fa fa-check"></i><b>2.6</b> Stiilisoovitus</a></li>
+<li class="chapter" data-level="2.7" data-path="mis-on-r-mis-on-rstudio.html"><a href="mis-on-r-mis-on-rstudio.html#soovitatav-kirjandus"><i class="fa fa-check"></i><b>2.7</b> Soovitatav kirjandus</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="alused.html"><a href="alused.html"><i class="fa fa-check"></i><b>3</b> Alused</a><ul>
+<li class="chapter" data-level="3.1" data-path="alused.html"><a href="alused.html#r-ja-käsud"><i class="fa fa-check"></i><b>3.1</b> R ja käsud</a></li>
+<li class="chapter" data-level="3.2" data-path="alused.html"><a href="alused.html#r-lihtsa-kalkulaatorina"><i class="fa fa-check"></i><b>3.2</b> R lihtsa kalkulaatorina</a></li>
+<li class="chapter" data-level="3.3" data-path="alused.html"><a href="alused.html#tulemuste-salvestamine"><i class="fa fa-check"></i><b>3.3</b> Tulemuste salvestamine</a></li>
+<li class="chapter" data-level="3.4" data-path="alused.html"><a href="alused.html#tehete-järjekord"><i class="fa fa-check"></i><b>3.4</b> Tehete järjekord</a></li>
+<li class="chapter" data-level="3.5" data-path="alused.html"><a href="alused.html#võrdused-ja-võrratused"><i class="fa fa-check"></i><b>3.5</b> Võrdused ja võrratused</a></li>
+<li class="chapter" data-level="3.6" data-path="alused.html"><a href="alused.html#muutujate-nimed-ja-tekst"><i class="fa fa-check"></i><b>3.6</b> Muutujate nimed ja tekst</a></li>
+<li class="chapter" data-level="3.7" data-path="alused.html"><a href="alused.html#jadad"><i class="fa fa-check"></i><b>3.7</b> Jadad</a></li>
+<li class="chapter" data-level="3.8" data-path="alused.html"><a href="alused.html#r-paketid"><i class="fa fa-check"></i><b>3.8</b> R paketid</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>4</b> Tidyverse</a><ul>
+<li class="chapter" data-level="4.1" data-path="tidyverse.html"><a href="tidyverse.html#paketid"><i class="fa fa-check"></i><b>4.1</b> Paketid</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="tidyverse.html"><a href="tidyverse.html#tidyverse-arvutiklassis"><i class="fa fa-check"></i><b>4.1.1</b> Tidyverse arvutiklassis</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="tidyverse.html"><a href="tidyverse.html#r-ja-andmed"><i class="fa fa-check"></i><b>4.2</b> R ja andmed</a></li>
+<li class="chapter" data-level="4.3" data-path="tidyverse.html"><a href="tidyverse.html#tidy-andmestruktuurid"><i class="fa fa-check"></i><b>4.3</b> Tidy andmestruktuurid</a></li>
+<li class="chapter" data-level="4.4" data-path="tidyverse.html"><a href="tidyverse.html#tidyverse-andmetöötlus"><i class="fa fa-check"></i><b>4.4</b> Tidyverse andmetöötlus</a></li>
+<li class="chapter" data-level="4.5" data-path="tidyverse.html"><a href="tidyverse.html#filter-select-unique-sample_n"><i class="fa fa-check"></i><b>4.5</b> filter(), select(), unique(), sample_n()</a></li>
+<li class="chapter" data-level="4.6" data-path="tidyverse.html"><a href="tidyverse.html#count-group_by"><i class="fa fa-check"></i><b>4.6</b> count(), group_by()</a></li>
+<li class="chapter" data-level="4.7" data-path="tidyverse.html"><a href="tidyverse.html#arrange-mutate-row_number-summarise-n"><i class="fa fa-check"></i><b>4.7</b> arrange(), mutate(), row_number(), summarise(), n()</a></li>
+<li class="chapter" data-level="4.8" data-path="tidyverse.html"><a href="tidyverse.html#group_by-kasutamine"><i class="fa fa-check"></i><b>4.8</b> group_by() kasutamine</a></li>
+<li class="chapter" data-level="4.9" data-path="tidyverse.html"><a href="tidyverse.html#käskude-ühendamine"><i class="fa fa-check"></i><b>4.9</b> Käskude ühendamine</a></li>
+<li class="chapter" data-level="4.10" data-path="tidyverse.html"><a href="tidyverse.html#uue-muutuja-loomine"><i class="fa fa-check"></i><b>4.10</b> Uue muutuja loomine</a></li>
+<li class="chapter" data-level="4.11" data-path="tidyverse.html"><a href="tidyverse.html#sõnastik"><i class="fa fa-check"></i><b>4.11</b> Sõnastik</a></li>
+<li class="chapter" data-level="4.12" data-path="tidyverse.html"><a href="tidyverse.html#harjutusülesanded"><i class="fa fa-check"></i><b>4.12</b> Harjutusülesanded</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="tekstitöötlus-tidyverseis.html"><a href="tekstitöötlus-tidyverseis.html"><i class="fa fa-check"></i><b>5</b> Tekstitöötlus tidyverse’is</a><ul>
+<li class="chapter" data-level="5.1" data-path="tekstitöötlus-tidyverseis.html"><a href="tekstitöötlus-tidyverseis.html#unnest_tokens"><i class="fa fa-check"></i><b>5.1</b> unnest_tokens()</a></li>
+<li class="chapter" data-level="5.2" data-path="tekstitöötlus-tidyverseis.html"><a href="tekstitöötlus-tidyverseis.html#sagedussõnastikud"><i class="fa fa-check"></i><b>5.2</b> Sagedussõnastikud</a></li>
+<li class="chapter" data-level="5.3" data-path="tekstitöötlus-tidyverseis.html"><a href="tekstitöötlus-tidyverseis.html#stopsõnad"><i class="fa fa-check"></i><b>5.3</b> Stopsõnad</a></li>
+<li class="chapter" data-level="5.4" data-path="tekstitöötlus-tidyverseis.html"><a href="tekstitöötlus-tidyverseis.html#võrdlus-teise-korpusega"><i class="fa fa-check"></i><b>5.4</b> Võrdlus teise korpusega</a></li>
+<li class="chapter" data-level="5.5" data-path="tekstitöötlus-tidyverseis.html"><a href="tekstitöötlus-tidyverseis.html#kordused-laulu-sees"><i class="fa fa-check"></i><b>5.5</b> Kordused laulu sees</a></li>
+<li class="chapter" data-level="5.6" data-path="tekstitöötlus-tidyverseis.html"><a href="tekstitöötlus-tidyverseis.html#asukoht-tekstis"><i class="fa fa-check"></i><b>5.6</b> Asukoht tekstis</a></li>
+<li class="chapter" data-level="5.7" data-path="tekstitöötlus-tidyverseis.html"><a href="tekstitöötlus-tidyverseis.html#sõnastik-1"><i class="fa fa-check"></i><b>5.7</b> Sõnastik</a></li>
+<li class="chapter" data-level="5.8" data-path="tekstitöötlus-tidyverseis.html"><a href="tekstitöötlus-tidyverseis.html#harjutusülesanded-1"><i class="fa fa-check"></i><b>5.8</b> Harjutusülesanded</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="mitmikud-regulaaravaldised-ja-märksõnad.html"><a href="mitmikud-regulaaravaldised-ja-märksõnad.html"><i class="fa fa-check"></i><b>6</b> Mitmikud, regulaaravaldised ja märksõnad</a><ul>
+<li class="chapter" data-level="6.1" data-path="mitmikud-regulaaravaldised-ja-märksõnad.html"><a href="mitmikud-regulaaravaldised-ja-märksõnad.html#bigrammid"><i class="fa fa-check"></i><b>6.1</b> Bigrammid</a></li>
+<li class="chapter" data-level="6.2" data-path="mitmikud-regulaaravaldised-ja-märksõnad.html"><a href="mitmikud-regulaaravaldised-ja-märksõnad.html#valimi-parandamine"><i class="fa fa-check"></i><b>6.2</b> Valimi parandamine</a></li>
+<li class="chapter" data-level="6.3" data-path="mitmikud-regulaaravaldised-ja-märksõnad.html"><a href="mitmikud-regulaaravaldised-ja-märksõnad.html#regulaaravaldised"><i class="fa fa-check"></i><b>6.3</b> Regulaaravaldised</a></li>
+<li class="chapter" data-level="6.4" data-path="mitmikud-regulaaravaldised-ja-märksõnad.html"><a href="mitmikud-regulaaravaldised-ja-märksõnad.html#trigrammid"><i class="fa fa-check"></i><b>6.4</b> Trigrammid</a></li>
+<li class="chapter" data-level="6.5" data-path="mitmikud-regulaaravaldised-ja-märksõnad.html"><a href="mitmikud-regulaaravaldised-ja-märksõnad.html#märksõnade-leidmine"><i class="fa fa-check"></i><b>6.5</b> Märksõnade leidmine</a></li>
+<li class="chapter" data-level="6.6" data-path="mitmikud-regulaaravaldised-ja-märksõnad.html"><a href="mitmikud-regulaaravaldised-ja-märksõnad.html#sõnastik-2"><i class="fa fa-check"></i><b>6.6</b> Sõnastik</a></li>
+<li class="chapter" data-level="6.7" data-path="mitmikud-regulaaravaldised-ja-märksõnad.html"><a href="mitmikud-regulaaravaldised-ja-märksõnad.html#harjutusülesanded-2"><i class="fa fa-check"></i><b>6.7</b> Harjutusülesanded</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="graafikute-loomine.html"><a href="graafikute-loomine.html"><i class="fa fa-check"></i><b>7</b> Graafikute loomine</a><ul>
+<li class="chapter" data-level="7.1" data-path="graafikute-loomine.html"><a href="graafikute-loomine.html#graafiku-ülesehitus"><i class="fa fa-check"></i><b>7.1</b> Graafiku ülesehitus</a></li>
+<li class="chapter" data-level="7.2" data-path="graafikute-loomine.html"><a href="graafikute-loomine.html#joonisekihtide-liigid"><i class="fa fa-check"></i><b>7.2</b> Joonisekihtide liigid</a></li>
+<li class="chapter" data-level="7.3" data-path="graafikute-loomine.html"><a href="graafikute-loomine.html#tabeli-viimistlemine"><i class="fa fa-check"></i><b>7.3</b> Tabeli viimistlemine</a></li>
+<li class="chapter" data-level="7.4" data-path="graafikute-loomine.html"><a href="graafikute-loomine.html#sõnastik-3"><i class="fa fa-check"></i><b>7.4</b> Sõnastik</a></li>
+<li class="chapter" data-level="7.5" data-path="graafikute-loomine.html"><a href="graafikute-loomine.html#harjutusülesanded-3"><i class="fa fa-check"></i><b>7.5</b> Harjutusülesanded</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Lihtne tekstitöötlus R-is ja tidyverse’is</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="mitmikud-regulaaravaldised-ja-märksõnad" class="section level1">
+<h1><span class="header-section-number">Peatükk 6</span> Mitmikud, regulaaravaldised ja märksõnad</h1>
+<p>Selles peatükis vaatame, kuidas saab tidyverse ja tidytext pakettide abil töötada sõnamitmikega, kasutada regulaaravaldisi otsingutes ning leida märksõnu, mis iseloomustavad mõnd teksti või tekstidegruppi.</p>
+<p>Kui me käivitasime just R-i, siis alustame jälle pakettide käivitamisest.</p>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb341-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb341-2" data-line-number="2"><span class="kw">library</span>(tidytext)</a></code></pre></div>
+<p>Samuti vajame me taaskord andmestikku. Veenduge, et töökataloog on määratud õigesse kohta.</p>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb342-1" data-line-number="1">edetabel &lt;-<span class="st"> </span><span class="kw">read_tsv</span>(<span class="st">&quot;data/eesti_top40/eesti_skyplus_top40_1994-2018.tsv&quot;</span>)</a></code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   year = col_double(),
+##   rank = col_double(),
+##   votes = col_double(),
+##   artist = col_character(),
+##   song = col_character(),
+##   filename = col_character(),
+##   source = col_double(),
+##   lyrics = col_character(),
+##   language = col_character()
+## )</code></pre>
+<div id="bigrammid" class="section level2">
+<h2><span class="header-section-number">6.1</span> Bigrammid</h2>
+<p>Eelmises peatükis kasutasime unnest_tokens() funktsiooni, et lahutada tabelis olevaid tekste sõnapikkusteks üksusteks. Nagu teised funktsioonis R-is on ka unnest_tokens() mõneti paindlik ja sellega saab teha veidi teistsuguseid asju, muutes selle parameetreid. Kasutame küsimärki ? käsu ees, et saada liig selle abifailile. Käsu käivitamine avab abiteksti paremal all ja näitab seda failide asemel. Failide ja abiteksti vahel saab liikuda selle akna menüüs (siis vastavalt Help ja Files sälgud).</p>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb344-1" data-line-number="1">?unnest_tokens</a></code></pre></div>
+<p>Abikäsk näitab käsu sisu, näiteid ja parameetreid, mida saab selles muuta.</p>
+<pre><code>   unnest_tokens(tbl, output, input, token = &quot;words&quot;, format = c(&quot;text&quot;,
+    &quot;man&quot;, &quot;latex&quot;, &quot;html&quot;, &quot;xml&quot;), to_lower = TRUE, drop = TRUE,
+      collapse = NULL, ...)</code></pre>
+<p>Esimene neist parameetritest on see, millele annab sisendi %&gt;% toru käsk tidyverse töötluses. Antud juhul siis tbl, mis on sisendtabel. Enamasti ongi vaikimisi esimene sisend just andmestik, millega töötatakse. Parameetreid võib määrata järjekorra järgi, või andes ette parameetri nime. Näiteks unnest_tokens(word,text) on sama kui unnest_tokens(output=word, input=text) juhul kui alustabel tbl on söödetud käsu eestpoolt ja toruga.</p>
+<p>Funktsioonil on aga veel parameetreid. Kõik parameetrid, millel on antud abifailis võrdusmärgiga = vaste, on parameetrid, millel on olemas vaikimisi väärtus. Ehk, kui me ise just teisiti ei määra, kasutab programm käsu vaikeväärtust. Vaikimisi võtab programm sõna ühikuks token = “words”. Samuti määrab ta vaikimisi, et to_lower = TRUE, misläbi muudetakse kõik suurtähed väiketähtedeks ja drop = TRUE, misläbi eemaldatakse sõnade leidmise aluseks olnud tulp. Kõikide parameetrite seletus on antud abifailis veidi allpool.</p>
+<p>Vaadates lähemalt token parameetrit näeme, et sellel on hulga variante: “words” (vaikimisi), “characters”, “character_shingles”, “ngrams”, “skip_ngrams”, “sentences”, “lines,”paragraphs, “regex”, “tweets”, “ptb”. Meil ei ole neid kõiki praegu vaja, aga võime proovida varianti ngrams ehk mitmikud.</p>
+<p>Meenutuseks, et eelmises õppetükis tegime sellise tabeli. Me võime seal eraldi märkida, et token = “words”, aga me võime selle ka ära jätta, kuna “words” on seal antud juhul vaikeväärtus.</p>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb346-1" data-line-number="1">edetabel <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb346-2" data-line-number="2"><span class="st">  </span><span class="kw">unnest_tokens</span>(word, lyrics, <span class="dt">token =</span> <span class="st">&quot;words&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 157,632 x 9
+##     year  rank votes artist   song    filename         source language word     
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;             &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;    
+##  1  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       välän    
+##  2  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       külmetas 
+##  3  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       ja       
+##  4  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       taivast  
+##  5  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       satas    
+##  6  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       lummõ    
+##  7  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       ütle     
+##  8  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       mullõ    
+##  9  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       uma      
+## 10  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       telefoni…
+## # … with 157,622 more rows</code></pre>
+<p>Samas nägime abifailist, et seda võib ka muuta. Asetame siis selleks “ngrams”. Kui väärtuseks on määratud “ngrams”, siis me peame omakorda määrama selles lisaparameetreid. Nimelt soovib käsk teada, kui suuri mitmikuid me soovime. Määratleme minimaalse suuruse n_min = 2 ja maksimaalse suuruse n = 2. Sellisel juhul teeb unnest_tokens() sõnade tabeli asemel bigrammide tabeli.</p>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb348-1" data-line-number="1">edetabel <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb348-2" data-line-number="2"><span class="st">  </span><span class="kw">unnest_tokens</span>(bigram, lyrics, <span class="dt">token =</span> <span class="st">&quot;ngrams&quot;</span>, <span class="dt">n =</span> <span class="dv">2</span>, <span class="dt">n_min =</span> <span class="dv">2</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 156,810 x 9
+##     year  rank votes artist   song   filename        source language bigram     
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;            &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;      
+##  1  1994     1    NA Ummamuu… Kõnõt… lyrics-ummamuu…      1 et       välän külm…
+##  2  1994     1    NA Ummamuu… Kõnõt… lyrics-ummamuu…      1 et       külmetas ja
+##  3  1994     1    NA Ummamuu… Kõnõt… lyrics-ummamuu…      1 et       ja taivast 
+##  4  1994     1    NA Ummamuu… Kõnõt… lyrics-ummamuu…      1 et       taivast sa…
+##  5  1994     1    NA Ummamuu… Kõnõt… lyrics-ummamuu…      1 et       satas lummõ
+##  6  1994     1    NA Ummamuu… Kõnõt… lyrics-ummamuu…      1 et       lummõ ütle 
+##  7  1994     1    NA Ummamuu… Kõnõt… lyrics-ummamuu…      1 et       ütle mullõ 
+##  8  1994     1    NA Ummamuu… Kõnõt… lyrics-ummamuu…      1 et       mullõ uma  
+##  9  1994     1    NA Ummamuu… Kõnõt… lyrics-ummamuu…      1 et       uma telefo…
+## 10  1994     1    NA Ummamuu… Kõnõt… lyrics-ummamuu…      1 et       telefoninu…
+## # … with 156,800 more rows</code></pre>
+<p>Proovime mängida parameetritega. Näiteks võime käsu sees määratleda ka et mitmike pikkus peaks olema ühest kolmeni. Sellisel juhul näitab käsk kõiki võimalikke mitmike suurusega ühest kolmeni, ehk nii sõnu, bigramme kui trigramme.</p>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb350-1" data-line-number="1">edetabel <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb350-2" data-line-number="2"><span class="st">  </span><span class="kw">unnest_tokens</span>(bigram, lyrics, <span class="dt">token =</span> <span class="st">&quot;ngrams&quot;</span>, <span class="dt">n =</span> <span class="dv">3</span>, <span class="dt">n_min =</span> <span class="dv">1</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 470,074 x 9
+##     year  rank votes artist   song   filename        source language bigram     
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;            &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;      
+##  1  1994     1    NA Ummamuu… Kõnõt… lyrics-ummamuu…      1 et       välän      
+##  2  1994     1    NA Ummamuu… Kõnõt… lyrics-ummamuu…      1 et       välän külm…
+##  3  1994     1    NA Ummamuu… Kõnõt… lyrics-ummamuu…      1 et       välän külm…
+##  4  1994     1    NA Ummamuu… Kõnõt… lyrics-ummamuu…      1 et       külmetas   
+##  5  1994     1    NA Ummamuu… Kõnõt… lyrics-ummamuu…      1 et       külmetas ja
+##  6  1994     1    NA Ummamuu… Kõnõt… lyrics-ummamuu…      1 et       külmetas j…
+##  7  1994     1    NA Ummamuu… Kõnõt… lyrics-ummamuu…      1 et       ja         
+##  8  1994     1    NA Ummamuu… Kõnõt… lyrics-ummamuu…      1 et       ja taivast 
+##  9  1994     1    NA Ummamuu… Kõnõt… lyrics-ummamuu…      1 et       ja taivast…
+## 10  1994     1    NA Ummamuu… Kõnõt… lyrics-ummamuu…      1 et       taivast    
+## # … with 470,064 more rows</code></pre>
+<p>Võtame siis ette bigrammid. Et meil on tabelit korduvalt vaja ning selle tekitamine võtab hetk aega, salvestame selle tulemuse jälle muutujasse.</p>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb352-1" data-line-number="1">bigrams &lt;-<span class="st"> </span>edetabel <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb352-2" data-line-number="2"><span class="st">  </span><span class="kw">unnest_tokens</span>(bigram, lyrics, <span class="dt">token =</span> <span class="st">&quot;ngrams&quot;</span>, <span class="dt">n =</span> <span class="dv">2</span>, <span class="dt">n_min =</span> <span class="dv">2</span>)</a></code></pre></div>
+<p>Samamoodi kui sõnadest, saame me teha ka bigrammidest sagedustabeli. Levinud fraasid on ikka samad kui keeles ikka ‘ei saa’, ‘ei ole’, ‘ei tea’, ‘ma ei’, ‘ma olen’, ‘mul on’.</p>
+<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb353-1" data-line-number="1">bigrams <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb353-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(bigram,<span class="dt">sort=</span>T)</a></code></pre></div>
+<pre><code>## # A tibble: 76,888 x 2
+##    bigram      n
+##    &lt;chr&gt;   &lt;int&gt;
+##  1 ei saa    357
+##  2 ma ei     356
+##  3 see on    241
+##  4 ei ole    204
+##  5 &lt;NA&gt;      178
+##  6 ei tea    165
+##  7 na na     165
+##  8 on see    160
+##  9 ma olen   145
+## 10 mul on    138
+## # … with 76,878 more rows</code></pre>
+<p>Nagu sai näidatud varasemates peatükkides saame loendada mitu tunnust korraga. Seeläbi saame näiteks kokku lugeda fraasikordusi ühes laulus. Näiteks na na, oo oo ja ba da on väga populaarsed fraasid.</p>
+<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb355-1" data-line-number="1">bigrams <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb355-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(bigram,song,<span class="dt">sort=</span>T)</a></code></pre></div>
+<pre><code>## # A tibble: 99,430 x 3
+##    bigram       song                     n
+##    &lt;chr&gt;        &lt;chr&gt;                &lt;int&gt;
+##  1 na na        Tantsin valssi          68
+##  2 na na        Tantsin Valssi          68
+##  3 vesi peale   Vesi peale              56
+##  4 oo oo        Rannamaja               50
+##  5 ba da        Musi                    48
+##  6 jalas polnud Peegelpõrand            48
+##  7 polnud pükse Peegelpõrand            48
+##  8 armastus on  Armastus On Armastus    47
+##  9 pappi ei     Pankrot                 46
+## 10 and i        Pictures                43
+## # … with 99,420 more rows</code></pre>
+<p>Samas näeme sellega ära, et meie andmestik on veidi ebamugav selle kohta pealt, et mõni laul on seal mitu korda. Ja samas või selle laulu nimi olla sama või erinev. Kui me nüüd loendame ainult fraasi ja laulunime järgi, siis võib mõni lugu saada seal mitmekordsed numbrid, kuna laul justkui oleks kaks korda nii pikk kui ta on. Teisest küljest, me saame ühest ‘Tantsin valssi’ loost kätte juba info na na kohta, me ei pea seda kaks korda nägema.</p>
+<p>Kui me loendame laulu, artisti ja aasta kombinatsioone, siis tabel juba mõneti muutubki. Näiteks “jalas polnud” ja “polnud pükse” kaovad edetabelist ära, kuna Peegelpõranda laul oli tabelis kaks aastat, mistõttu olid sõnasagedused leotud topelt.</p>
+<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb357-1" data-line-number="1">bigrams <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb357-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(bigram,song,artist,year,<span class="dt">sort=</span>T)</a></code></pre></div>
+<pre><code>## # A tibble: 105,352 x 5
+##    bigram      song                 artist                           year     n
+##    &lt;chr&gt;       &lt;chr&gt;                &lt;chr&gt;                           &lt;dbl&gt; &lt;int&gt;
+##  1 na na       Tantsin valssi       Tuberkuloited &amp; Urmas Voolpriit  2001    68
+##  2 na na       Tantsin Valssi       The Tuberkuloited                2000    68
+##  3 vesi peale  Vesi peale           N-Euro                           2000    56
+##  4 oo oo       Rannamaja            Getter Jaani ja Koit Toome       2014    50
+##  5 ba da       Musi                 Push Up                          2000    48
+##  6 armastus on Armastus On Armastus Külalised                        2008    47
+##  7 pappi ei    Pankrot              Toe Tag                          2005    46
+##  8 and i       Pictures             Ewert And The Two Dragons        2014    43
+##  9 ei saagi    Pankrot              Toe Tag                          2005    42
+## 10 võid nii    Estonian business    Suur Papa                        2013    42
+## # … with 105,342 more rows</code></pre>
+</div>
+<div id="valimi-parandamine" class="section level2">
+<h2><span class="header-section-number">6.2</span> Valimi parandamine</h2>
+<p>Me võime võtta nüüd selle arvesse ja püüda meie valimit varasemate teadmiste põhjal parandada. Nimelt, me teame, et mõnikord võib olla pealkiri sama, kuid erineda väike ja suurtähtedelt ning me teame, et mõned lood on tabelis mitu aastat ehk mitu korda.</p>
+<p>Me saame aga oma tabelit muuta selle järgi. mutate() käsule saame anda sisendiks, et ta viiks tulbad väiketähtede kujule. Selleks on funktsioon tolower(). Ja me saame grupeerida ja filtreerida andmsetikku nii, et iga artisti ja laulu kombinatsiooni kohta jääb alles ainult esimene aasta.</p>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb359-1" data-line-number="1">edetabel <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb359-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">artist=</span><span class="kw">tolower</span>(artist),<span class="dt">song=</span><span class="kw">tolower</span>(song)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb359-3" data-line-number="3"><span class="st">  </span><span class="kw">group_by</span>(artist,song) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb359-4" data-line-number="4"><span class="st">  </span><span class="kw">filter</span>(year<span class="op">==</span><span class="kw">min</span>(year))</a></code></pre></div>
+<pre><code>## # A tibble: 947 x 9
+## # Groups:   artist, song [946]
+##     year  rank votes artist   song    filename     source lyrics        language
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;   
+##  1  1994     1    NA ummamuu… kõnõtr… lyrics-umma…      1 &quot;:,:Välän kü… et      
+##  2  1994     2    NA vennask… pille-… lyrics-venn…      1 &quot;Taevas sine… et      
+##  3  1994     3    NA jam      see 5   lyrics-jam-…      1 &quot;See viis ha… et      
+##  4  1994     4    NA the tub… lillek… lyrics-the_…      1 &quot;Tüdruk vaat… et      
+##  5  1994     5    NA the tub… põhjam… lyrics-the_…      1 &quot;Kui käes on… et      
+##  6  1994     6    NA jam      su jär… lyrics-jam-…      1 &quot;Enne sind e… et      
+##  7  1994     7    NA 2 quick… olen l… lyrics-2_qu…      1 &quot;1. PÕHJUST … et      
+##  8  1994     8    NA termina… torm    lyrics-term…      1 &quot;Olen tulnud… et      
+##  9  1994     9    NA 2 quick… sinu j… lyrics-2_qu…      1 &quot;1. EKSISIN … et      
+## 10  1994    10    NA d-gän    seib    lyrics-d-ga…      1 &quot;ELASID KOOS… et      
+## # … with 937 more rows</code></pre>
+<p>Niimoodi andmestikku muutes, saame kokku kokku 947 erinevat lugu eelmise 1000 asemel. Salvestame selle tabeli nime all firstsongs. Grupeeriv faktor tasub salvestades enamasti lahti siduda, kuna mõned funktsioonid nõuavad grupeerimata andmestikku või muutuvad väga aeglaseks siis, kui andmestik on tehtud paljudeks gruppideks.</p>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb361-1" data-line-number="1">firstsongs &lt;-<span class="st"> </span>edetabel <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb361-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">artist=</span><span class="kw">tolower</span>(artist),<span class="dt">song=</span><span class="kw">tolower</span>(song)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb361-3" data-line-number="3"><span class="st">  </span><span class="kw">group_by</span>(artist,song) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb361-4" data-line-number="4"><span class="st">  </span><span class="kw">filter</span>(year<span class="op">==</span><span class="kw">min</span>(year)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb361-5" data-line-number="5"><span class="st">  </span><span class="kw">ungroup</span>() <span class="co"># Kõige lõpus tasub grupid lahti siduda</span></a></code></pre></div>
+<p>Salvestatud puhastatud tabelit saame kasutada nüüd sisendina edasiseks analüüsiks. Leiame uuesti bigrammid tekstide seast ning salvestame need vana muutuja asemele.</p>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb362-1" data-line-number="1">bigrams &lt;-firstsongs <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb362-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">artist=</span><span class="kw">tolower</span>(artist),<span class="dt">song=</span><span class="kw">tolower</span>(song)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb362-3" data-line-number="3"><span class="st">  </span><span class="kw">group_by</span>(artist,song) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb362-4" data-line-number="4"><span class="st">  </span><span class="kw">filter</span>(year<span class="op">==</span><span class="kw">min</span>(year))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb362-5" data-line-number="5"><span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb362-6" data-line-number="6"><span class="st">  </span><span class="kw">unnest_tokens</span>(bigram, lyrics, <span class="dt">token =</span> <span class="st">&quot;ngrams&quot;</span>, <span class="dt">n =</span> <span class="dv">2</span>, <span class="dt">n_min =</span> <span class="dv">2</span>)</a></code></pre></div>
+<p>Samuti nagu varem võime nüüd loendada bigramme laulude kohta. Seekord aga ei pea vaatama, mis aastaga tegemist on ja paljud kordused on nüüd kadunud. On muidugi lugusid, millel artisti või laulu nimi erineb aasta-aastalt veidi rohkem kui ainult suurtähtede ja väiketähtede kaudu - näiteks seesama tantsin valssi, mille artist on muutunud. Aga paljuski saame me nii juba täpsema info. Et kõik sama loo erinevad variandid saaks eemaldatud, tuleb veel täpsemalt proovida artisti nimesid ühitada. Praegu piirdume suur- ja väiketähtedega.</p>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb363-1" data-line-number="1">bigrams <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb363-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(bigram,song,artist,<span class="dt">sort=</span>T)</a></code></pre></div>
+<pre><code>## # A tibble: 98,793 x 4
+##    bigram      song                 artist                              n
+##    &lt;chr&gt;       &lt;chr&gt;                &lt;chr&gt;                           &lt;int&gt;
+##  1 na na       tantsin valssi       the tuberkuloited                  68
+##  2 na na       tantsin valssi       tuberkuloited &amp; urmas voolpriit    68
+##  3 vesi peale  vesi peale           n-euro                             56
+##  4 oo oo       rannamaja            getter jaani ja koit toome         50
+##  5 ba da       musi                 push up                            48
+##  6 armastus on armastus on armastus külalised                          47
+##  7 pappi ei    pankrot              toe tag                            46
+##  8 and i       pictures             ewert and the two dragons          43
+##  9 ei saagi    pankrot              toe tag                            42
+## 10 võid nii    estonian business    suur papa                          42
+## # … with 98,783 more rows</code></pre>
+</div>
+<div id="regulaaravaldised" class="section level2">
+<h2><span class="header-section-number">6.3</span> Regulaaravaldised</h2>
+<p>Nagu varem sõnadega, võime me filtreerida seda tabelit ka fraasi kaupa. Näiteks ‘ei saa’ esinemised eri lauludes saame kätte niiviisi. Päris paljudes lauludes kordub fraas ‘ei saa’ mitmeid kordi. Tähele võib panna, et sellisel juhul on aga oluline, et fraas oleks täpselt selline nagu on kirjeldatud.</p>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb365-1" data-line-number="1">bigrams <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb365-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(bigram,song,<span class="dt">sort=</span>T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb365-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(bigram<span class="op">==</span><span class="st">&quot;ei saa&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 149 x 3
+##    bigram song                                n
+##    &lt;chr&gt;  &lt;chr&gt;                           &lt;int&gt;
+##  1 ei saa jagatud saladus                    17
+##  2 ei saa tahan elada                        14
+##  3 ei saa kesköödisko                         9
+##  4 ei saa teine kadriorg                      9
+##  5 ei saa sinise leegiga                      8
+##  6 ei saa kallis                              7
+##  7 ei saa lähedal                             6
+##  8 ei saa miks ainult mõni asi on nii hea     6
+##  9 ei saa väike saatan                        6
+## 10 ei saa pankrot                             5
+## # … with 139 more rows</code></pre>
+<p>Me teame varem koostatud sõnaloendite põhjal, et sõna ‘ei’ on neis tekstides üldse sage. Kui me nüüd tahaks teada, millises kontekstis sõna ‘ei’ esineb, ei saa me ette kirjutada kõiki eri variante. Sellisel puhul on meil võimalik kasutada käske tekstiosade kattuvuseks ning regulaaravaldisi. Tidyverse pakettides on ka tekstidega töötamiseks eraldi osa stringr, kus on meid aitavad kaks funktsiooni str_detect(), mis kontrollib, kas tekstis sisaldub ettekirjutatud jupp ja str_extract(), mis eraldab kirjutatud jupi tekstist.</p>
+<ul>
+<li>str_detect(muutuja, “sõne”) - kontrolli, kas tekstis esineb selline järjend</li>
+<li>str_extract(muutuja, “sõne”) - leia selline järjend tekstis ning esita leitud järjend</li>
+</ul>
+<p>Need funktsioonid võtavad sisendina vaikimisi regulaaravaldisi, mis avardab meie otsimisvõimekust oluliselt. Otsides ainult järjendit ‘ei saa’ leiame, et meie esialgne otsing ei leidnud varianti, ei saagi, mida kordub ühe loo sees isegi kõige rohkem. Nimelt läheb edetabeli tippu toe tag pankrott, kus fraas ‘ei saagi’ esineb suisa 42 korda. Kuivõrd ta on tähenduselt üsna sarnane, siis on seda meilgi ehk oluline teada.</p>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb367-1" data-line-number="1">bigrams <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb367-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(bigram,song,<span class="dt">sort=</span>T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb367-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">str_detect</span>(bigram,<span class="st">&quot;ei saa&quot;</span>))</a></code></pre></div>
+<pre><code>## # A tibble: 177 x 3
+##    bigram   song                                n
+##    &lt;chr&gt;    &lt;chr&gt;                           &lt;int&gt;
+##  1 ei saagi pankrot                            42
+##  2 ei saa   jagatud saladus                    17
+##  3 ei saa   tahan elada                        14
+##  4 ei saa   kesköödisko                         9
+##  5 ei saa   teine kadriorg                      9
+##  6 ei saa   sinise leegiga                      8
+##  7 ei saa   kallis                              7
+##  8 ei saa   lähedal                             6
+##  9 ei saa   miks ainult mõni asi on nii hea     6
+## 10 ei saa   väike saatan                        6
+## # … with 167 more rows</code></pre>
+<p>Me võime ka otsida kõiki sarnaseid fraase, mis algavad eitusega. Selleks otsime sõna ei, millele järgneb tühik ja siis ükskõik milline tähekombinatsioon. Ja saame, et neid eitavas vormides fraase on lugude seas veel. ei-ei, ei saa, ei hooli, ei pea, ei huvita ei lase, jne.</p>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb369-1" data-line-number="1">bigrams <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb369-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(bigram,song,<span class="dt">sort=</span>T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb369-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">str_detect</span>(bigram,<span class="st">&quot;ei [a-zõäöü]+&quot;</span>))</a></code></pre></div>
+<pre><code>## # A tibble: 1,607 x 3
+##    bigram    song                  n
+##    &lt;chr&gt;     &lt;chr&gt;             &lt;int&gt;
+##  1 ei saagi  pankrot              42
+##  2 ei ei     elupõletaja          36
+##  3 ei saa    jagatud saladus      17
+##  4 ei hooli  mälestused           16
+##  5 ei pea    ei pea iial          15
+##  6 ei huvita elupõletaja          14
+##  7 ei lase   öö ei lase magada    14
+##  8 ei saa    tahan elada          14
+##  9 ei ole    võta aega            12
+## 10 ei tagasi teine kadriorg       12
+## # … with 1,597 more rows</code></pre>
+<p>Teine viis leida kõik fraasid, mis algavad sõnaga ei, on kasutada regulaaravaldiste teksti alguse tähist ^. Nii teab käsk, et ‘ei’ peab olema fraasi alguses.</p>
+<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb371-1" data-line-number="1">bigrams <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb371-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(bigram,song,<span class="dt">sort=</span>T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb371-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">str_detect</span>(bigram,<span class="st">&quot;^ei &quot;</span>))</a></code></pre></div>
+<pre><code>## # A tibble: 1,553 x 3
+##    bigram    song                  n
+##    &lt;chr&gt;     &lt;chr&gt;             &lt;int&gt;
+##  1 ei saagi  pankrot              42
+##  2 ei ei     elupõletaja          36
+##  3 ei saa    jagatud saladus      17
+##  4 ei hooli  mälestused           16
+##  5 ei pea    ei pea iial          15
+##  6 ei huvita elupõletaja          14
+##  7 ei lase   öö ei lase magada    14
+##  8 ei saa    tahan elada          14
+##  9 ei ole    võta aega            12
+## 10 ei tagasi teine kadriorg       12
+## # … with 1,543 more rows</code></pre>
+<p>Tõtt-öelda bigrammidega piisab ka tühikust, kuna neis on tühik alati esimesest sõnast paremal.</p>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb373-1" data-line-number="1">bigrams <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb373-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(bigram,song,<span class="dt">sort=</span>T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb373-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">str_detect</span>(bigram,<span class="st">&quot;ei &quot;</span>))</a></code></pre></div>
+<pre><code>## # A tibble: 1,610 x 3
+##    bigram    song                  n
+##    &lt;chr&gt;     &lt;chr&gt;             &lt;int&gt;
+##  1 ei saagi  pankrot              42
+##  2 ei ei     elupõletaja          36
+##  3 ei saa    jagatud saladus      17
+##  4 ei hooli  mälestused           16
+##  5 ei pea    ei pea iial          15
+##  6 ei huvita elupõletaja          14
+##  7 ei lase   öö ei lase magada    14
+##  8 ei saa    tahan elada          14
+##  9 ei ole    võta aega            12
+## 10 ei tagasi teine kadriorg       12
+## # … with 1,600 more rows</code></pre>
+<p>Võime proovida otsida ka näiteks sidesõnale ja järgnevaid sõnu.</p>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb375-1" data-line-number="1">bigrams <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb375-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(bigram,song,<span class="dt">sort=</span>T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb375-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">str_detect</span>(bigram,<span class="st">&quot;ja [a-zõäöü]+&quot;</span>))</a></code></pre></div>
+<pre><code>## # A tibble: 2,624 x 3
+##    bigram         song                         n
+##    &lt;chr&gt;          &lt;chr&gt;                    &lt;int&gt;
+##  1 ja ma          lase mul olla mina          14
+##  2 russkaja vodka russkaja vodka              14
+##  3 ja loodame     jää                         13
+##  4 ja me          pankrot                     13
+##  5 vaja kedagi    vihmapiisad päikest täis    13
+##  6 ja kõik        küsin endalt nõu            12
+##  7 ja ma          ma vaid palun               12
+##  8 ja nooled      pilgud ja nooled            12
+##  9 ja pole        pole sinu asi               12
+## 10 ja silmad      su hääl su suu ja silmad    12
+## # … with 2,614 more rows</code></pre>
+<p>Me võime otsida sedasi ükskõik mida.</p>
+<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb377-1" data-line-number="1">bigrams <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb377-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(bigram,song,<span class="dt">sort=</span>T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb377-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">str_detect</span>(bigram,<span class="st">&quot;ma &quot;</span>))</a></code></pre></div>
+<pre><code>## # A tibble: 2,633 x 3
+##    bigram         song                             n
+##    &lt;chr&gt;          &lt;chr&gt;                        &lt;int&gt;
+##  1 oma valu       ehitaja                         19
+##  2 ma lähen       sinu ees                        18
+##  3 ma tahan       ma tahan sind. sa vajad mind    16
+##  4 ma šokolaadist šokolaadist jänes               14
+##  5 umma tshaka    tsaka-tsaka                     14
+##  6 umma umma      tsaka-tsaka                     14
+##  7 ma ei          täna me ei skoori               13
+##  8 ma lähen       mõtetes mõrudais                13
+##  9 ilma okasteta  okkaline lill                   12
+## 10 kuuma kuuma    maia                            12
+## # … with 2,623 more rows</code></pre>
+<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb379-1" data-line-number="1">bigrams <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb379-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(bigram,song,<span class="dt">sort=</span>T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb379-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">str_detect</span>(bigram,<span class="st">&quot;jama[ a-zõäöü]+&quot;</span>))</a></code></pre></div>
+<pre><code>## # A tibble: 48 x 3
+##    bigram            song               n
+##    &lt;chr&gt;             &lt;chr&gt;          &lt;int&gt;
+##  1 mu põhjamaa       põhjamaa neid     12
+##  2 põhjamaa neid     põhjamaa neid     12
+##  3 ajamasin kaasa    1987               5
+##  4 viib ajamasin     1987               5
+##  5 õllele turjamaale vihma loits        4
+##  6 turjamaale õlle   vihma loits        4
+##  7 varjama ei        sinu jaoks         2
+##  8 18 ajamasin       jälle 18           1
+##  9 ajama ju          eestlased          1
+## 10 ajama pean        veel veel veel     1
+## # … with 38 more rows</code></pre>
+<p>Proovige leida nüüd kõik fraasid, mis sisaldavad eestit ükskõik, mis kujul</p>
+<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb381-1" data-line-number="1"><span class="co">#---------------------------------------------</span></a>
+<a class="sourceLine" id="cb381-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb381-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb381-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb381-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb381-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb381-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb381-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb381-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb381-10" data-line-number="10"><span class="co">#---------------------------------------------</span></a></code></pre></div>
+<p>Teine küsimus, kus regulaaravaldised kuluvad eriti ära, on kui me tahame teada saada teatud sõnavormide kohta. Näiteks meid huvitavad kõik armastusega seotud sõnad neis lauludes. Võime teha otsingu, mis hõlmaks ‘armastus’, ‘armastama’ ja selle vorme. Nii saame kätte kõik fraasid, kus on sellest mingil määral juttu.</p>
+<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb382-1" data-line-number="1">bigrams <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb382-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(bigram,song,<span class="dt">sort=</span>T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb382-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">str_detect</span>(bigram,<span class="st">&quot;armast[ua]&quot;</span>))</a></code></pre></div>
+<pre><code>## # A tibble: 223 x 3
+##    bigram            song                     n
+##    &lt;chr&gt;             &lt;chr&gt;                &lt;int&gt;
+##  1 armastus on       armastus on armastus    47
+##  2 on armastus       armastus on armastus    14
+##  3 armastus armastus armastus on armastus    13
+##  4 tunde armastus    armastus on armastus    10
+##  5 yo armastus       armastus on armastus    10
+##  6 armastan ma       kas tead                 8
+##  7 flow armastus     armastus on armastus     7
+##  8 armastanud kaua   kaks meeste              6
+##  9 polnud armastanud kaks meeste              6
+## 10 armastuses ja     väike valge vale         5
+## # … with 213 more rows</code></pre>
+<p>Kui me aga tahame küsida sõna eri vormide kohta, võime me leidude vasted uude tabeli tulpa panna. str_extract() võtab tekstist välja täpselt sellise vormi, mis me leidsime.</p>
+<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb384-1" data-line-number="1">bigrams <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb384-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(bigram,song,<span class="dt">sort=</span>T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb384-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">str_detect</span>(bigram,<span class="st">&quot;armast[ua]&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb384-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">vorm=</span><span class="kw">str_extract</span>(bigram,<span class="st">&quot;armast[ua]&quot;</span>))</a></code></pre></div>
+<pre><code>## # A tibble: 223 x 4
+##    bigram            song                     n vorm   
+##    &lt;chr&gt;             &lt;chr&gt;                &lt;int&gt; &lt;chr&gt;  
+##  1 armastus on       armastus on armastus    47 armastu
+##  2 on armastus       armastus on armastus    14 armastu
+##  3 armastus armastus armastus on armastus    13 armastu
+##  4 tunde armastus    armastus on armastus    10 armastu
+##  5 yo armastus       armastus on armastus    10 armastu
+##  6 armastan ma       kas tead                 8 armasta
+##  7 flow armastus     armastus on armastus     7 armastu
+##  8 armastanud kaua   kaks meeste              6 armasta
+##  9 polnud armastanud kaks meeste              6 armasta
+## 10 armastuses ja     väike valge vale         5 armastu
+## # … with 213 more rows</code></pre>
+<p>Selleks, et saada tervet sõna, peame regulaaravaldist pikendama, et ta võtaks kaasa kõik tähestiku tähed, aga mitte tühikud.</p>
+<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb386-1" data-line-number="1">bigrams <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb386-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(bigram,song,<span class="dt">sort=</span>T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb386-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">str_detect</span>(bigram,<span class="st">&quot;armast[ua]&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb386-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">vorm=</span><span class="kw">str_extract</span>(bigram,<span class="st">&quot;armast[ua][a-zõäöü]+&quot;</span>))</a></code></pre></div>
+<pre><code>## # A tibble: 223 x 4
+##    bigram            song                     n vorm      
+##    &lt;chr&gt;             &lt;chr&gt;                &lt;int&gt; &lt;chr&gt;     
+##  1 armastus on       armastus on armastus    47 armastus  
+##  2 on armastus       armastus on armastus    14 armastus  
+##  3 armastus armastus armastus on armastus    13 armastus  
+##  4 tunde armastus    armastus on armastus    10 armastus  
+##  5 yo armastus       armastus on armastus    10 armastus  
+##  6 armastan ma       kas tead                 8 armastan  
+##  7 flow armastus     armastus on armastus     7 armastus  
+##  8 armastanud kaua   kaks meeste              6 armastanud
+##  9 polnud armastanud kaks meeste              6 armastanud
+## 10 armastuses ja     väike valge vale         5 armastuses
+## # … with 213 more rows</code></pre>
+<p>Ja nüüd võime omakorda kokku lugeda, mis vormides need sõnad olid</p>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb388-1" data-line-number="1">bigrams <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb388-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(bigram,song,<span class="dt">sort=</span>T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb388-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">str_detect</span>(bigram,<span class="st">&quot;armast[ua]&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb388-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">vorm=</span><span class="kw">str_extract</span>(bigram,<span class="st">&quot;armast[ua]([a-zõäöü]+)?&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb388-5" data-line-number="5"><span class="st">  </span><span class="kw">count</span>(vorm,<span class="dt">sort=</span>T)</a></code></pre></div>
+<pre><code>## # A tibble: 21 x 2
+##    vorm           n
+##    &lt;chr&gt;      &lt;int&gt;
+##  1 armastus      66
+##  2 armastan      39
+##  3 armastust     30
+##  4 armastad      18
+##  5 armastuse     16
+##  6 armasta       14
+##  7 armastada      8
+##  8 armastab       6
+##  9 armastades     2
+## 10 armastama      2
+## # … with 11 more rows</code></pre>
+<p>Samamoodi võime võtta näiteks välja kõik sõnad, mis järgnevad sõnale armastus, ükskõik, mis vormis. Lisame otsingule sõna alguse tähise, ning võtame välja kõik, mis järgneb tühikule. Nagu arvata oli on ikka kõige sagedasemad vormid muidu ka levinud sõnad. Samas pidagem meeles, et praegu me vaatasime, mitmes laulus need fraasid on. Me võime ka vaadata mitu korda fraase esineb kokku.</p>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb390-1" data-line-number="1">bigrams <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb390-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(bigram,song,<span class="dt">sort=</span>T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb390-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">str_detect</span>(bigram,<span class="st">&quot;^armast[ua]&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb390-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">vorm=</span><span class="kw">str_extract</span>(bigram,<span class="st">&quot; [a-zõäöü]+&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb390-5" data-line-number="5"><span class="st">  </span><span class="kw">count</span>(vorm,<span class="dt">sort=</span>T)</a></code></pre></div>
+<pre><code>## # A tibble: 69 x 2
+##    vorm        n
+##    &lt;chr&gt;   &lt;int&gt;
+##  1 &quot; ja&quot;      10
+##  2 &quot; sind&quot;     6
+##  3 &quot; ma&quot;       5
+##  4 &quot; on&quot;       5
+##  5 &quot; mind&quot;     4
+##  6 &quot; ei&quot;       3
+##  7 &quot; kuid&quot;     3
+##  8 &quot; nii&quot;      3
+##  9 &quot; käib&quot;     2
+## 10 &quot; kui&quot;      2
+## # … with 59 more rows</code></pre>
+<p>Tidyverse %&gt;% märgiga kirjutatud koodis on selleks hea võimalus. Me võime lihtsalt mõne käsu välja kommenteerida # trellidega.</p>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb392-1" data-line-number="1">bigrams <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb392-2" data-line-number="2"><span class="st">  </span><span class="co">#count(bigram,song,sort=T) %&gt;%</span></a>
+<a class="sourceLine" id="cb392-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">str_detect</span>(bigram,<span class="st">&quot;^armast[ua]&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb392-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">vorm=</span><span class="kw">str_extract</span>(bigram,<span class="st">&quot; [a-zõäöü]+&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb392-5" data-line-number="5"><span class="st">  </span><span class="kw">count</span>(vorm,<span class="dt">sort=</span>T)</a></code></pre></div>
+<pre><code>## # A tibble: 69 x 2
+##    vorm            n
+##    &lt;chr&gt;       &lt;int&gt;
+##  1 &quot; on&quot;          52
+##  2 &quot; ja&quot;          16
+##  3 &quot; ma&quot;          15
+##  4 &quot; armastus&quot;    13
+##  5 &quot; sind&quot;         9
+##  6 &quot; kaua&quot;         6
+##  7 &quot; kuid&quot;         5
+##  8 &quot; mind&quot;         5
+##  9 &quot; tunda&quot;        5
+## 10 &quot; kui&quot;          4
+## # … with 59 more rows</code></pre>
+<p>Proovige leida, mis vormides ‘eesti’ lauludes esineb.</p>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb394-1" data-line-number="1"><span class="co">#---------------------------------------------</span></a>
+<a class="sourceLine" id="cb394-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb394-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb394-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb394-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb394-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb394-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb394-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb394-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb394-10" data-line-number="10"><span class="co">#---------------------------------------------</span></a></code></pre></div>
+</div>
+<div id="trigrammid" class="section level2">
+<h2><span class="header-section-number">6.4</span> Trigrammid</h2>
+<p>Sarnaselt bigrammidele saame unnest_tokens() parameetreid sättides võtta tekstidest välja ka trigrammid.</p>
+<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb395-1" data-line-number="1">trigrams &lt;-<span class="st"> </span>firstsongs <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb395-2" data-line-number="2"><span class="st">  </span><span class="kw">unnest_tokens</span>(trigram, lyrics, <span class="dt">token =</span> <span class="st">&quot;ngrams&quot;</span>, <span class="dt">n =</span> <span class="dv">3</span>, <span class="dt">n_min =</span> <span class="dv">3</span>)</a></code></pre></div>
+<p>Võime neid samuti loendada.</p>
+<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb396-1" data-line-number="1">trigrams <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb396-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(trigram,<span class="dt">sort=</span>T)</a></code></pre></div>
+<pre><code>## # A tibble: 99,130 x 2
+##    trigram            n
+##    &lt;chr&gt;          &lt;int&gt;
+##  1 &lt;NA&gt;             177
+##  2 na na na         142
+##  3 ma ei saa         60
+##  4 o o o             53
+##  5 oh oh oh          51
+##  6 oo oo oo          45
+##  7 la la la          44
+##  8 pappi ei saagi    42
+##  9 me pappi ei       41
+## 10 veel ja veel      41
+## # … with 99,120 more rows</code></pre>
+<p>Ja võime ka nende kordusi loendada.</p>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb398-1" data-line-number="1">trigrams <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb398-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(artist,song) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb398-3" data-line-number="3"><span class="st">  </span><span class="kw">count</span>(trigram,<span class="dt">sort=</span>T)</a></code></pre></div>
+<pre><code>## # A tibble: 103,823 x 4
+## # Groups:   artist, song [946]
+##    artist                          song              trigram             n
+##    &lt;chr&gt;                           &lt;chr&gt;             &lt;chr&gt;           &lt;int&gt;
+##  1 the tuberkuloited               tantsin valssi    na na na           64
+##  2 tuberkuloited &amp; urmas voolpriit tantsin valssi    na na na           64
+##  3 toe tag                         pankrot           pappi ei saagi     42
+##  4 toe tag                         pankrot           me pappi ei        41
+##  5 getter jaani ja koit toome      rannamaja         oo oo oo           40
+##  6 kerli                           army of love      love to love       40
+##  7 cool d                          kas sa kuuled     kas sa kuuled      30
+##  8 suur papa                       estonian business nii faking teha    30
+##  9 suur papa                       estonian business võid nii faking    30
+## 10 vanilla ninja                   liar              oh oh oh           28
+## # … with 103,813 more rows</code></pre>
+<p>Kombineerides olemasolevaid käske võime nüüd näiteks otsida välja kõik fraasid, kus esineb sama sõna nii alguses kui lõpus. Me teame, et ^ märk tähistab rea algust ja et $ märk tähistab rea lõppu (vaata regulaaravaldiste juhendit moodle-is). Kui me nüüd võtame välja antud tabelist kõik esimesed ja viimased sõnad ja filtreerime välja ainult read, kus need on sama sõna, saamegi kätte oodatud tulemuse. Päris suur hulk fraase on sellist, kus on sees selline sõnakordus.</p>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb400-1" data-line-number="1">trigrams <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb400-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(artist,song) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb400-3" data-line-number="3"><span class="st">  </span><span class="kw">count</span>(trigram,<span class="dt">sort=</span>T) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb400-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">firstw=</span><span class="kw">str_extract</span>(trigram,<span class="st">&quot;^[a-zõäöü]+&quot;</span>),<span class="dt">lastw=</span><span class="kw">str_extract</span>(trigram,<span class="st">&quot;[a-zõäöü]+$&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb400-5" data-line-number="5"><span class="st">  </span><span class="kw">filter</span>(firstw<span class="op">==</span>lastw)</a></code></pre></div>
+<pre><code>## # A tibble: 1,125 x 6
+## # Groups:   artist, song [445]
+##    artist               song       trigram                   n firstw   lastw   
+##    &lt;chr&gt;                &lt;chr&gt;      &lt;chr&gt;                 &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;   
+##  1 the tuberkuloited    tantsin v… na na na                 64 na       na      
+##  2 tuberkuloited &amp; urm… tantsin v… na na na                 64 na       na      
+##  3 getter jaani ja koi… rannamaja  oo oo oo                 40 oo       oo      
+##  4 kerli                army of l… love to love             40 love     love    
+##  5 vanilla ninja        liar       oh oh oh                 28 oh       oh      
+##  6 dagö                 välismaa   pool anna pool           26 pool     pool    
+##  7 planeet              satelliid… satelliidid satellii…    26 satelli… satelli…
+##  8 dagö                 välismaa   anna pool anna           24 anna     anna    
+##  9 hu?                  elupõleta… ei ei ei                 24 ei       ei      
+## 10 n-euro               vesi peale peale vesi peale         24 peale    peale   
+## # … with 1,115 more rows</code></pre>
+<p>Keskmise sõna saaks kätte otsides sõnaäärseid tühikuid str_extract(trigram, &quot; [a-zõäöü]+ &quot;). Olles eraldanud sõna eraldi tulpa, võime sama tulpa käsitleda ka tekstina järgmisteks operatsioonideks. Kasutades olemasolevat informatsiooni, leia kõik fraasid, kus kõik kolm sõna on täpselt samad.</p>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb402-1" data-line-number="1"><span class="co">#---------------------------------------------</span></a>
+<a class="sourceLine" id="cb402-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb402-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb402-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb402-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb402-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb402-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb402-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb402-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb402-10" data-line-number="10"><span class="co">#---------------------------------------------</span></a></code></pre></div>
+</div>
+<div id="märksõnade-leidmine" class="section level2">
+<h2><span class="header-section-number">6.5</span> Märksõnade leidmine</h2>
+<p>Siiani oleme püüdnud leida tekstist meid huvitavaid sõnu eemaldades ebahuvitavad stopsõnad või otsides konkreetseid fraase, mis meile silma jäävad. Tekstitöötluses on üpris palju eri meetodeid ka selleks, et püüda välja arvutada huvitavad sõnad või fraasid mõne teksti kohta. Antconc-is sai seda teha märksõnaotsingu alusel - mida suurem keyness väärtus märksõnal oli, seda rohkem ta oli eriline sellele tekstile.</p>
+<p>Üks viis selliseid märksõnu leida, mis on ka tidytext paketti sisse kirjutatud on tf-idf, see tähendab term frequency - inverse document frequency. Loe täpsemat sisu siit <a href="https://en.wikipedia.org/wiki/Tf-idf" class="uri">https://en.wikipedia.org/wiki/Tf-idf</a>. Selle valemi aluseks on vaist, et kui sõna on sage ühes dokumendis, aga seda teistes tekstides tihti ei leidu, võiks seda pidada seda teksti eristavaks teistest ehk selle teksti märksõnaks. Selle arvutamiseks loetakse kokku kui palju on üht sõna konkreetses tekstis või tekstide kogumis ning korrutatakse läbi arvuga, mis iseloomustab kui paljudes tekstides seda on. Erinevaid variante sellest valemist on mitmeid ja see, milline neist on sobivaim konkreetse küsimuse lahendamiseks võib sõltuda korpuse suurusest, iseloomust või küsimusest endast. Üldjoontes annavad enamik neist mõistlikke tulemusi.</p>
+<p>Niisiis, sõna, mis on üldiselt korpuses haruldane, aga sage selles tekstis on sõna, võiks olla selle teksti jaoks eristavaks märksõnaks. Sõnad, mida on palju kõikides tekstides ei erista seda teksti teistest. Samas sõnad, mis on eriti sagedased ühes tekstis võivad siiski osutuda märksõnadeks isegi kui neid on paljudes muudes tekstideski. Teisest küljest sõnad on üldiselt haruldased ning esinevad selles tekstis ainult paar korda, võivad nad juba hästi eristada seda teksti teistest. Tulemus sõltub täpsest valemist, mida on hetkel rakendatud.</p>
+<p>Tidytext paketis on selle hõlpsaks leidmiseks olemas oma käsk bind_tf_idf(). See käsk liidab andmestikule tf-idf märksõnalisuse määrad. bind_tf_idf() võtab sisendiks sõna, grupeeriva tulba ning sõna sageduse igas grupis ning võrdleb seda sõna esinemisega teistes gruppides. Käsk teeb arvutustöö kõikide sõnade kohta ning liidab tulemused andmestikuga. Mida suurem on tf-idf, seda märgilisem on see sõna selle grupi jaoks.</p>
+<p>Niisiis, saame käsu abiga hõlpsasti tuvastada teatud gruppi eristavad sõnad. Näiteks arvutame alustuseks artiste eristavad sõnad. Arvutame artiste teistest eristavad sõnad. Kuna me oleme seni kasutanud peatükis ainult fraase, siis arvutame kõigepealt laulusõnad.</p>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb403-1" data-line-number="1">laulusonad &lt;-<span class="st"> </span>edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb403-2" data-line-number="2"><span class="st">  </span><span class="kw">unnest_tokens</span>(word,lyrics)</a></code></pre></div>
+<p>Leidmaks tf-idf märksõnu, loendame sõnu artistide kaupa ning siis juhendame, bind_tf_idf() funktsiooni, et ta kasutaks seda informatsiooni oma mõõdikute välja arvutamiseks. Lõpuks järjestame sõnad tf_idf alusel, kus suurem väärtus näitam suuremat eristusjõudu.</p>
+<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb404-1" data-line-number="1">tf_idf &lt;-<span class="st"> </span>laulusonad <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb404-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(artist) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb404-3" data-line-number="3"><span class="st">  </span><span class="kw">count</span>(word) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb404-4" data-line-number="4"><span class="st">  </span><span class="kw">bind_tf_idf</span>(word, artist,n) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb404-5" data-line-number="5"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(tf_idf))</a></code></pre></div>
+<p>Vaatame tabelit esialgu ise lähemalt.</p>
+<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb405-1" data-line-number="1"><span class="kw">View</span>(tf_idf)</a></code></pre></div>
+<p>Tabelis näeme, et eristavad sõnad on väga tihti needsamad, mis olid väga sagedased teatud artistidele. See on parasjagu nii, kuna need olid ühtlasi sõnad, mida teised artistid kasutasid väga vähe. Näiteks satelliidid, Maiu ja piimaauto on üldiselt lauludes harva kasutatavad sõnad.</p>
+<p>Põnevamaks muutub see määr kui püüda vaadata mõne konkreetse artisti eristavaid märksõnu.Smilersi puhul on levinud sõnad ja, ma, ei ikkagi tipus, kuna neid kasutatakse nende lugudes läbivalt väga palju. Haruldasemad sõnad ilmnevad hiljem, aga on siiski kohal teises kümendis</p>
+<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb406-1" data-line-number="1">laulusonad <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb406-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(artist) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb406-3" data-line-number="3"><span class="st">  </span><span class="kw">count</span>(word) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb406-4" data-line-number="4"><span class="st">  </span><span class="kw">bind_tf_idf</span>(word, artist,n) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb406-5" data-line-number="5"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(tf_idf)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb406-6" data-line-number="6"><span class="st">  </span><span class="kw">filter</span>(artist<span class="op">==</span><span class="st">&quot;Smilers&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb406-7" data-line-number="7"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">row_number</span>()<span class="op">&lt;</span><span class="dv">21</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 20 x 6
+## # Groups:   artist [1]
+##    artist  word         n      tf   idf  tf_idf
+##    &lt;chr&gt;   &lt;chr&gt;    &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
+##  1 Smilers ja         290 0.0426  0.544 0.0232 
+##  2 Smilers ma         196 0.0288  0.676 0.0195 
+##  3 Smilers ei         179 0.0263  0.605 0.0159 
+##  4 Smilers oooo        24 0.00352 4.24  0.0150 
+##  5 Smilers on         234 0.0344  0.363 0.0125 
+##  6 Smilers sa          94 0.0138  0.862 0.0119 
+##  7 Smilers et          95 0.0140  0.783 0.0109 
+##  8 Smilers shalala     12 0.00176 5.85  0.0103 
+##  9 Smilers kao         15 0.00220 4.24  0.00935
+## 10 Smilers kui         99 0.0145  0.643 0.00934
+## 11 Smilers segamini    12 0.00176 5.16  0.00909
+## 12 Smilers kummagi     10 0.00147 5.85  0.00859
+## 13 Smilers mingil      10 0.00147 5.85  0.00859
+## 14 Smilers mojito      10 0.00147 5.85  0.00859
+## 15 Smilers mind        63 0.00925 0.918 0.00849
+## 16 Smilers ainult      31 0.00455 1.86  0.00848
+## 17 Smilers mida        39 0.00573 1.47  0.00842
+## 18 Smilers kuhugi      16 0.00235 3.55  0.00834
+## 19 Smilers põleda      11 0.00162 5.16  0.00833
+## 20 Smilers seisan      19 0.00279 2.96  0.00826</code></pre>
+<p>Artistil, millel on lugusid korpuses vähem, on ka rohkem esil mõne üksiku loo märksõnad. Näiteks Nublul on korpuses kaks lugu ning sõnad, mis kordusid neis lugudes tihti, on selgelt esil. Nt ou, mina, ka.</p>
+<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb408-1" data-line-number="1">laulusonad <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb408-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(artist) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb408-3" data-line-number="3"><span class="st">  </span><span class="kw">count</span>(word) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb408-4" data-line-number="4"><span class="st">  </span><span class="kw">bind_tf_idf</span>(word, artist,n) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb408-5" data-line-number="5"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(tf_idf)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb408-6" data-line-number="6"><span class="st">  </span><span class="kw">filter</span>(artist<span class="op">==</span><span class="st">&quot;Nublu&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 312 x 6
+## # Groups:   artist [1]
+##    artist word           n      tf   idf tf_idf
+##    &lt;chr&gt;  &lt;chr&gt;      &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+##  1 Nublu  ou            22 0.0280   4.47 0.125 
+##  2 Nublu  mina          29 0.0369   2.14 0.0790
+##  3 Nublu  ka            39 0.0497   1.34 0.0666
+##  4 Nublu  pa            10 0.0127   4.47 0.0569
+##  5 Nublu  parap          6 0.00764  5.85 0.0447
+##  6 Nublu  peale         12 0.0153   2.21 0.0339
+##  7 Nublu  nagu          18 0.0229   1.46 0.0334
+##  8 Nublu  bonnie         4 0.00510  5.85 0.0298
+##  9 Nublu  cappuccino     4 0.00510  5.85 0.0298
+## 10 Nublu  clyde          4 0.00510  5.85 0.0298
+## # … with 302 more rows</code></pre>
+<p>Mõnikord ei kasutatudki palju erinevaid sõnu. Näiteks artistil Koer saab need sõnad peaaegu kahe käe sõrmedel kokku lugeda ja ainult seetõttu, et ühe sõna iga täht on ka eraldi välja öeldud. Siiski on näha, et ‘on’ on neil kõige vähem eristavam sõna.</p>
+<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb410-1" data-line-number="1">laulusonad <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb410-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(artist) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb410-3" data-line-number="3"><span class="st">  </span><span class="kw">count</span>(word) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb410-4" data-line-number="4"><span class="st">  </span><span class="kw">bind_tf_idf</span>(word, artist,n) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb410-5" data-line-number="5"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(tf_idf)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb410-6" data-line-number="6"><span class="st">  </span><span class="kw">filter</span>(artist<span class="op">==</span><span class="st">&quot;Koer&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 11 x 6
+## # Groups:   artist [1]
+##    artist word          n     tf   idf tf_idf
+##    &lt;chr&gt;  &lt;chr&gt;     &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+##  1 Koer   maiu         16 0.205  5.85  1.20  
+##  2 Koer   piimaauto    16 0.205  5.85  1.20  
+##  3 Koer   u             4 0.0513 3.45  0.177 
+##  4 Koer   m             4 0.0513 3.29  0.169 
+##  5 Koer   o             4 0.0513 3.29  0.169 
+##  6 Koer   i             6 0.0769 1.55  0.119 
+##  7 Koer   a             6 0.0769 1.52  0.117 
+##  8 Koer   p             2 0.0256 4.47  0.115 
+##  9 Koer   n             2 0.0256 3.91  0.100 
+## 10 Koer   t             2 0.0256 2.96  0.0759
+## 11 Koer   on           16 0.205  0.363 0.0745</code></pre>
+<p>Keskmise laulude hulgaga artistidel tulevad samuti märksõnad üksikutest lauludest esile. Nt Kuldsel Triol hopp, johanna, vodka, laika jne on kõik sõnad, mis on korpuses üldiselt väga haruldased, aga nende lugude seas piisavalt sagedased. See, millised sõnad selle valemiga esile tulevad sõltub niisiis nii korpuse iseloomust kui ka tekstide enda suurusest ja kujust. Selleks, et nendest seostest paremini aru saada, tasub katsetada erinevate tekstide puhul, et mis märksõnad peale jäävad. Mõnikord võib lisada neile lisafiltreid - näiteks jätta üldse kõrvale sõnad, mis on väga haruldased või väga tihti kasutatud.</p>
+<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb412-1" data-line-number="1">laulusonad <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb412-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(artist) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb412-3" data-line-number="3"><span class="st">  </span><span class="kw">count</span>(word) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb412-4" data-line-number="4"><span class="st">  </span><span class="kw">bind_tf_idf</span>(word, artist,n) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb412-5" data-line-number="5"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(tf_idf)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb412-6" data-line-number="6"><span class="st">  </span><span class="kw">filter</span>(artist<span class="op">==</span><span class="st">&quot;Kuldne Trio&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 266 x 6
+## # Groups:   artist [1]
+##    artist      word           n      tf   idf tf_idf
+##    &lt;chr&gt;       &lt;chr&gt;      &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+##  1 Kuldne Trio hopp          30 0.0459   5.85 0.269 
+##  2 Kuldne Trio johanna       30 0.0459   5.85 0.269 
+##  3 Kuldne Trio vodka         30 0.0459   5.85 0.269 
+##  4 Kuldne Trio laika         16 0.0245   5.16 0.126 
+##  5 Kuldne Trio russkaja      14 0.0214   5.85 0.125 
+##  6 Kuldne Trio tantsi        15 0.0230   4.06 0.0933
+##  7 Kuldne Trio rossija        8 0.0123   5.85 0.0717
+##  8 Kuldne Trio kotka          4 0.00613  5.85 0.0358
+##  9 Kuldne Trio varblasest     4 0.00613  5.85 0.0358
+## 10 Kuldne Trio kuni          10 0.0153   2.33 0.0356
+## # … with 256 more rows</code></pre>
+<p>Proovi ise! Vali välja üks artist ning leia selle artisti kõige eristavamad sõnad.</p>
+<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb414-1" data-line-number="1"><span class="co">#---------------------------------------------</span></a>
+<a class="sourceLine" id="cb414-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb414-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb414-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb414-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb414-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb414-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb414-8" data-line-number="8"><span class="co">#---------------------------------------------</span></a></code></pre></div>
+<p>Proovi ise! Vali välja ka üks laul ning proovi leida eristavad sõnad selle laulu kohta.</p>
+<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb415-1" data-line-number="1"><span class="co">#---------------------------------------------</span></a>
+<a class="sourceLine" id="cb415-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb415-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb415-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb415-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb415-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb415-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb415-8" data-line-number="8"><span class="co">#---------------------------------------------</span></a></code></pre></div>
+</div>
+<div id="sõnastik-2" class="section level2">
+<h2><span class="header-section-number">6.6</span> Sõnastik</h2>
+<ul>
+<li>unnest_tokens() - segmenteeri tekst ühikute kaupa</li>
+<li>unnest_tokens(word, lyrics, token = “ngrams”, n = 1, n_min = 1) - segmenteeri tekst sõnedeks</li>
+<li>unnest_tokens(bigram, lyrics, token = “ngrams”, n = 2, n_min = 2) - segmenteeri tekst bigrammideks</li>
+<li>unnest_tokens(trigram, lyrics, token = “ngrams”, n = 3, n_min = 3) - segmenteeri tekst trigrammideks</li>
+<li>str_detect(muutuja, “sõne”) - kontrolli, kas tekstis on selline järjend. võib kasutada regulaaravaldisi</li>
+<li>str_extract(muutuja, “sõne”) - võta välja tekstist sellele järjendile vastavad osad. võib kasutada regulaaravaldisi</li>
+<li>bind_tf_idf() - liidab andmestikule tf-idf märksõnalisuse määrad</li>
+</ul>
+</div>
+<div id="harjutusülesanded-2" class="section level2">
+<h2><span class="header-section-number">6.7</span> Harjutusülesanded</h2>
+<ol style="list-style-type: decimal">
+<li><p>Leia populaarseimad bigrammid 1990ndatel aastatel.</p></li>
+<li><p>Leia kõik trigrammid, mis algavad sõnaga “ma”</p></li>
+<li><p>Leia kõige rohkem ühe loo sees korduvad trigrammid.</p></li>
+<li><p>Millised märksõnad eristavad aastat 2000 teistest aastatest?</p></li>
+<li><p>Millised märksõnad eristavad eristavad Smilersi edukaimat laulu teistest Smilersi lauludest?</p></li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="tekstitöötlus-tidyverseis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="graafikute-loomine.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

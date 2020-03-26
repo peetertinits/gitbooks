@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Peatükk 5 Tekstitöötlus tidyverse’is | Lihtne tekstitöötlus R-is ja tidyverse’is</title>
+  <meta name="description" content="Peatükk 5 Tekstitöötlus tidyverse’is | Lihtne tekstitöötlus R-is ja tidyverse’is" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Peatükk 5 Tekstitöötlus tidyverse’is | Lihtne tekstitöötlus R-is ja tidyverse’is" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Peatükk 5 Tekstitöötlus tidyverse’is | Lihtne tekstitöötlus R-is ja tidyverse’is" />
+  
+  
+  
+
+<meta name="author" content="Peeter Tinits" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="tidyverse.html"/>
+<link rel="next" href="mitmikud-regulaaravaldised-ja-märksõnad.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Tekstitöötlus R-is ja tidyverse-is</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#juhend"><i class="fa fa-check"></i><b>1.1</b> Juhend</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#sisukord"><i class="fa fa-check"></i><b>1.2</b> Sisukord</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="mis-on-r-mis-on-rstudio.html"><a href="mis-on-r-mis-on-rstudio.html"><i class="fa fa-check"></i><b>2</b> Mis on R? Mis on RStudio?</a><ul>
+<li class="chapter" data-level="2.1" data-path="mis-on-r-mis-on-rstudio.html"><a href="mis-on-r-mis-on-rstudio.html#rstudio-oma-arvutis"><i class="fa fa-check"></i><b>2.1</b> RStudio oma arvutis</a></li>
+<li class="chapter" data-level="2.2" data-path="mis-on-r-mis-on-rstudio.html"><a href="mis-on-r-mis-on-rstudio.html#installimine"><i class="fa fa-check"></i><b>2.2</b> Installimine</a></li>
+<li class="chapter" data-level="2.3" data-path="mis-on-r-mis-on-rstudio.html"><a href="mis-on-r-mis-on-rstudio.html#rstudio-cloud"><i class="fa fa-check"></i><b>2.3</b> Rstudio Cloud</a></li>
+<li class="chapter" data-level="2.4" data-path="mis-on-r-mis-on-rstudio.html"><a href="mis-on-r-mis-on-rstudio.html#materjalide-avamine"><i class="fa fa-check"></i><b>2.4</b> Materjalide avamine</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="mis-on-r-mis-on-rstudio.html"><a href="mis-on-r-mis-on-rstudio.html#isiklikus-arvutis"><i class="fa fa-check"></i><b>2.4.1</b> Isiklikus arvutis</a></li>
+<li class="chapter" data-level="2.4.2" data-path="mis-on-r-mis-on-rstudio.html"><a href="mis-on-r-mis-on-rstudio.html#pilves"><i class="fa fa-check"></i><b>2.4.2</b> Pilves</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="mis-on-r-mis-on-rstudio.html"><a href="mis-on-r-mis-on-rstudio.html#rstudio-tutvustus"><i class="fa fa-check"></i><b>2.5</b> RStudio tutvustus</a></li>
+<li class="chapter" data-level="2.6" data-path="mis-on-r-mis-on-rstudio.html"><a href="mis-on-r-mis-on-rstudio.html#stiilisoovitus"><i class="fa fa-check"></i><b>2.6</b> Stiilisoovitus</a></li>
+<li class="chapter" data-level="2.7" data-path="mis-on-r-mis-on-rstudio.html"><a href="mis-on-r-mis-on-rstudio.html#soovitatav-kirjandus"><i class="fa fa-check"></i><b>2.7</b> Soovitatav kirjandus</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="alused.html"><a href="alused.html"><i class="fa fa-check"></i><b>3</b> Alused</a><ul>
+<li class="chapter" data-level="3.1" data-path="alused.html"><a href="alused.html#r-ja-käsud"><i class="fa fa-check"></i><b>3.1</b> R ja käsud</a></li>
+<li class="chapter" data-level="3.2" data-path="alused.html"><a href="alused.html#r-lihtsa-kalkulaatorina"><i class="fa fa-check"></i><b>3.2</b> R lihtsa kalkulaatorina</a></li>
+<li class="chapter" data-level="3.3" data-path="alused.html"><a href="alused.html#tulemuste-salvestamine"><i class="fa fa-check"></i><b>3.3</b> Tulemuste salvestamine</a></li>
+<li class="chapter" data-level="3.4" data-path="alused.html"><a href="alused.html#tehete-järjekord"><i class="fa fa-check"></i><b>3.4</b> Tehete järjekord</a></li>
+<li class="chapter" data-level="3.5" data-path="alused.html"><a href="alused.html#võrdused-ja-võrratused"><i class="fa fa-check"></i><b>3.5</b> Võrdused ja võrratused</a></li>
+<li class="chapter" data-level="3.6" data-path="alused.html"><a href="alused.html#muutujate-nimed-ja-tekst"><i class="fa fa-check"></i><b>3.6</b> Muutujate nimed ja tekst</a></li>
+<li class="chapter" data-level="3.7" data-path="alused.html"><a href="alused.html#jadad"><i class="fa fa-check"></i><b>3.7</b> Jadad</a></li>
+<li class="chapter" data-level="3.8" data-path="alused.html"><a href="alused.html#r-paketid"><i class="fa fa-check"></i><b>3.8</b> R paketid</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>4</b> Tidyverse</a><ul>
+<li class="chapter" data-level="4.1" data-path="tidyverse.html"><a href="tidyverse.html#paketid"><i class="fa fa-check"></i><b>4.1</b> Paketid</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="tidyverse.html"><a href="tidyverse.html#tidyverse-arvutiklassis"><i class="fa fa-check"></i><b>4.1.1</b> Tidyverse arvutiklassis</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="tidyverse.html"><a href="tidyverse.html#r-ja-andmed"><i class="fa fa-check"></i><b>4.2</b> R ja andmed</a></li>
+<li class="chapter" data-level="4.3" data-path="tidyverse.html"><a href="tidyverse.html#tidy-andmestruktuurid"><i class="fa fa-check"></i><b>4.3</b> Tidy andmestruktuurid</a></li>
+<li class="chapter" data-level="4.4" data-path="tidyverse.html"><a href="tidyverse.html#tidyverse-andmetöötlus"><i class="fa fa-check"></i><b>4.4</b> Tidyverse andmetöötlus</a></li>
+<li class="chapter" data-level="4.5" data-path="tidyverse.html"><a href="tidyverse.html#filter-select-unique-sample_n"><i class="fa fa-check"></i><b>4.5</b> filter(), select(), unique(), sample_n()</a></li>
+<li class="chapter" data-level="4.6" data-path="tidyverse.html"><a href="tidyverse.html#count-group_by"><i class="fa fa-check"></i><b>4.6</b> count(), group_by()</a></li>
+<li class="chapter" data-level="4.7" data-path="tidyverse.html"><a href="tidyverse.html#arrange-mutate-row_number-summarise-n"><i class="fa fa-check"></i><b>4.7</b> arrange(), mutate(), row_number(), summarise(), n()</a></li>
+<li class="chapter" data-level="4.8" data-path="tidyverse.html"><a href="tidyverse.html#group_by-kasutamine"><i class="fa fa-check"></i><b>4.8</b> group_by() kasutamine</a></li>
+<li class="chapter" data-level="4.9" data-path="tidyverse.html"><a href="tidyverse.html#käskude-ühendamine"><i class="fa fa-check"></i><b>4.9</b> Käskude ühendamine</a></li>
+<li class="chapter" data-level="4.10" data-path="tidyverse.html"><a href="tidyverse.html#uue-muutuja-loomine"><i class="fa fa-check"></i><b>4.10</b> Uue muutuja loomine</a></li>
+<li class="chapter" data-level="4.11" data-path="tidyverse.html"><a href="tidyverse.html#sõnastik"><i class="fa fa-check"></i><b>4.11</b> Sõnastik</a></li>
+<li class="chapter" data-level="4.12" data-path="tidyverse.html"><a href="tidyverse.html#harjutusülesanded"><i class="fa fa-check"></i><b>4.12</b> Harjutusülesanded</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="tekstitöötlus-tidyverseis.html"><a href="tekstitöötlus-tidyverseis.html"><i class="fa fa-check"></i><b>5</b> Tekstitöötlus tidyverse’is</a><ul>
+<li class="chapter" data-level="5.1" data-path="tekstitöötlus-tidyverseis.html"><a href="tekstitöötlus-tidyverseis.html#unnest_tokens"><i class="fa fa-check"></i><b>5.1</b> unnest_tokens()</a></li>
+<li class="chapter" data-level="5.2" data-path="tekstitöötlus-tidyverseis.html"><a href="tekstitöötlus-tidyverseis.html#sagedussõnastikud"><i class="fa fa-check"></i><b>5.2</b> Sagedussõnastikud</a></li>
+<li class="chapter" data-level="5.3" data-path="tekstitöötlus-tidyverseis.html"><a href="tekstitöötlus-tidyverseis.html#stopsõnad"><i class="fa fa-check"></i><b>5.3</b> Stopsõnad</a></li>
+<li class="chapter" data-level="5.4" data-path="tekstitöötlus-tidyverseis.html"><a href="tekstitöötlus-tidyverseis.html#võrdlus-teise-korpusega"><i class="fa fa-check"></i><b>5.4</b> Võrdlus teise korpusega</a></li>
+<li class="chapter" data-level="5.5" data-path="tekstitöötlus-tidyverseis.html"><a href="tekstitöötlus-tidyverseis.html#kordused-laulu-sees"><i class="fa fa-check"></i><b>5.5</b> Kordused laulu sees</a></li>
+<li class="chapter" data-level="5.6" data-path="tekstitöötlus-tidyverseis.html"><a href="tekstitöötlus-tidyverseis.html#asukoht-tekstis"><i class="fa fa-check"></i><b>5.6</b> Asukoht tekstis</a></li>
+<li class="chapter" data-level="5.7" data-path="tekstitöötlus-tidyverseis.html"><a href="tekstitöötlus-tidyverseis.html#sõnastik-1"><i class="fa fa-check"></i><b>5.7</b> Sõnastik</a></li>
+<li class="chapter" data-level="5.8" data-path="tekstitöötlus-tidyverseis.html"><a href="tekstitöötlus-tidyverseis.html#harjutusülesanded-1"><i class="fa fa-check"></i><b>5.8</b> Harjutusülesanded</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="mitmikud-regulaaravaldised-ja-märksõnad.html"><a href="mitmikud-regulaaravaldised-ja-märksõnad.html"><i class="fa fa-check"></i><b>6</b> Mitmikud, regulaaravaldised ja märksõnad</a><ul>
+<li class="chapter" data-level="6.1" data-path="mitmikud-regulaaravaldised-ja-märksõnad.html"><a href="mitmikud-regulaaravaldised-ja-märksõnad.html#bigrammid"><i class="fa fa-check"></i><b>6.1</b> Bigrammid</a></li>
+<li class="chapter" data-level="6.2" data-path="mitmikud-regulaaravaldised-ja-märksõnad.html"><a href="mitmikud-regulaaravaldised-ja-märksõnad.html#valimi-parandamine"><i class="fa fa-check"></i><b>6.2</b> Valimi parandamine</a></li>
+<li class="chapter" data-level="6.3" data-path="mitmikud-regulaaravaldised-ja-märksõnad.html"><a href="mitmikud-regulaaravaldised-ja-märksõnad.html#regulaaravaldised"><i class="fa fa-check"></i><b>6.3</b> Regulaaravaldised</a></li>
+<li class="chapter" data-level="6.4" data-path="mitmikud-regulaaravaldised-ja-märksõnad.html"><a href="mitmikud-regulaaravaldised-ja-märksõnad.html#trigrammid"><i class="fa fa-check"></i><b>6.4</b> Trigrammid</a></li>
+<li class="chapter" data-level="6.5" data-path="mitmikud-regulaaravaldised-ja-märksõnad.html"><a href="mitmikud-regulaaravaldised-ja-märksõnad.html#märksõnade-leidmine"><i class="fa fa-check"></i><b>6.5</b> Märksõnade leidmine</a></li>
+<li class="chapter" data-level="6.6" data-path="mitmikud-regulaaravaldised-ja-märksõnad.html"><a href="mitmikud-regulaaravaldised-ja-märksõnad.html#sõnastik-2"><i class="fa fa-check"></i><b>6.6</b> Sõnastik</a></li>
+<li class="chapter" data-level="6.7" data-path="mitmikud-regulaaravaldised-ja-märksõnad.html"><a href="mitmikud-regulaaravaldised-ja-märksõnad.html#harjutusülesanded-2"><i class="fa fa-check"></i><b>6.7</b> Harjutusülesanded</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="graafikute-loomine.html"><a href="graafikute-loomine.html"><i class="fa fa-check"></i><b>7</b> Graafikute loomine</a><ul>
+<li class="chapter" data-level="7.1" data-path="graafikute-loomine.html"><a href="graafikute-loomine.html#graafiku-ülesehitus"><i class="fa fa-check"></i><b>7.1</b> Graafiku ülesehitus</a></li>
+<li class="chapter" data-level="7.2" data-path="graafikute-loomine.html"><a href="graafikute-loomine.html#joonisekihtide-liigid"><i class="fa fa-check"></i><b>7.2</b> Joonisekihtide liigid</a></li>
+<li class="chapter" data-level="7.3" data-path="graafikute-loomine.html"><a href="graafikute-loomine.html#tabeli-viimistlemine"><i class="fa fa-check"></i><b>7.3</b> Tabeli viimistlemine</a></li>
+<li class="chapter" data-level="7.4" data-path="graafikute-loomine.html"><a href="graafikute-loomine.html#sõnastik-3"><i class="fa fa-check"></i><b>7.4</b> Sõnastik</a></li>
+<li class="chapter" data-level="7.5" data-path="graafikute-loomine.html"><a href="graafikute-loomine.html#harjutusülesanded-3"><i class="fa fa-check"></i><b>7.5</b> Harjutusülesanded</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Lihtne tekstitöötlus R-is ja tidyverse’is</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="tekstitöötlus-tidyverseis" class="section level1">
+<h1><span class="header-section-number">Peatükk 5</span> Tekstitöötlus tidyverse’is</h1>
+<p>Selles peatükis teeme esimest tutvust tidytext paketiga, mis on loodud tidyverse stiilis tekstitöötluseks R-is. See pakett ei suuda teha kõike ja ei pruugi olla alati ka kõige kiirem, aga teeb siiski ära lihtsama tekstitöötluse, mida meil vaja võib minna. Kui tekib huvi juurde õppida, siis selle paketi enda juhend on siin <a href="https://www.tidytextmining.com/" class="uri">https://www.tidytextmining.com/</a>.</p>
+<p>Kui me alustasime R-i programmi uuesti on tarvis kõigepealt sisse lugeda paketid.</p>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb250-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<p>tidytext pakett on tidyverse põhipaketist eraldi ning seetõttu tuleb eraldi sisse lugeda. Kui seda pole varem installitud, siis utleb ta ka installida.</p>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb251-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;tidytext&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb252-1" data-line-number="1"><span class="kw">library</span>(tidytext)</a></code></pre></div>
+<p>Kui me käivitasime R-i uuesti, siis on meil vaja töötamiseks ka andmefail uuesti sisse lugeda.</p>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb253-1" data-line-number="1">edetabel &lt;-<span class="st"> </span><span class="kw">read_tsv</span>(<span class="st">&quot;data/eesti_top40/eesti_skyplus_top40_1994-2018.tsv&quot;</span>)</a></code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   year = col_double(),
+##   rank = col_double(),
+##   votes = col_double(),
+##   artist = col_character(),
+##   song = col_character(),
+##   filename = col_character(),
+##   source = col_double(),
+##   lyrics = col_character(),
+##   language = col_character()
+## )</code></pre>
+<div id="unnest_tokens" class="section level2">
+<h2><span class="header-section-number">5.1</span> unnest_tokens()</h2>
+<p>Peamine käsk, mis aitab meil tekstidega R-is töötada on unnest_tokens(). unnest_tokens() võtab sisendiks ühe tekstitunnuse ning jaotab ta mingil alusel elementideks (tokeniseerib). Näiteks siis saab teha tekstidest sõnaloendi. Kui see on tehtud asetab ta iga elemendi omale reale, järgides tidy data põhimõtteid, et meil peaks olema üks vaatlusobjekt rea kohta. Lisaks eemaldab ta tekstist numbrid, kirjavahemärgid, suurtähed ning teeb muud eeltöötlust, et eraldada elemendid tekstist.</p>
+<p>unnest_tokens() - muudab andmestikku nii et iga tekstitunnuse element oleks omal real.</p>
+<p>Vaatame kõigepealt selle lihtsamat tulemust. Järgmine käsk võtab andmestiku tunnnuse lyrics, teeb selle elementideks (mis on vaikimisi sõnad) ning salvestab kõik ‘word’ nimelisse tulpa.</p>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb255-1" data-line-number="1">edetabel <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb255-2" data-line-number="2"><span class="st">  </span><span class="kw">unnest_tokens</span>(word,lyrics)</a></code></pre></div>
+<pre><code>## # A tibble: 157,632 x 9
+##     year  rank votes artist   song    filename         source language word     
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;             &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;    
+##  1  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       välän    
+##  2  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       külmetas 
+##  3  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       ja       
+##  4  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       taivast  
+##  5  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       satas    
+##  6  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       lummõ    
+##  7  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       ütle     
+##  8  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       mullõ    
+##  9  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       uma      
+## 10  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       telefoni…
+## # … with 157,622 more rows</code></pre>
+<p>Kui meil varem oli üks lugu tabelis iga rea kohta, siis nüüd on meil igal real üks sõna sellele kaasneva metainfoga. Ehk näha on midagi sellist.</p>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb257-1" data-line-number="1"><span class="co"># A tibble: 157,632 x 9</span></a>
+<a class="sourceLine" id="cb257-2" data-line-number="2"><span class="co"># year  rank votes artist    song      filename                   source language word          </span></a>
+<a class="sourceLine" id="cb257-3" data-line-number="3"><span class="co"># &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;                       &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;         </span></a>
+<a class="sourceLine" id="cb257-4" data-line-number="4"><span class="co">#   1  1994     1    NA Ummamuudu Kõnõtraat lyrics-ummamuudu-konotraat      1 et       välän         </span></a>
+<a class="sourceLine" id="cb257-5" data-line-number="5"><span class="co"># 2  1994     1    NA Ummamuudu Kõnõtraat lyrics-ummamuudu-konotraat      1 et       külmetas      </span></a>
+<a class="sourceLine" id="cb257-6" data-line-number="6"><span class="co"># 3  1994     1    NA Ummamuudu Kõnõtraat lyrics-ummamuudu-konotraat      1 et       ja            </span></a>
+<a class="sourceLine" id="cb257-7" data-line-number="7"><span class="co"># 4  1994     1    NA Ummamuudu Kõnõtraat lyrics-ummamuudu-konotraat      1 et       taivast       </span></a>
+<a class="sourceLine" id="cb257-8" data-line-number="8"><span class="co"># 5  1994     1    NA Ummamuudu Kõnõtraat lyrics-ummamuudu-konotraat      1 et       satas         </span></a>
+<a class="sourceLine" id="cb257-9" data-line-number="9"><span class="co"># 6  1994     1    NA Ummamuudu Kõnõtraat lyrics-ummamuudu-konotraat      1 et       lummõ    </span></a></code></pre></div>
+<p>Kuna me kasutame seda andmekuju korduvalt ja tokeniseerimine võtab iga kord veidi aega, salvestame selle töötluse tulemuse ja viitame edaspidi juba töötluse lõpptulemusele.</p>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb258-1" data-line-number="1">laulusonad &lt;-<span class="st"> </span>edetabel <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb258-2" data-line-number="2"><span class="st">  </span><span class="kw">unnest_tokens</span>(word,lyrics)</a></code></pre></div>
+<p>Selle tabeliga saame teha samasuguseid operatsioone kui edetabeliga enne. Näiteks võime võtta kõik sõnad, mis on ühelt bändilt.</p>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb259-1" data-line-number="1">laulusonad <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb259-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(artist<span class="op">==</span><span class="st">&quot;Smilers&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 6,809 x 9
+##     year  rank votes artist  song      filename           source language word  
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;               &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt; 
+##  1  1996     4  1192 Smilers Tahan Si… lyrics-smilers-ta…      1 et       hella…
+##  2  1996     4  1192 Smilers Tahan Si… lyrics-smilers-ta…      1 et       luban 
+##  3  1996     4  1192 Smilers Tahan Si… lyrics-smilers-ta…      1 et       sind  
+##  4  1996     4  1192 Smilers Tahan Si… lyrics-smilers-ta…      1 et       hoida 
+##  5  1996     4  1192 Smilers Tahan Si… lyrics-smilers-ta…      1 et       ma    
+##  6  1996     4  1192 Smilers Tahan Si… lyrics-smilers-ta…      1 et       ja    
+##  7  1996     4  1192 Smilers Tahan Si… lyrics-smilers-ta…      1 et       käia  
+##  8  1996     4  1192 Smilers Tahan Si… lyrics-smilers-ta…      1 et       sind  
+##  9  1996     4  1192 Smilers Tahan Si… lyrics-smilers-ta…      1 et       linna 
+## 10  1996     4  1192 Smilers Tahan Si… lyrics-smilers-ta…      1 et       peal  
+## # … with 6,799 more rows</code></pre>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb261-1" data-line-number="1">laulusonad <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb261-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(artist<span class="op">==</span><span class="st">&quot;Terminaator&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 7,006 x 9
+##     year  rank votes artist     song  filename            source language word  
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;                &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt; 
+##  1  1994     8    NA Terminaat… Torm  lyrics-terminaator…      1 et       olen  
+##  2  1994     8    NA Terminaat… Torm  lyrics-terminaator…      1 et       tulnud
+##  3  1994     8    NA Terminaat… Torm  lyrics-terminaator…      1 et       liiga 
+##  4  1994     8    NA Terminaat… Torm  lyrics-terminaator…      1 et       pikalt
+##  5  1994     8    NA Terminaat… Torm  lyrics-terminaator…      1 et       teelt 
+##  6  1994     8    NA Terminaat… Torm  lyrics-terminaator…      1 et       tühja 
+##  7  1994     8    NA Terminaat… Torm  lyrics-terminaator…      1 et       maja  
+##  8  1994     8    NA Terminaat… Torm  lyrics-terminaator…      1 et       leids…
+##  9  1994     8    NA Terminaat… Torm  lyrics-terminaator…      1 et       enda  
+## 10  1994     8    NA Terminaat… Torm  lyrics-terminaator…      1 et       eest  
+## # … with 6,996 more rows</code></pre>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb263-1" data-line-number="1">laulusonad <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb263-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(artist<span class="op">==</span><span class="st">&quot;Ummamuudu&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 163 x 9
+##     year  rank votes artist   song    filename         source language word     
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;             &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;    
+##  1  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       välän    
+##  2  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       külmetas 
+##  3  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       ja       
+##  4  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       taivast  
+##  5  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       satas    
+##  6  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       lummõ    
+##  7  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       ütle     
+##  8  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       mullõ    
+##  9  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       uma      
+## 10  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       telefoni…
+## # … with 153 more rows</code></pre>
+<p>Proovi ise! Vali välja üks artist ning võta tabelist välja ainult nende kasutatud sõnad</p>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb265-1" data-line-number="1"><span class="co">#---------------------------------------------</span></a>
+<a class="sourceLine" id="cb265-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb265-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb265-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb265-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb265-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb265-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb265-8" data-line-number="8"><span class="co">#---------------------------------------------</span></a></code></pre></div>
+</div>
+<div id="sagedussõnastikud" class="section level2">
+<h2><span class="header-section-number">5.2</span> Sagedussõnastikud</h2>
+<p>Et sõnade valikutest midagi huvitavat teada saada, võime hakata neid loendama - ehk siis teha sagedussõnastiku.</p>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb266-1" data-line-number="1">laulusonad <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb266-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(word,<span class="dt">sort=</span>T)</a></code></pre></div>
+<pre><code>## # A tibble: 19,046 x 2
+##    word      n
+##    &lt;chr&gt; &lt;int&gt;
+##  1 on     4401
+##  2 ja     3311
+##  3 ei     2872
+##  4 ma     2705
+##  5 kui    1980
+##  6 sa     1551
+##  7 see    1505
+##  8 et     1492
+##  9 me     1165
+## 10 veel   1088
+## # … with 19,036 more rows</code></pre>
+<p>Nagu näeme, on enimkasutatud sõnad ka lauludes enamvähem samad kui keeles üldiselt. On, ja, ei, ma, kui, sa jne.</p>
+<p>Me võime filtrite abil koostada ka sagedussõnastiku mõnele üksikule artistile ja vaadata neid ühekaupa.</p>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb268-1" data-line-number="1">laulusonad <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb268-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(artist<span class="op">==</span><span class="st">&quot;Põhja-Tallinn&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb268-3" data-line-number="3"><span class="st">  </span><span class="kw">count</span>(word,<span class="dt">sort=</span>T)</a></code></pre></div>
+<pre><code>## # A tibble: 1,635 x 2
+##    word      n
+##    &lt;chr&gt; &lt;int&gt;
+##  1 ei      219
+##  2 on      189
+##  3 ja      147
+##  4 ma      146
+##  5 kui     117
+##  6 et      108
+##  7 kõik     98
+##  8 veel     71
+##  9 sa       62
+## 10 mis      56
+## # … with 1,625 more rows</code></pre>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb270-1" data-line-number="1">laulusonad <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb270-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(artist<span class="op">==</span><span class="st">&quot;Ummamuudu&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb270-3" data-line-number="3"><span class="st">  </span><span class="kw">count</span>(word,<span class="dt">sort=</span>T)</a></code></pre></div>
+<pre><code>## # A tibble: 80 x 2
+##    word               n
+##    &lt;chr&gt;          &lt;int&gt;
+##  1 ära               15
+##  2 su                14
+##  3 tunnen            14
+##  4 ja                11
+##  5 ma                 7
+##  6 sinu               7
+##  7 mullõ              5
+##  8 telefoninummõr     5
+##  9 uma                5
+## 10 ütle               3
+## # … with 70 more rows</code></pre>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb272-1" data-line-number="1">laulusonad <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb272-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(artist<span class="op">==</span><span class="st">&quot;Nublu&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb272-3" data-line-number="3"><span class="st">  </span><span class="kw">count</span>(word,<span class="dt">sort=</span>T)</a></code></pre></div>
+<pre><code>## # A tibble: 312 x 2
+##    word      n
+##    &lt;chr&gt; &lt;int&gt;
+##  1 ka       39
+##  2 ja       29
+##  3 ma       29
+##  4 mina     29
+##  5 sa       23
+##  6 ou       22
+##  7 nagu     18
+##  8 kui      15
+##  9 ei       13
+## 10 siis     13
+## # … with 302 more rows</code></pre>
+<p>Proovi ise! Vali välja üks artist ning vaata nende enimkasutatud sõnu.</p>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb274-1" data-line-number="1"><span class="co">#---------------------------------------------</span></a>
+<a class="sourceLine" id="cb274-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb274-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb274-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb274-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb274-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb274-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb274-8" data-line-number="8"><span class="co">#---------------------------------------------</span></a></code></pre></div>
+</div>
+<div id="stopsõnad" class="section level2">
+<h2><span class="header-section-number">5.3</span> Stopsõnad</h2>
+<p>Leiame, et nagu ikka eesti keeles, on ka lauludes levinumad sõnad sidesõnad ja asesõnad ja muu selline. Nagu meil loengust läbi käis on siis tihti kasulik eemaldada stopsõnad, et saada selgemalt aru, mis laule teineteisest erinevad ja millest need lood räägivad.</p>
+<p>Me võime kasutada ükskõik, millist tabelit sõnade loendina. Eesti keele jaoks on olemas hea stopsõnade loend siin <a href="http://datadoi.ut.ee/handle/33/78" class="uri">http://datadoi.ut.ee/handle/33/78</a>. Loeme selle sisse eraldi tabelina.</p>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb275-1" data-line-number="1">stopsonad &lt;-<span class="st"> </span><span class="kw">read_tsv</span>(<span class="st">&quot;data/uiboaed_stopwords/estonian-stopwords.txt&quot;</span>,<span class="dt">col_names =</span> <span class="st">&quot;word&quot;</span>)</a></code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   word = col_character()
+## )</code></pre>
+<p>Nüüd on meil kaks tabelit ja me soovine neid omavahel võrrelda ja ühendada. Selleks on olemas tidyverse paketis join() käsud. join() käsud võtavad tabelis ühe või mitu tunnust ning proovib seda klapitada valitud tunnuse või tunnustega teises tabelis. Kõik read, kus on tunnuste kaupa täpselt sama väärtus on võimalik ühendada. Teistes pakettides kasutatakse siin merge() käsku, mis töötab sama loogikaga. Vaatame kõigepealt pildiülevaadet juhendis.</p>
+<p><img src="figures/joins.png" /></p>
+<p>Pildi peal on kujutatud see ridadehulk, mis alles jääb. Täpsemalt öeldes, left_join() hoiab esimese tabeli terviklikuna. right_join() hoiab teise tabeli terviklikuna. inner_join() hoiab alles ainult kattuvad read. full_join() hoiab mõlemad tabelid terviklikuna. Ning anti_join() eemaldab teise tabeliga kattuvad read esimesest tabelist.</p>
+<p>-left_join() - liidab vasakpoolse andmestiku külge need read, mis sobivad paremast.
+- right_join() - liidab parempoolse andmestiku külge need read, mis sobivad vasakust.
+- inner_join() - jätab alles ainult sobivad read kummastki
+- full_join() - jätab alles kõik read mõlemast tabelist, isegi kui ükski ei kattu.
+- anti_join() - töötab vastupidiselt ja eemaldab vasakust kõik read, mis ühtivad parempoolse tabeliga.</p>
+<p>Hetkel on meil kaks tabelit. Käivita järgmised read, et neid näha.</p>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb277-1" data-line-number="1">laulusonad</a></code></pre></div>
+<pre><code>## # A tibble: 157,632 x 9
+##     year  rank votes artist   song    filename         source language word     
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;             &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;    
+##  1  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       välän    
+##  2  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       külmetas 
+##  3  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       ja       
+##  4  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       taivast  
+##  5  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       satas    
+##  6  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       lummõ    
+##  7  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       ütle     
+##  8  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       mullõ    
+##  9  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       uma      
+## 10  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       telefoni…
+## # … with 157,622 more rows</code></pre>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb279-1" data-line-number="1">stopsonad</a></code></pre></div>
+<pre><code>## # A tibble: 5,025 x 1
+##    word          
+##    &lt;chr&gt;         
+##  1 minutaolisteks
+##  2 veeres        
+##  3 samadeks      
+##  4 karkääksti    
+##  5 mihukeste     
+##  6 ii-ha-ha      
+##  7 milliseist    
+##  8 selleks       
+##  9 mõlemate      
+## 10 praeguseiks   
+## # … with 5,015 more rows</code></pre>
+<p>Nüüd, liidame tabeli ‘laulusonad’ tabeliga ‘stopsonad’, kasutades inner_join() funktsiooni ja teeme seda “word” nimelise tulba kaudu, mis on mõlemas tabelis olemas. Tegelikult otsivad tidyverse join() käsud ka ise samanimelisi tulpasid ja kui neile täpsemaid juhiseid pole antud, siis ühendavad need. Kui me tegeleme uue andmestikuga on kasulik see alati välja kirjutada, et ei tekiks vigu.</p>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb281-1" data-line-number="1">laulusonad <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb281-2" data-line-number="2"><span class="st">  </span><span class="kw">inner_join</span>(stopsonad,<span class="dt">by=</span><span class="st">&quot;word&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 67,862 x 9
+##     year  rank votes artist    song     filename           source language word 
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;    &lt;chr&gt;               &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;
+##  1  1994     1    NA Ummamuudu Kõnõtra… lyrics-ummamuudu-…      1 et       ja   
+##  2  1994     1    NA Ummamuudu Kõnõtra… lyrics-ummamuudu-…      1 et       su   
+##  3  1994     1    NA Ummamuudu Kõnõtra… lyrics-ummamuudu-…      1 et       läbi 
+##  4  1994     1    NA Ummamuudu Kõnõtra… lyrics-ummamuudu-…      1 et       meil 
+##  5  1994     1    NA Ummamuudu Kõnõtra… lyrics-ummamuudu-…      1 et       ja   
+##  6  1994     1    NA Ummamuudu Kõnõtra… lyrics-ummamuudu-…      1 et       ja   
+##  7  1994     2    NA Vennasko… Pille-R… lyrics-vennaskond…      1 et       ja   
+##  8  1994     2    NA Vennasko… Pille-R… lyrics-vennaskond…      1 et       kuhu…
+##  9  1994     2    NA Vennasko… Pille-R… lyrics-vennaskond…      1 et       on   
+## 10  1994     2    NA Vennasko… Pille-R… lyrics-vennaskond…      1 et       on   
+## # … with 67,852 more rows</code></pre>
+<p>See käsk niisiis leidis ainult kattuvad read kahes tabelis ning seeläbi jättis alles kõikidest lugudest ainult stopsõnad. Kui meid huvitavad näiteks asesõnade kasutus või sõnakordused, siis võimalik, et täpselt see meid huvitabki.</p>
+<p>Me võime proovida neid kahte tabelit liita left_join() funktsiooni kaudu. Sellega küll ei muutu midagi, kuna liidetud tabel stopsonad sisaldabki ainult ühte tulpa, ning liidetud sõnad sulanduvad esimesse tabelisse.</p>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb283-1" data-line-number="1">laulusonad <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb283-2" data-line-number="2"><span class="st">  </span><span class="kw">left_join</span>(stopsonad,<span class="dt">by=</span><span class="st">&quot;word&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 157,632 x 9
+##     year  rank votes artist   song    filename         source language word     
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;             &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;    
+##  1  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       välän    
+##  2  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       külmetas 
+##  3  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       ja       
+##  4  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       taivast  
+##  5  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       satas    
+##  6  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       lummõ    
+##  7  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       ütle     
+##  8  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       mullõ    
+##  9  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       uma      
+## 10  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       telefoni…
+## # … with 157,622 more rows</code></pre>
+<p>Et kattuvad read ära markeerida võime teha stopsõnade tabelisse uue tulba, mis märgib, et on tõene, et see sõna on stopsõna.</p>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb285-1" data-line-number="1">stopsonad2 &lt;-<span class="st"> </span>stopsonad <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb285-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">onstopsona=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<p>Kui me nüüd ühendame tabelid left_join() kaudu, siis saame kaasa ka selle lisatulba.</p>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb286-1" data-line-number="1">laulusonad <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb286-2" data-line-number="2"><span class="st">  </span><span class="kw">left_join</span>(stopsonad2,<span class="dt">by=</span><span class="st">&quot;word&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 157,632 x 10
+##     year  rank votes artist  song   filename   source language word   onstopsona
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;lgl&gt;     
+##  1  1994     1    NA Ummamu… Kõnõt… lyrics-um…      1 et       välän  NA        
+##  2  1994     1    NA Ummamu… Kõnõt… lyrics-um…      1 et       külme… NA        
+##  3  1994     1    NA Ummamu… Kõnõt… lyrics-um…      1 et       ja     TRUE      
+##  4  1994     1    NA Ummamu… Kõnõt… lyrics-um…      1 et       taiva… NA        
+##  5  1994     1    NA Ummamu… Kõnõt… lyrics-um…      1 et       satas  NA        
+##  6  1994     1    NA Ummamu… Kõnõt… lyrics-um…      1 et       lummõ  NA        
+##  7  1994     1    NA Ummamu… Kõnõt… lyrics-um…      1 et       ütle   NA        
+##  8  1994     1    NA Ummamu… Kõnõt… lyrics-um…      1 et       mullõ  NA        
+##  9  1994     1    NA Ummamu… Kõnõt… lyrics-um…      1 et       uma    NA        
+## 10  1994     1    NA Ummamu… Kõnõt… lyrics-um…      1 et       telef… NA        
+## # … with 157,622 more rows</code></pre>
+<p>Lihtsa väljundina võime näiteks kokku lugeda kumba on kui palju on kokku neid stopsõnu ja kui palju on muid sõnu (ehk neid, millel puudub informatsioon selle kohta, kas ta on stopsõna).</p>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb288-1" data-line-number="1">laulusonad <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb288-2" data-line-number="2"><span class="st">  </span><span class="kw">left_join</span>(stopsonad2,<span class="dt">by=</span><span class="st">&quot;word&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb288-3" data-line-number="3"><span class="st">  </span><span class="kw">count</span>(onstopsona)</a></code></pre></div>
+<pre><code>## # A tibble: 2 x 2
+##   onstopsona     n
+##   &lt;lgl&gt;      &lt;int&gt;
+## 1 TRUE       67862
+## 2 NA         89770</code></pre>
+<p>Seal näeme, et teksti koguhulgast on stopsõnu veidi alla poole ja veidi üle poole on kõiki muid sõnu.</p>
+<p>Samal põhimõttel võime ka leida kõige stopsõnaderikkama laulu.</p>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb290-1" data-line-number="1">laulusonad <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb290-2" data-line-number="2"><span class="st">  </span><span class="kw">left_join</span>(stopsonad2,<span class="dt">by=</span><span class="st">&quot;word&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb290-3" data-line-number="3"><span class="st">  </span><span class="kw">group_by</span>(artist,song) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb290-4" data-line-number="4"><span class="st">  </span><span class="kw">count</span>(onstopsona) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb290-5" data-line-number="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">proportsioon=</span>n<span class="op">/</span><span class="kw">sum</span>(n)) <span class="op">%&gt;%</span><span class="st"> </span><span class="co">#  proportsiooni võime arvutada jagades loendatud arvu kõikide arvude summaga.</span></a>
+<a class="sourceLine" id="cb290-6" data-line-number="6"><span class="st">                                    </span><span class="co">#  kuna tabel on ikka veel gruppideks jaotatud, siis seda loetakse iga artisti-laulu sees</span></a>
+<a class="sourceLine" id="cb290-7" data-line-number="7"><span class="st">  </span><span class="kw">filter</span>(onstopsona<span class="op">==</span><span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb290-8" data-line-number="8"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(proportsioon))</a></code></pre></div>
+<pre><code>## # A tibble: 781 x 5
+## # Groups:   artist, song [781]
+##    artist              song                        onstopsona     n proportsioon
+##    &lt;chr&gt;               &lt;chr&gt;                       &lt;lgl&gt;      &lt;int&gt;        &lt;dbl&gt;
+##  1 Hnd                 Kui Sa Vaid Saad            TRUE          80        0.762
+##  2 HND                 Kui sa vaid saad            TRUE          80        0.762
+##  3 Ott Lepland         Siin me kokku saime         TRUE         139        0.739
+##  4 Nancy               Keegi Teine                 TRUE          84        0.724
+##  5 Jam                 Ei pea iial                 TRUE         145        0.721
+##  6 HU?                 Mina Ise                    TRUE          90        0.714
+##  7 Ines                Ma ei tea mis juhtuks       TRUE         188        0.709
+##  8 Ott Lepland         Otsides Ma Pean Su Jälle L… TRUE          61        0.709
+##  9 Jam                 Ainus Tee                   TRUE         213        0.708
+## 10 Vaiko Eplik Ja Eli… Armastus Päästab Maailma    TRUE          69        0.704
+## # … with 771 more rows</code></pre>
+<p>Ja saame loo HND ‘Kui sa vaid saad’, millel on kolm neljandikku sõnu stopsõnad. Ainuüksi pealkiri koosnebki ainult stopsõnadest.</p>
+<p>Proovi ise! Vali välja üks artist ja vaata milliseid stopsõnu nad kasutavad ja kui palju.</p>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb292-1" data-line-number="1"><span class="co">#---------------------------------------------</span></a>
+<a class="sourceLine" id="cb292-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb292-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb292-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb292-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb292-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb292-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb292-8" data-line-number="8"><span class="co">#---------------------------------------------</span></a></code></pre></div>
+<p>Enamasti on aga stopsõnade nimekiri kasulik, et need sõnad tekstist eemaldada. Näiteks võime võtta sama tabeli ja jätta alles ainult sõnad, mis ei ole stopsõnad. Selleks kasutame algusest tuttavat funktsiooni is.na(), mis kontrollib kas väärtus on puuduv. onstopsona == NA ei töötaks, kuna R-i jaoks on puuduvad väärtused erilised.</p>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb293-1" data-line-number="1">laulusonad <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb293-2" data-line-number="2"><span class="st">  </span><span class="kw">left_join</span>(stopsonad2,<span class="dt">by=</span><span class="st">&quot;word&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb293-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">is.na</span>(onstopsona))</a></code></pre></div>
+<pre><code>## # A tibble: 89,770 x 10
+##     year  rank votes artist  song   filename   source language word   onstopsona
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;lgl&gt;     
+##  1  1994     1    NA Ummamu… Kõnõt… lyrics-um…      1 et       välän  NA        
+##  2  1994     1    NA Ummamu… Kõnõt… lyrics-um…      1 et       külme… NA        
+##  3  1994     1    NA Ummamu… Kõnõt… lyrics-um…      1 et       taiva… NA        
+##  4  1994     1    NA Ummamu… Kõnõt… lyrics-um…      1 et       satas  NA        
+##  5  1994     1    NA Ummamu… Kõnõt… lyrics-um…      1 et       lummõ  NA        
+##  6  1994     1    NA Ummamu… Kõnõt… lyrics-um…      1 et       ütle   NA        
+##  7  1994     1    NA Ummamu… Kõnõt… lyrics-um…      1 et       mullõ  NA        
+##  8  1994     1    NA Ummamu… Kõnõt… lyrics-um…      1 et       uma    NA        
+##  9  1994     1    NA Ummamu… Kõnõt… lyrics-um…      1 et       telef… NA        
+## 10  1994     1    NA Ummamu… Kõnõt… lyrics-um…      1 et       hamõ   NA        
+## # … with 89,760 more rows</code></pre>
+<p>Täpselt sama teeb ka käsk anti_join(), mis jätab kõrvale kõik read, kus tunnused on sama väärtusega. Seda kasutame ka edaspidi.</p>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb295-1" data-line-number="1">laulusonad <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb295-2" data-line-number="2"><span class="st">  </span><span class="kw">anti_join</span>(stopsonad,<span class="dt">by=</span><span class="st">&quot;word&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 89,770 x 9
+##     year  rank votes artist   song    filename         source language word     
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;             &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;    
+##  1  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       välän    
+##  2  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       külmetas 
+##  3  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       taivast  
+##  4  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       satas    
+##  5  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       lummõ    
+##  6  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       ütle     
+##  7  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       mullõ    
+##  8  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       uma      
+##  9  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       telefoni…
+## 10  1994     1    NA Ummamuu… Kõnõtr… lyrics-ummamuud…      1 et       hamõ     
+## # … with 89,760 more rows</code></pre>
+<p>Sellega loendada kokku kõik sõnad, mis pole stopsõnad ja teha neist sagedustabeli.</p>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb297-1" data-line-number="1">laulusonad <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb297-2" data-line-number="2"><span class="st">  </span><span class="kw">anti_join</span>(stopsonad,<span class="dt">by=</span><span class="st">&quot;word&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb297-3" data-line-number="3"><span class="st">  </span><span class="kw">count</span>(word,<span class="dt">sort=</span>T)</a></code></pre></div>
+<pre><code>## # A tibble: 18,164 x 2
+##    word      n
+##    &lt;chr&gt; &lt;int&gt;
+##  1 the    1033
+##  2 you    1021
+##  3 to      658
+##  4 and     572
+##  5 my      465
+##  6 it      442
+##  7 ref     374
+##  8 täna    325
+##  9 tean    296
+## 10 hea     289
+## # … with 18,154 more rows</code></pre>
+<p>Nüüd näeme veel üht probleemi meie sõnaloendis. Paljud lood on ingliskeelsed ja seal on ka hulk sagedasi sõnu, mis samuti esiotsa pürgivad. Tabelis on olemas ka tunnus loo keele kohta ning selle abil võime piirduda edasi ainult eestikeelsete lugudega. Eestikeelsed lood on siin tähistatud rahvusvahelise tähisega ‘et’.</p>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb299-1" data-line-number="1">laulusonad <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb299-2" data-line-number="2"><span class="st">  </span><span class="kw">anti_join</span>(stopsonad,<span class="dt">by=</span><span class="st">&quot;word&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb299-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(language<span class="op">==</span><span class="st">&quot;et&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb299-4" data-line-number="4"><span class="st">  </span><span class="kw">count</span>(word,<span class="dt">sort=</span>T)</a></code></pre></div>
+<pre><code>## # A tibble: 15,823 x 2
+##    word      n
+##    &lt;chr&gt; &lt;int&gt;
+##  1 ref     360
+##  2 täna    325
+##  3 tean    296
+##  4 hea     289
+##  5 aeg     280
+##  6 päev    279
+##  7 öö      264
+##  8 taas    258
+##  9 elu     257
+## 10 jälle   226
+## # … with 15,813 more rows</code></pre>
+<p>Saadud tabel on juba veidi informatiivsem</p>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb301-1" data-line-number="1"><span class="co"># A tibble: 15,823 x 2</span></a>
+<a class="sourceLine" id="cb301-2" data-line-number="2"><span class="co"># word      n</span></a>
+<a class="sourceLine" id="cb301-3" data-line-number="3"><span class="co"># &lt;chr&gt; &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb301-4" data-line-number="4"><span class="co">#   1 ref     360</span></a>
+<a class="sourceLine" id="cb301-5" data-line-number="5"><span class="co"># 2 täna    325</span></a>
+<a class="sourceLine" id="cb301-6" data-line-number="6"><span class="co"># 3 tean    296</span></a>
+<a class="sourceLine" id="cb301-7" data-line-number="7"><span class="co"># 4 hea     289</span></a>
+<a class="sourceLine" id="cb301-8" data-line-number="8"><span class="co"># 5 aeg     280</span></a>
+<a class="sourceLine" id="cb301-9" data-line-number="9"><span class="co"># 6 päev    279</span></a>
+<a class="sourceLine" id="cb301-10" data-line-number="10"><span class="co"># 7 öö      264</span></a>
+<a class="sourceLine" id="cb301-11" data-line-number="11"><span class="co"># 8 taas    258</span></a>
+<a class="sourceLine" id="cb301-12" data-line-number="12"><span class="co"># 9 elu     257</span></a>
+<a class="sourceLine" id="cb301-13" data-line-number="13"><span class="co"># 10 jälle   226</span></a></code></pre></div>
+<p>ref viitab siin refräänile. muidu on sagedased päev, öö, taas, jälle, hea, aeg, täna, tean. Olenevalt sellest, mis meid huvitab, tasub meil stopsõnadenimekirja žanrile kohandada. Näiteks võime siin lisaks stopsõnadele tabelist välja võtta ka sõna ‘ref’.</p>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb302-1" data-line-number="1">laulusonad <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb302-2" data-line-number="2"><span class="st">  </span><span class="kw">anti_join</span>(stopsonad,<span class="dt">by=</span><span class="st">&quot;word&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb302-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(language<span class="op">==</span><span class="st">&quot;et&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb302-4" data-line-number="4"><span class="st">  </span><span class="kw">count</span>(word,<span class="dt">sort=</span>T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb302-5" data-line-number="5"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span>word <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ref&quot;</span>)) <span class="co">#Hüüumärk näitab eitust</span></a></code></pre></div>
+<pre><code>## # A tibble: 15,822 x 2
+##    word      n
+##    &lt;chr&gt; &lt;int&gt;
+##  1 täna    325
+##  2 tean    296
+##  3 hea     289
+##  4 aeg     280
+##  5 päev    279
+##  6 öö      264
+##  7 taas    258
+##  8 elu     257
+##  9 jälle   226
+## 10 kord    214
+## # … with 15,812 more rows</code></pre>
+<p>Salvestame selle tabeli samuti edasiseks kasutuseks.</p>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb304-1" data-line-number="1">sonaloend &lt;-<span class="st"> </span>laulusonad <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb304-2" data-line-number="2"><span class="st">  </span><span class="kw">anti_join</span>(stopsonad,<span class="dt">by=</span><span class="st">&quot;word&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb304-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(language<span class="op">==</span><span class="st">&quot;et&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb304-4" data-line-number="4"><span class="st">  </span><span class="kw">count</span>(word,<span class="dt">sort=</span>T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb304-5" data-line-number="5"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span>word <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ref&quot;</span>))</a></code></pre></div>
+</div>
+<div id="võrdlus-teise-korpusega" class="section level2">
+<h2><span class="header-section-number">5.4</span> Võrdlus teise korpusega</h2>
+<p>Me võime nüüd mõelda, kui tüüpiline meie laulusõnade korpus on võrreldes keelega üldisemalt. Nagu loengutes sai räägitud, on selleks kasulik vaadata sõnade suhtelist osakaalu korpuses, mitte absoluutarvu, kuna tekstikogude suurused võivad olla väga erinevad. Niisiis saame jagada leitud sõnade arvu kõikide sõnade arvu hulgaga, saades kätte millise proportsiooni see sõna tervikkorpusest moodustab.</p>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb305-1" data-line-number="1">sonaloend <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb305-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">proportsioon=</span>n<span class="op">/</span><span class="kw">sum</span>(n))</a></code></pre></div>
+<pre><code>## # A tibble: 15,822 x 3
+##    word      n proportsioon
+##    &lt;chr&gt; &lt;int&gt;        &lt;dbl&gt;
+##  1 täna    325      0.00498
+##  2 tean    296      0.00454
+##  3 hea     289      0.00443
+##  4 aeg     280      0.00429
+##  5 päev    279      0.00428
+##  6 öö      264      0.00405
+##  7 taas    258      0.00395
+##  8 elu     257      0.00394
+##  9 jälle   226      0.00346
+## 10 kord    214      0.00328
+## # … with 15,812 more rows</code></pre>
+<p>Meil on võimalik seda proportsiooni võrrelda eesti ilukirjandusest tehtud korpusega. Ühe sellise korpuse kohta on sõnasageduste statistika saadaval siin. <a href="http://datadoi.ut.ee/handle/33/41" class="uri">http://datadoi.ut.ee/handle/33/41</a>. Loeme sisse sõnade sageduse info.</p>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb307-1" data-line-number="1">ilukirj_sonad &lt;-<span class="st"> </span><span class="kw">read_tsv</span>(<span class="st">&quot;data/raudvere_uiboaed_mitmikud/token_1_grams.tsv&quot;</span>,<span class="dt">col_names =</span> <span class="kw">c</span>(<span class="st">&quot;word&quot;</span>,<span class="st">&quot;n_token&quot;</span>,<span class="st">&quot;n_docs&quot;</span>))</a></code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   word = col_character(),
+##   n_token = col_double(),
+##   n_docs = col_double()
+## )</code></pre>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb309-1" data-line-number="1">ilukirj_sonad &lt;-<span class="st"> </span>ilukirj_sonad <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb309-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prop_ilukirj=</span><span class="kw">round</span>(n_token<span class="op">/</span><span class="kw">sum</span>(n_token),<span class="dv">3</span>))</a></code></pre></div>
+<p>Samamoodi nagu stopsõnade puhul, saame me nüüd ühendada need kaks tabelit.</p>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb310-1" data-line-number="1">sonaloend <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb310-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">proportsioon=</span>n<span class="op">/</span><span class="kw">sum</span>(n)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb310-3" data-line-number="3"><span class="st">  </span><span class="kw">left_join</span>(ilukirj_sonad, <span class="dt">by=</span><span class="st">&quot;word&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 15,822 x 6
+##    word      n proportsioon n_token n_docs prop_ilukirj
+##    &lt;chr&gt; &lt;int&gt;        &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;        &lt;dbl&gt;
+##  1 täna    325      0.00498    2787     88        0.001
+##  2 tean    296      0.00454    1552     84        0    
+##  3 hea     289      0.00443    5133     90        0.001
+##  4 aeg     280      0.00429    3523     90        0.001
+##  5 päev    279      0.00428    1899     90        0    
+##  6 öö      264      0.00405     784     82        0    
+##  7 taas    258      0.00395    1796     83        0    
+##  8 elu     257      0.00394    5460     90        0.001
+##  9 jälle   226      0.00346    4416     88        0.001
+## 10 kord    214      0.00328    3319     89        0.001
+## # … with 15,812 more rows</code></pre>
+<p>Vaadates nüüd väljatrükitud esikümmet võime näha, et suhtelise sageduse järgi on aeg, elu, jälle ja kord ikukirjanduses sagedasemad kui lauludes. Samas on öö, päev ja tean, vastupidi, sagedasemad just laulusõnades. Need erinevused võivad olla suuremad keskmise levikuga sõnade kohta.</p>
+<p>Proovi vaadata ise mõne valitud sõna kohta, kuidas nende sagedused erinevad.</p>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb312-1" data-line-number="1"><span class="co">#---------------------------------------------</span></a>
+<a class="sourceLine" id="cb312-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb312-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb312-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb312-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb312-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb312-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb312-8" data-line-number="8"><span class="co">#---------------------------------------------</span></a></code></pre></div>
+<p>Kui meil on stopsõnad eemaldatud, võime ka vaadata kindlate artistide levinumaid sõnu, mis võiksid väljendada ka paremini nende lugude sisu. Niisiis, teeme sagedussõnastikud nende artistide kohta ja vaatame lähemalt.</p>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb313-1" data-line-number="1">laulusonad <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb313-2" data-line-number="2"><span class="st">  </span><span class="kw">anti_join</span>(stopsonad,<span class="dt">by=</span><span class="st">&quot;word&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb313-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(artist<span class="op">==</span><span class="st">&quot;Põhja-Tallinn&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb313-4" data-line-number="4"><span class="st">  </span><span class="kw">count</span>(word,<span class="dt">sort=</span>T)</a></code></pre></div>
+<pre><code>## # A tibble: 1,312 x 2
+##    word       n
+##    &lt;chr&gt;  &lt;int&gt;
+##  1 aega      36
+##  2 tean      26
+##  3 maailm    25
+##  4 saadab    23
+##  5 koju      20
+##  6 elu       19
+##  7 hea       19
+##  8 kallis    15
+##  9 küsin     14
+## 10 nõu       14
+## # … with 1,302 more rows</code></pre>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb315-1" data-line-number="1">laulusonad <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb315-2" data-line-number="2"><span class="st">  </span><span class="kw">anti_join</span>(stopsonad,<span class="dt">by=</span><span class="st">&quot;word&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb315-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(artist<span class="op">==</span><span class="st">&quot;Ummamuudu&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb315-4" data-line-number="4"><span class="st">  </span><span class="kw">count</span>(word,<span class="dt">sort=</span>T)</a></code></pre></div>
+<pre><code>## # A tibble: 62 x 2
+##    word               n
+##    &lt;chr&gt;          &lt;int&gt;
+##  1 tunnen            14
+##  2 mullõ              5
+##  3 telefoninummõr     5
+##  4 uma                5
+##  5 ütle               3
+##  6 lummõ              2
+##  7 refr               2
+##  8 satas              2
+##  9 sis                2
+## 10 utle               2
+## # … with 52 more rows</code></pre>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb317-1" data-line-number="1">laulusonad <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb317-2" data-line-number="2"><span class="st">  </span><span class="kw">anti_join</span>(stopsonad,<span class="dt">by=</span><span class="st">&quot;word&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb317-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(artist<span class="op">==</span><span class="st">&quot;Nublu&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb317-4" data-line-number="4"><span class="st">  </span><span class="kw">count</span>(word,<span class="dt">sort=</span>T)</a></code></pre></div>
+<pre><code>## # A tibble: 220 x 2
+##    word           n
+##    &lt;chr&gt;      &lt;int&gt;
+##  1 ou            22
+##  2 pa            10
+##  3 öö             6
+##  4 parap          6
+##  5 täna           6
+##  6 võtan          5
+##  7 bonnie         4
+##  8 cappuccino     4
+##  9 clyde          4
+## 10 hüppan         4
+## # … with 210 more rows</code></pre>
+<p>Proovi ise! Vali välja üks artist ning vaata nende enimkasutatud sõnu ilma stopsõnadeta.</p>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb319-1" data-line-number="1"><span class="co">#---------------------------------------------</span></a>
+<a class="sourceLine" id="cb319-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb319-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb319-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb319-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb319-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb319-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb319-8" data-line-number="8"><span class="co">#---------------------------------------------</span></a></code></pre></div>
+</div>
+<div id="kordused-laulu-sees" class="section level2">
+<h2><span class="header-section-number">5.5</span> Kordused laulu sees</h2>
+<p>Just laulusõnade puhul võib isegi artistidest huvitavamaks osutuda üksiklaulude vaatamine. Näiteks, kuna paljudel lauludel on refräänid (mõnikord on need küll andmetes ainult üks kord), siis võib oodata neil palju sõnakordusi.</p>
+<p>Et teha sõnaloendeid laulude kohta, grupeerime tabeli kõigepealt laulude kaupa ning mõõdame sõnasagedusi sellel põhjal. Me võime siis vaadata näiteks kui suure osa kogu laulu sõnadest moodustab mõni konkreetne sõna.</p>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb320-1" data-line-number="1">laulusonad <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb320-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(language<span class="op">==</span><span class="st">&quot;et&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb320-3" data-line-number="3"><span class="st">  </span><span class="kw">group_by</span>(artist, song) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb320-4" data-line-number="4"><span class="st">  </span><span class="kw">count</span>(word,<span class="dt">sort=</span>T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb320-5" data-line-number="5"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span>word <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ref&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb320-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">proportsioon=</span>n<span class="op">/</span><span class="kw">sum</span>(n)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb320-7" data-line-number="7"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(proportsioon))</a></code></pre></div>
+<pre><code>## # A tibble: 63,710 x 5
+## # Groups:   artist, song [650]
+##    artist                         song             word           n proportsioon
+##    &lt;chr&gt;                          &lt;chr&gt;            &lt;chr&gt;      &lt;int&gt;        &lt;dbl&gt;
+##  1 Planeet                        Satelliidid      satelliid…    36        0.621
+##  2 The Tuberkuloited              Tantsin Valssi   na            72        0.319
+##  3 Tuberkuloited &amp; Urmas Voolpri… Tantsin valssi   na            72        0.319
+##  4 Kosmikud                       Öö Ei Lase Maga… magada        33        0.287
+##  5 Mari-Leen                      1987             o             60        0.275
+##  6 HU?                            Elupõletaja      ei            53        0.233
+##  7 Anaconda                       Veel Veel Veel   veel          31        0.218
+##  8 Koer                           Maiu on piimaau… maiu          16        0.205
+##  9 Koer                           Maiu on piimaau… on            16        0.205
+## 10 Koer                           Maiu on piimaau… piimaauto     16        0.205
+## # … with 63,700 more rows</code></pre>
+<p>Saame tulemuseks, et laulus satelliidid esineb sõn satelliidid 36 korda, see on üle poole sisust.
+Samas kui laulus Maiu on piimaauto, on nii maiu, on kui piimaauto 16 korda, ehk 20% kõigist sõnadest.</p>
+<p>Proovi ise! Kui lugeda mitte proportsiooni järgi vaid koguarvult, siis mis sõna on kõige rohkem ühe laulu sees kordumas ja mis laulus?</p>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb322-1" data-line-number="1"><span class="co">#---------------------------------------------</span></a>
+<a class="sourceLine" id="cb322-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb322-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb322-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb322-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb322-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb322-7" data-line-number="7"><span class="co">#---------------------------------------------</span></a></code></pre></div>
+<p>Kui palju muutub tabel kui eemaldada stopsõnad?</p>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb323-1" data-line-number="1"><span class="co">#---------------------------------------------</span></a>
+<a class="sourceLine" id="cb323-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb323-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb323-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb323-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb323-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb323-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb323-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb323-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb323-10" data-line-number="10"><span class="co">#---------------------------------------------</span></a></code></pre></div>
+</div>
+<div id="asukoht-tekstis" class="section level2">
+<h2><span class="header-section-number">5.6</span> Asukoht tekstis</h2>
+<p>Kasutades etteantud vahendeid on võimalik ka esitada küsimusi sõnade asukoha kohta. Näiteks, et kui laul kasutas sõna satelliidid nii palju kordi, siis kas seda laulu lõpus või alguses või läbivalt igal pool. Selleks saame kasutada käske group_by(), mutate() ja row_number(). Nimelt, et kui me vaatasime eelmises peatükis edetabeleid row_number() kaudu, siis nüüd võime kasutada seda ka sõnadel nende loomulikus järjekorras. Numbrid ühest kuni loo pikkuseni viitavad sõna asukohale tekstis.</p>
+<p>Niisiis, saame iga laulu sees sõna asukoha grupeerides laulud eraldi ning lisades uue tulba row_number().</p>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb324-1" data-line-number="1">laulusonad <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb324-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(artist,song,year) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb324-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">nr=</span><span class="kw">row_number</span>())</a></code></pre></div>
+<pre><code>## # A tibble: 157,632 x 10
+## # Groups:   artist, song, year [999]
+##     year  rank votes artist  song    filename      source language word       nr
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;int&gt;
+##  1  1994     1    NA Ummamu… Kõnõtr… lyrics-ummam…      1 et       välän       1
+##  2  1994     1    NA Ummamu… Kõnõtr… lyrics-ummam…      1 et       külmet…     2
+##  3  1994     1    NA Ummamu… Kõnõtr… lyrics-ummam…      1 et       ja          3
+##  4  1994     1    NA Ummamu… Kõnõtr… lyrics-ummam…      1 et       taivast     4
+##  5  1994     1    NA Ummamu… Kõnõtr… lyrics-ummam…      1 et       satas       5
+##  6  1994     1    NA Ummamu… Kõnõtr… lyrics-ummam…      1 et       lummõ       6
+##  7  1994     1    NA Ummamu… Kõnõtr… lyrics-ummam…      1 et       ütle        7
+##  8  1994     1    NA Ummamu… Kõnõtr… lyrics-ummam…      1 et       mullõ       8
+##  9  1994     1    NA Ummamu… Kõnõtr… lyrics-ummam…      1 et       uma         9
+## 10  1994     1    NA Ummamu… Kõnõtr… lyrics-ummam…      1 et       telefo…    10
+## # … with 157,622 more rows</code></pre>
+<p>Kuna lood on erineva pikkusega, siis on võrdluse huvides ehk kasulik vaadata loo pikkust protsentidena. Selleks võime lisada ka loendi n() kaudu. mutate() võimaldab nii lisada mitu uut tunnust.</p>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb326-1" data-line-number="1">laulusonad <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb326-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(artist,song,year) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb326-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">nr=</span><span class="kw">row_number</span>(), <span class="dt">n=</span><span class="kw">n</span>())</a></code></pre></div>
+<pre><code>## # A tibble: 157,632 x 11
+## # Groups:   artist, song, year [999]
+##     year  rank votes artist  song  filename   source language word      nr     n
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;int&gt; &lt;int&gt;
+##  1  1994     1    NA Ummamu… Kõnõ… lyrics-um…      1 et       välän      1    52
+##  2  1994     1    NA Ummamu… Kõnõ… lyrics-um…      1 et       külme…     2    52
+##  3  1994     1    NA Ummamu… Kõnõ… lyrics-um…      1 et       ja         3    52
+##  4  1994     1    NA Ummamu… Kõnõ… lyrics-um…      1 et       taiva…     4    52
+##  5  1994     1    NA Ummamu… Kõnõ… lyrics-um…      1 et       satas      5    52
+##  6  1994     1    NA Ummamu… Kõnõ… lyrics-um…      1 et       lummõ      6    52
+##  7  1994     1    NA Ummamu… Kõnõ… lyrics-um…      1 et       ütle       7    52
+##  8  1994     1    NA Ummamu… Kõnõ… lyrics-um…      1 et       mullõ      8    52
+##  9  1994     1    NA Ummamu… Kõnõ… lyrics-um…      1 et       uma        9    52
+## 10  1994     1    NA Ummamu… Kõnõ… lyrics-um…      1 et       telef…    10    52
+## # … with 157,622 more rows</code></pre>
+<p>Ja kui meil on olemas nii rea number kui ridade arv võime välja arvutada sõna suhtelise asukoha. Lisame selleks tunnusele n ühe, et kõik tulemused oleks väiksem kui üks.</p>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb328-1" data-line-number="1">laulusonad <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb328-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(artist,song,year) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb328-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">nr=</span><span class="kw">row_number</span>(), <span class="dt">n=</span><span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb328-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">asukoht=</span>nr<span class="op">/</span>(n<span class="op">+</span><span class="dv">1</span>))</a></code></pre></div>
+<pre><code>## # A tibble: 157,632 x 12
+## # Groups:   artist, song, year [999]
+##     year  rank votes artist song  filename source language word     nr     n
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt; &lt;int&gt; &lt;int&gt;
+##  1  1994     1    NA Ummam… Kõnõ… lyrics-…      1 et       välän     1    52
+##  2  1994     1    NA Ummam… Kõnõ… lyrics-…      1 et       külm…     2    52
+##  3  1994     1    NA Ummam… Kõnõ… lyrics-…      1 et       ja        3    52
+##  4  1994     1    NA Ummam… Kõnõ… lyrics-…      1 et       taiv…     4    52
+##  5  1994     1    NA Ummam… Kõnõ… lyrics-…      1 et       satas     5    52
+##  6  1994     1    NA Ummam… Kõnõ… lyrics-…      1 et       lummõ     6    52
+##  7  1994     1    NA Ummam… Kõnõ… lyrics-…      1 et       ütle      7    52
+##  8  1994     1    NA Ummam… Kõnõ… lyrics-…      1 et       mullõ     8    52
+##  9  1994     1    NA Ummam… Kõnõ… lyrics-…      1 et       uma       9    52
+## 10  1994     1    NA Ummam… Kõnõ… lyrics-…      1 et       tele…    10    52
+## # … with 157,622 more rows, and 1 more variable: asukoht &lt;dbl&gt;</code></pre>
+<p>Selle tulemuse põhjal saame arvutada, millisel kümnendikul loos sõna paikneb. Selleks võime korrutada asukoha, mis on nullist üheni, kümnega, et saada vahemiku 0-st 10-ni ja iga tulemuse ümardada alla, et kätte saada, millises kümnendikus sõna esines. Kui me jagame selle uuesti 10-ga saame kätte väärtused 0, 0.1, 0.2 … 0.9.</p>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb330-1" data-line-number="1">laulusonad <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb330-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(artist,song,year) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb330-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">nr=</span><span class="kw">row_number</span>(), <span class="dt">n=</span><span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb330-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">asukoht=</span>nr<span class="op">/</span>(n<span class="op">+</span><span class="dv">1</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb330-5" data-line-number="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">asukoht_perc=</span><span class="kw">floor</span>(asukoht<span class="op">*</span><span class="dv">10</span>)<span class="op">/</span><span class="dv">10</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 157,632 x 13
+## # Groups:   artist, song, year [999]
+##     year  rank votes artist song  filename source language word     nr     n
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt; &lt;int&gt; &lt;int&gt;
+##  1  1994     1    NA Ummam… Kõnõ… lyrics-…      1 et       välän     1    52
+##  2  1994     1    NA Ummam… Kõnõ… lyrics-…      1 et       külm…     2    52
+##  3  1994     1    NA Ummam… Kõnõ… lyrics-…      1 et       ja        3    52
+##  4  1994     1    NA Ummam… Kõnõ… lyrics-…      1 et       taiv…     4    52
+##  5  1994     1    NA Ummam… Kõnõ… lyrics-…      1 et       satas     5    52
+##  6  1994     1    NA Ummam… Kõnõ… lyrics-…      1 et       lummõ     6    52
+##  7  1994     1    NA Ummam… Kõnõ… lyrics-…      1 et       ütle      7    52
+##  8  1994     1    NA Ummam… Kõnõ… lyrics-…      1 et       mullõ     8    52
+##  9  1994     1    NA Ummam… Kõnõ… lyrics-…      1 et       uma       9    52
+## 10  1994     1    NA Ummam… Kõnõ… lyrics-…      1 et       tele…    10    52
+## # … with 157,622 more rows, and 2 more variables: asukoht &lt;dbl&gt;,
+## #   asukoht_perc &lt;dbl&gt;</code></pre>
+<p>Et me kasutame seda korduvalt võime jälle selle salvestada.</p>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb332-1" data-line-number="1">asukohad &lt;-<span class="st"> </span>laulusonad <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb332-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(artist,song,year) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb332-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">nr=</span><span class="kw">row_number</span>(), <span class="dt">n=</span><span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb332-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">asukoht=</span>nr<span class="op">/</span>(n<span class="op">+</span><span class="dv">1</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb332-5" data-line-number="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">asukoht_perc=</span><span class="kw">floor</span>(asukoht<span class="op">*</span><span class="dv">10</span>)<span class="op">/</span><span class="dv">10</span>)<span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb332-6" data-line-number="6"><span class="st">  </span><span class="kw">ungroup</span>()</a></code></pre></div>
+<p>Ja siis võime näiteks vaadata sõnu, mis palju kordi kordusid. Salvestame selle ka muutujana.</p>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb333-1" data-line-number="1">kordused &lt;-<span class="st"> </span>laulusonad <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb333-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(language<span class="op">==</span><span class="st">&quot;et&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb333-3" data-line-number="3"><span class="st">  </span><span class="kw">group_by</span>(artist, song,year) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb333-4" data-line-number="4"><span class="st">  </span><span class="kw">count</span>(word,<span class="dt">sort=</span>T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb333-5" data-line-number="5"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span>word <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ref&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb333-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">proportsioon=</span>n<span class="op">/</span><span class="kw">sum</span>(n)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb333-7" data-line-number="7"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(proportsioon)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb333-8" data-line-number="8"><span class="st">  </span><span class="kw">ungroup</span>()</a></code></pre></div>
+<p>Võtame 20 kõige enam ühe loo sees korratud sõna ja ühendame selle asukohtade tabeliga nii, et kattuvad nii artist, laul, aasta kui ka sõna. Salvestame selle tulemuse ja vaatame sisse.</p>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb334-1" data-line-number="1">asukohad_ja_kordused &lt;-<span class="st"> </span>kordused <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb334-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">row_number</span>()<span class="op">&lt;</span><span class="dv">21</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb334-3" data-line-number="3"><span class="st">  </span><span class="kw">inner_join</span>(asukohad,<span class="dt">by=</span><span class="kw">c</span>(<span class="st">&quot;artist&quot;</span>,<span class="st">&quot;song&quot;</span>,<span class="st">&quot;year&quot;</span>,<span class="st">&quot;word&quot;</span>))</a></code></pre></div>
+<p>Seejärel võime kokku lugeda, et kui palju neid sellel protsendil on.</p>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb335-1" data-line-number="1">kus_on_kordused &lt;-<span class="st"> </span>asukohad_ja_kordused <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb335-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(artist,song,year,word) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb335-3" data-line-number="3"><span class="st">  </span><span class="kw">count</span>(asukoht_perc) </a></code></pre></div>
+<p>Ülalolevast tabelist on küll raske ülevaadet saada, kuna see on pikk rodu numbreid ja mõned on puudu. R-is on tabelite pööramiseks hulk käske, tidyverse-is on selleks pivod_wider() ja pivot_longer(), mis teevad siis vastavalt tabeli laiaks horisontaalskaalal või pikaks vertikaalskaalal. pivot_wider() puhul määrame ära, millised tulbad jäävad nii-öelda paigale, id-tulpadeks, ja millised lahutame lahti.</p>
+<p><img src="figures/pivot_wider_tidybook.png" /></p>
+<p>Laotame siis tabeli laiali ja vaatame, kus on need sagedasi korduvad sõnad.</p>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb336-1" data-line-number="1">kus_on_kordused <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb336-2" data-line-number="2"><span class="st">  </span><span class="kw">arrange</span>(asukoht_perc) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb336-3" data-line-number="3"><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">id_cols=</span><span class="kw">c</span>(<span class="st">&quot;artist&quot;</span>,<span class="st">&quot;song&quot;</span>,<span class="st">&quot;year&quot;</span>,<span class="st">&quot;word&quot;</span>),<span class="dt">names_from=</span><span class="st">&quot;asukoht_perc&quot;</span>,<span class="dt">values_from=</span><span class="st">&quot;n&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 20 x 14
+## # Groups:   artist, song, year, word [20]
+##    artist song   year word    `0` `0.1` `0.2` `0.3` `0.4` `0.5` `0.6` `0.7`
+##    &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;
+##  1 Anaco… Veel…  2000 veel      7     8    NA    NA    NA    NA    NA     3
+##  2 Beebi… Mend…  2011 mend…     4     8     9     9    10     8    10     5
+##  3 HU?    Elup…  2009 ei        1    NA     8     8     1    NA    12     6
+##  4 Kosmi… Öö E…  2011 maga…     2    NA     4     4     1     1     5     5
+##  5 Meie … Sini…  2003 sini…     2     2     2     2     2     4     2     2
+##  6 Meie … Sini…  2003 vilk…     2     2     2     2     2     3     3     2
+##  7 Meie … Sini…  2002 sini…     2     2     2     2     2     4     2     2
+##  8 Meie … Sini…  2002 vilk…     2     2     2     2     2     3     3     2
+##  9 N-Euro Tsak…  1999 tsha…    14    NA     7     7    10     2     5     3
+## 10 Oreli… Valss  2011 laia…     3     2     2     2     2     3     5     2
+## 11 Plane… Sate…  2012 sate…     5     1     5     4     6     1     3     6
+## 12 Push … Musi   2000 musi      3     8     5     7     9     2     4     3
+## 13 Mari-… 1987   2008 o        NA    11     1     6     6    12    NA    10
+## 14 Koer   Maiu…  2004 maiu     NA    NA     3     1    NA     2     3     2
+## 15 Koer   Maiu…  2004 on       NA    NA     3     1    NA     2     2     3
+## 16 Koer   Maiu…  2004 piim…    NA    NA     2     2    NA     1     3     3
+## 17 Mikk … Meie…  2015 pa       NA    NA     4     4     4     4     4     4
+## 18 Gette… Rann…  2014 oo       NA    NA    NA    12    NA    NA    12    15
+## 19 The T… Tant…  2000 na       NA    NA    NA    NA    NA     3    22    11
+## 20 Tuber… Tant…  2001 na       NA    NA    NA    NA    NA     3    22    11
+## # … with 2 more variables: `0.8` &lt;int&gt;, `0.9` &lt;int&gt;</code></pre>
+<p>Siit tabelist on näha, et ‘sinine’ ja ‘vilkur’ on Meie Mehe loos Sinine vilkur üsna läbivalt. Samas ‘veel’ Anaconda laulus Veel Veel Veel ainult alguses ja lõpus. Beebilõust räägib ‘mentidest’ läbivalt, sõnad oo ja na on aga ainult laulude lõpus. Nende fraasidega võiks saada proovida läbi teiste lugude ka statistikat koguda. Siin tuleb küll silmas pidada, et laulusõnad on veidi erinevas formaadis ja mõnel neist ei ole korduv refrään taas uuesti kirjutatud, vaid on kasutatud lihtsalt sõna ref uuesti. Et täpsemalt analüüsi tuleks andmeid ka lähemalt ise vaadata.</p>
+<p><img src="figures/pivot_longer_tidybook.png" /></p>
+<p>Kui me tahame laia tabeli taas pikaks teha, kasutame funktsiooni pivot_longer(). pivot_longer() tahab teada, milliseid tulpi lahutada ja mis kahe uue tulba nimeks panna.</p>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb338-1" data-line-number="1">kus_on_kordused <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb338-2" data-line-number="2"><span class="st">  </span><span class="kw">arrange</span>(asukoht_perc) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb338-3" data-line-number="3"><span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb338-4" data-line-number="4"><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">id_cols=</span><span class="kw">c</span>(<span class="st">&quot;artist&quot;</span>,<span class="st">&quot;song&quot;</span>,<span class="st">&quot;year&quot;</span>,<span class="st">&quot;word&quot;</span>),<span class="dt">names_from=</span><span class="st">&quot;asukoht_perc&quot;</span>,<span class="dt">values_from=</span><span class="st">&quot;n&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb338-5" data-line-number="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">year=</span><span class="kw">as.character</span>(year)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb338-6" data-line-number="6"><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="dt">cols=</span><span class="kw">starts_with</span>(<span class="st">&quot;0&quot;</span>), <span class="dt">names_to=</span><span class="st">&quot;asukoht_perc&quot;</span>, <span class="dt">values_to=</span><span class="st">&quot;n&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 200 x 6
+##    artist   song           year  word  asukoht_perc     n
+##    &lt;chr&gt;    &lt;chr&gt;          &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;        &lt;int&gt;
+##  1 Anaconda Veel Veel Veel 2000  veel  0                7
+##  2 Anaconda Veel Veel Veel 2000  veel  0.1              8
+##  3 Anaconda Veel Veel Veel 2000  veel  0.2             NA
+##  4 Anaconda Veel Veel Veel 2000  veel  0.3             NA
+##  5 Anaconda Veel Veel Veel 2000  veel  0.4             NA
+##  6 Anaconda Veel Veel Veel 2000  veel  0.5             NA
+##  7 Anaconda Veel Veel Veel 2000  veel  0.6             NA
+##  8 Anaconda Veel Veel Veel 2000  veel  0.7              3
+##  9 Anaconda Veel Veel Veel 2000  veel  0.8              7
+## 10 Anaconda Veel Veel Veel 2000  veel  0.9              6
+## # … with 190 more rows</code></pre>
+<p>Proovi ise! Vali mõni lugu ja sõna selles ning vaata, mis asukohtadel ta esineb.</p>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb340-1" data-line-number="1"><span class="co">#---------------------------------------------</span></a>
+<a class="sourceLine" id="cb340-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb340-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb340-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb340-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb340-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb340-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb340-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb340-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb340-10" data-line-number="10"><span class="co">#---------------------------------------------</span></a></code></pre></div>
+</div>
+<div id="sõnastik-1" class="section level2">
+<h2><span class="header-section-number">5.7</span> Sõnastik</h2>
+<ul>
+<li>%&gt;% - vii andmed järgmisesse protsessi</li>
+<li>unnest_tokens() - võtab tekstijupi ja jupitab selle mingil alusel ja paneb iga jupi eraldi reale.</li>
+<li>left_join() - liidab vasakpoolse andmestiku külge need read, mis sobivad paremast.</li>
+<li>right_join() - liidab parempoolse andmestiku külge need read, mis sobivad vasakust.</li>
+<li>inner_join() - jätab alles ainult sobivad read kummastki</li>
+<li>full_join() - jätab alles kõik read mõlemast tabelist, isegi kui ükski ei kattu.</li>
+<li>anti_join() - töötab vastupidiselt ja eemaldab vasakust kõik read, mis ühtivad parempoolse tabeliga.</li>
+<li>group_by() - grupeeri andmestik mõne tunnuse alusel</li>
+<li>ungroup() - vii andmestik grupeerimata kujule</li>
+<li>pivot_wider() - vii tabel laiaks</li>
+<li>pivot_longer() - vii tabel pikak</li>
+</ul>
+</div>
+<div id="harjutusülesanded-1" class="section level2">
+<h2><span class="header-section-number">5.8</span> Harjutusülesanded</h2>
+<ol style="list-style-type: decimal">
+<li><p>Millised olid levinuimad sõnad Vaiko Epliku sõnavaras?</p></li>
+<li><p>Millised olid levinuimad sõnad Vaiko Epliku sõnavaras kui eemaldada ka stopsõnad?</p></li>
+<li><p>Milline oli levikult kolmeteistkümnes sõna kõigis eestikeelsetes tekstides?</p></li>
+<li><p>Mitu sõna esines kõigil 25-l aastal?</p></li>
+<li><p>Leia sõnad, mida korrati kõige rohkem laulu teises pooles.</p></li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="tidyverse.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="mitmikud-regulaaravaldised-ja-märksõnad.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
