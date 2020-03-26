@@ -570,32 +570,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## # A tibble: 10 x 9
 ##     year  rank votes artist  song     filename      source lyrics       language
 ##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;   
-##  1  1997    20   235 Rumal … Lõputu … lyrics-rumal…      1 Üks öö ja p… et      
-##  2  1997    21   234 2 Quic… Oled Ku… lyrics-2_qui…      1 Ma nägin pe… et      
-##  3  1997    28   156 Termin… Ingli P… lyrics-termi…      1 Lööb kiriku… et      
-##  4  1997    31   136 2 Quic… Poolel … &lt;NA&gt;              NA &lt;NA&gt;         &lt;NA&gt;    
-##  5  1997    17   295 Maarja  Keelatu… lyrics-maarj…      1 Miks aina p… et      
-##  6  1997    30   146 Smilers Lähme s… lyrics-smile…      1 sa väljakut… et      
-##  7  1997    12   325 Mari L… Mis Teg… lyrics-mari-…      1 ref: mis te… et      
-##  8  1997    37    87 Click … Lase Lõ… lyrics-click…      1 Lase lõdvak… et      
-##  9  1997    38    84 Dallas  Your Ne… &lt;NA&gt;              NA &lt;NA&gt;         &lt;NA&gt;    
-## 10  1997    32   129 Termin… Muinasj… lyrics-termi…      1 Mäletad, ko… et</code></pre>
+##  1  1997    29   147 Kate    Siis Ku… &lt;NA&gt;              NA &lt;NA&gt;         &lt;NA&gt;    
+##  2  1997     9   446 Vennas… 15       lyrics-venna…      1 Kuigi juba … et      
+##  3  1997    16   296 Bläck … Itimees  lyrics-black…      1 Itimees Rää… et      
+##  4  1997    11   347 Black … Öö Silm… lyrics-black…      1 Tunnen süda… et      
+##  5  1997    21   234 2 Quic… Oled Ku… lyrics-2_qui…      1 Ma nägin pe… et      
+##  6  1997    13   321 Caater  Hold Th… &lt;NA&gt;              NA &lt;NA&gt;         &lt;NA&gt;    
+##  7  1997    32   129 Termin… Muinasj… lyrics-termi…      1 Mäletad, ko… et      
+##  8  1997     1  1923 Black … 17       lyrics-black…      1 On õhtu häm… et      
+##  9  1997    31   136 2 Quic… Poolel … &lt;NA&gt;              NA &lt;NA&gt;         &lt;NA&gt;    
+## 10  1997    17   295 Maarja  Keelatu… lyrics-maarj…      1 Miks aina p… et</code></pre>
 <div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb150-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(year<span class="op">==</span><span class="dv">2017</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb150-3" data-line-number="3"><span class="st">  </span><span class="kw">sample_n</span>(<span class="dv">10</span>)</a></code></pre></div>
 <pre><code>## # A tibble: 10 x 9
 ##     year  rank votes artist   song    filename    source lyrics         language
 ##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;   
-##  1  2017    19   134 Azma     Hea pä… &lt;NA&gt;            NA  &lt;NA&gt;          &lt;NA&gt;    
-##  2  2017     6   453 5miinust Erooti… lyrics-5mi…      1 &quot;Reede õhtu, … et      
-##  3  2017     9   277 The Boo… Plasti… &lt;NA&gt;            NA  &lt;NA&gt;          &lt;NA&gt;    
-##  4  2017    27    84 Karl-Er… Seitse… lyrics-kar…      1 &quot;iga päev tor… et      
-##  5  2017    39    51 Arop     Täna    lyrics-aro…      1 &quot;Hook: (Täna … et      
-##  6  2017    31    75 Jüri Po… Silmad… &lt;NA&gt;            NA  &lt;NA&gt;          &lt;NA&gt;    
-##  7  2017     7   423 Merlyn … Jälle … lyrics-mer…      1 &quot;Minu uksele … et      
-##  8  2017    32    74 Cityfla… Don&#39;t … &lt;NA&gt;            NA  &lt;NA&gt;          &lt;NA&gt;    
-##  9  2017    34    58 Arop     Lase m… lyrics-aro…      1 &quot;Süda toppab,… et      
-## 10  2017    26    84 Ivo Lin… Suur l… lyrics-ivo…      1 &quot;Aeg ei peatu… et</code></pre>
+##  1  2017    17   138 Reket    Gasell  lyrics-rek…      1 &quot;Siruta mu ku… et      
+##  2  2017    32    74 Cityfla… Don&#39;t … &lt;NA&gt;            NA  &lt;NA&gt;          &lt;NA&gt;    
+##  3  2017    27    84 Karl-Er… Seitse… lyrics-kar…      1 &quot;iga päev tor… et      
+##  4  2017     8   284 Shanon   NaNaNa… &lt;NA&gt;            NA  &lt;NA&gt;          &lt;NA&gt;    
+##  5  2017    38    52 Vaido N… I Beli… &lt;NA&gt;            NA  &lt;NA&gt;          &lt;NA&gt;    
+##  6  2017    29    82 Miljard… Vilkuv… lyrics-mil…      1 &quot;kasvab lapsi… et      
+##  7  2017    25    89 Tõnn To… Tunnis… &lt;NA&gt;            NA  &lt;NA&gt;          &lt;NA&gt;    
+##  8  2017    34    58 Arop     Lase m… lyrics-aro…      1 &quot;Süda toppab,… et      
+##  9  2017    21   105 Ott Lep… Siin m… lyrics-ott…      1 &quot;Käes on aeg,… et      
+## 10  2017    18   137 Koit To… Verona  lyrics-koi…      1 &quot;Sleeping all… en</code></pre>
 <p>Proovi ise! Võta andmestikust välja 10 juhuslikku esikohalugu. Vaata, kas neid tead?</p>
 <div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb152-1" data-line-number="1"><span class="co">#---------------------------------------------</span></a>
 <a class="sourceLine" id="cb152-2" data-line-number="2"></a>

@@ -225,7 +225,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb416-6" data-line-number="6"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>gdpPercap,<span class="dt">y=</span>lifeExp,<span class="dt">size=</span>pop,<span class="dt">color=</span>continent))<span class="op">+</span></a>
 <a class="sourceLine" id="cb416-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></a>
 <a class="sourceLine" id="cb416-8" data-line-number="8"><span class="st">  </span><span class="kw">scale_x_log10</span>()</a></code></pre></div>
-<p><img src="tekstid_R_files/figure-html/unnamed-chunk-206-1.png" width="672" /></p>
+<p><img src="tekstid_R_2020_files/figure-html/unnamed-chunk-206-1.png" width="672" /></p>
 <p>Graafik ise on tehtud minimaalse andmetöötlusega (lihtsalt on vaja valida välja aasta) ja lihtsa struktuuriga. Seal määratakse ära, et x-teljel on rikkus, y-teljel on eluiga, punkti suurus sõltub rahvaarvust ja värv maailmajaost. Määratud on, et tegemist on punktgraafikuga ja x-telg on viidud logaritmskaalale.</p>
 <p>Vaatame lähemalt, kuidas see graafik ehitatud on. Üldine põhimõte on ggplot2-es sama kui tidyverse-is üldisel. Et alustades mingist objektist lisatakse sellele aina töötlust. Ainult et joonise puhul ei muudeta pöördumatult loodud objekti, vaid lisatakse sellele uusi kihte, mis selle siis ümber kujundavad. ggplot() jooniste puhul on kihid ühendatud + märkidega, mitte %&gt;% märgiga nagu ülejäänud tidyverse’is.</p>
 <p>Ühe graafiku põhistruktuur on järgmine:</p>
@@ -256,42 +256,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Nüüd sellest graafiku tegemiseks, saadame ta %&gt;% toruga ggplot() funktsiooni. Alustuseks on graafik täiesti tühi.</p>
 <div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb421-1" data-line-number="1">andmed <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb421-2" data-line-number="2"><span class="st">  </span><span class="kw">ggplot</span>()</a></code></pre></div>
-<p><img src="tekstid_R_files/figure-html/unnamed-chunk-210-1.png" width="672" /></p>
+<p><img src="tekstid_R_2020_files/figure-html/unnamed-chunk-210-1.png" width="672" /></p>
 <p>ggplot() funktsiooni sisse saab määrata erinevaid parameetrid. Kõige tähtsamad parameetrid - see, mida kuvatakse lähevad omakorda aes() funktsiooni sisse. aes() ehk aesthetics (esteetika). Selle süntaks on üsna otsene, parameetrite nimed on selle järgi, kuhu info lõpuks saadetakse ja parameetri sisu on see tabeli tunnus, mis sinna peaks minema. Kui me määrame x-teljele gdp, seab ka graafik paika x-telje, mis mahutaks ära gdp. ggplot() saab aru, et tegemist on numberväärtusega ning paneb paika selle suurima ja väikseima väärtuse.</p>
 <div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb422-1" data-line-number="1">andmed <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb422-2" data-line-number="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>gdpPercap))</a></code></pre></div>
-<p><img src="tekstid_R_files/figure-html/unnamed-chunk-211-1.png" width="672" /></p>
+<p><img src="tekstid_R_2020_files/figure-html/unnamed-chunk-211-1.png" width="672" /></p>
 <p>Määrates aes() funktsioonis y-telje, saab ggplot() samamoodi aru sellest, kuidas ehitada üles y-telg. Samade parameetrite alusel</p>
 <div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb423-1" data-line-number="1">andmed <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb423-2" data-line-number="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">y=</span>lifeExp))</a></code></pre></div>
-<p><img src="tekstid_R_files/figure-html/unnamed-chunk-212-1.png" width="672" /></p>
+<p><img src="tekstid_R_2020_files/figure-html/unnamed-chunk-212-1.png" width="672" /></p>
 <p>Siis kui me määrame ära nad mõlemad korraga, saame ette koordinaatteljestiku, mida graafikul nägime.</p>
 <div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb424-1" data-line-number="1">andmed <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb424-2" data-line-number="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>gdpPercap,<span class="dt">y=</span>lifeExp))</a></code></pre></div>
-<p><img src="tekstid_R_files/figure-html/unnamed-chunk-213-1.png" width="672" /></p>
+<p><img src="tekstid_R_2020_files/figure-html/unnamed-chunk-213-1.png" width="672" /></p>
 <p>Koordinaatteljele saame siis hakata asetama andmeid mitmel eri moel. Üks lihtsamaid viise on punktgraafik ehk hajuvusdiagramm. Iga rida ehk andmepunkt on siis kujutatud ühe punktina. Selle jaoks on lisame uue kihina geom_point(). Märka, et rea lõppu lisasime ka + märgi. Tulemus on näha all.</p>
 <div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb425-1" data-line-number="1">andmed <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb425-2" data-line-number="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>gdpPercap,<span class="dt">y=</span>lifeExp))<span class="op">+</span></a>
 <a class="sourceLine" id="cb425-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
-<p><img src="tekstid_R_files/figure-html/unnamed-chunk-214-1.png" width="672" /></p>
+<p><img src="tekstid_R_2020_files/figure-html/unnamed-chunk-214-1.png" width="672" /></p>
 <p>Meie graafik ülal oli veidike teistsugune seetõttu, et seal oli muudetud x-telje skaalat. Seda sellepärast, et tüüpiliselt rikkad riigid on väga väga rikkad, vaeste riikide vaheline kaugus on palju väiksem. Logaritm-muundamine vähendab andmestikus suurte väärtuste distantsi ja kasvatab väikeste väärtuste oma. Meie andmete puhul jaotab ta nad skaalale ühtlasemalt ära. Kujutamaks meie andmepunkte logarigm-skaalal lisame joonisele kihi scale_x_log10(), mis ütleb et kujutagu x-teljel väärtusi logaritmskaalal. Telgede muundamiseks on veel palju võimalusi. Nende avastamiseks vaadake ggplot2 paketi võimalusi.</p>
 <div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb426-1" data-line-number="1">andmed <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb426-2" data-line-number="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>gdpPercap,<span class="dt">y=</span>lifeExp))<span class="op">+</span></a>
 <a class="sourceLine" id="cb426-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></a>
 <a class="sourceLine" id="cb426-4" data-line-number="4"><span class="st">  </span><span class="kw">scale_x_log10</span>()</a></code></pre></div>
-<p><img src="tekstid_R_files/figure-html/unnamed-chunk-215-1.png" width="672" /></p>
+<p><img src="tekstid_R_2020_files/figure-html/unnamed-chunk-215-1.png" width="672" /></p>
 <p>Nüüd on graafik juba sama kujuga kui oli alguses. Puudu on veel punktide värvid ja suurused. Samamoodi nagu x-telg ja y-telg, läheb see info aes() funktsiooni sisse. Määrame ära, et suuruseks on rahvaarv, ehk size = pop. Rahvaarv on numbriline väärtus ja ggplot2 leiab punkti suurusele ise skaala, mis sobib nende väärtustega.</p>
 <div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb427-1" data-line-number="1">andmed <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb427-2" data-line-number="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>gdpPercap,<span class="dt">y=</span>lifeExp, <span class="dt">size=</span>pop))<span class="op">+</span></a>
 <a class="sourceLine" id="cb427-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></a>
 <a class="sourceLine" id="cb427-4" data-line-number="4"><span class="st">  </span><span class="kw">scale_x_log10</span>()</a></code></pre></div>
-<p><img src="tekstid_R_files/figure-html/unnamed-chunk-216-1.png" width="672" /></p>
+<p><img src="tekstid_R_2020_files/figure-html/unnamed-chunk-216-1.png" width="672" /></p>
 <p>Ja määrame lisaks ka, et punkti värv peaks tulenema maailmajaost. Kuna maailmajagu on faktormuutuja, kus R näeb ära, et seal on viis eri väärtust, leiab ta viis värvi, mida seal kasutada. Ja kokkuvõttes saamegi sama graafiku, mis oli alguses.</p>
 <div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb428-1" data-line-number="1">andmed <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb428-2" data-line-number="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>gdpPercap,<span class="dt">y=</span>lifeExp, <span class="dt">size=</span>pop, <span class="dt">color=</span>continent))<span class="op">+</span></a>
 <a class="sourceLine" id="cb428-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></a>
 <a class="sourceLine" id="cb428-4" data-line-number="4"><span class="st">  </span><span class="kw">scale_x_log10</span>()</a></code></pre></div>
-<p><img src="tekstid_R_files/figure-html/unnamed-chunk-217-1.png" width="672" /></p>
+<p><img src="tekstid_R_2020_files/figure-html/unnamed-chunk-217-1.png" width="672" /></p>
 </div>
 <div id="joonisekihtide-liigid" class="section level2">
 <h2><span class="header-section-number">7.2</span> Joonisekihtide liigid</h2>
@@ -324,27 +324,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb431-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(artist,<span class="dt">sort=</span>T) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb431-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">row_number</span>()<span class="op">&lt;</span><span class="dv">11</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb431-4" data-line-number="4"><span class="st">  </span><span class="kw">ggplot</span>()</a></code></pre></div>
-<p><img src="tekstid_R_files/figure-html/unnamed-chunk-219-1.png" width="672" /></p>
+<p><img src="tekstid_R_2020_files/figure-html/unnamed-chunk-219-1.png" width="672" /></p>
 <p>Märgime ära graafiku skaala. X-teljele artisti nime ja y-teljele lugude arvu. Nüüd teeb ggplot() veidi teistsuguse graafiku kui eelmine, kuna artisti nimi ei ole number ning sellele ei ole võimalik teha sujuvat skaalat. Selle asemel kirjutab ggplot kõik nimed graafiku allserva.</p>
 <div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb432-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb432-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(artist,<span class="dt">sort=</span>T) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb432-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">row_number</span>()<span class="op">&lt;</span><span class="dv">11</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb432-4" data-line-number="4"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>artist,<span class="dt">y=</span>n))</a></code></pre></div>
-<p><img src="tekstid_R_files/figure-html/unnamed-chunk-220-1.png" width="672" /></p>
+<p><img src="tekstid_R_2020_files/figure-html/unnamed-chunk-220-1.png" width="672" /></p>
 <p>Lisame nüüd punktikihi, kus iga punkt paikneb oma artisti kohal ning tähistab seda, kui palju lugusid tal oli.</p>
 <div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb433-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb433-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(artist,<span class="dt">sort=</span>T) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb433-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">row_number</span>()<span class="op">&lt;</span><span class="dv">11</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb433-4" data-line-number="4"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>artist,<span class="dt">y=</span>n))<span class="op">+</span></a>
 <a class="sourceLine" id="cb433-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
-<p><img src="tekstid_R_files/figure-html/unnamed-chunk-221-1.png" width="672" /></p>
+<p><img src="tekstid_R_2020_files/figure-html/unnamed-chunk-221-1.png" width="672" /></p>
 <p>Ja punktid jõudsidki graafikule. Antud juhul võiks ehk tulpdiagramm sobida paremini kui punktid. Asendame selle jaoks geom_point() funktsiooni geom_col() funktsiooniga. X-telg ja y-telg võivad jääda samaks. Tulbad annavad mastaabist parema ülevaate.</p>
 <div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb434-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb434-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(artist,<span class="dt">sort=</span>T) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb434-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">row_number</span>()<span class="op">&lt;</span><span class="dv">11</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb434-4" data-line-number="4"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>artist,<span class="dt">y=</span>n))<span class="op">+</span></a>
 <a class="sourceLine" id="cb434-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_col</span>()</a></code></pre></div>
-<p><img src="tekstid_R_files/figure-html/unnamed-chunk-222-1.png" width="672" /></p>
+<p><img src="tekstid_R_2020_files/figure-html/unnamed-chunk-222-1.png" width="672" /></p>
 <p>Ja ongi muudetud. Märgata võib, et hetkel on nimed tabelis tähestiku järjekorras, mis ehk ei anna kõige paremat ettekujutust sellest, mis järjekorras see top10 ikkagi on. See on nii sellepärast, et tegemist on faktor-muutujaga, mille jaoks me ei ole andnud ggplot()-ile eraldi juhiseid. Faktor-muutujad on tihti vaikimisi tähestiku järjekorras. Tasemete muutmiseks on mitmeid viise (vaata sissejuhatavat osa). Tidyverse’is on pakutud faktorite töötluseks omaette pakett <em>forcats</em> ehk for categorical variables (kategooriliste tunnuste jaoks). Tasemete järjestuse muutmiseks on seal eraldi käsk fct_reorder(), kus tuleb lihtsalt näidata, mis tulpa järjestada ja siis anda järjestamise alus. Antud juhul püüame siis järjestada artisti tulba tasemeid n tulba väärtuste alusel, kahanevas järjekorras. Selle jaoks võime kirjutada fct_reorder(artist, -n). Miinusmärk n ees muudab pöörab ümber numbrite skaala kuna miinusmärgiga on suuremad numbrid väiksema väärtusega ehk -100 on väiksem kui -1.</p>
 <div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb435-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb435-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(artist,<span class="dt">sort=</span>T) <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -352,7 +352,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb435-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">artist=</span><span class="kw">fct_reorder</span>(artist,<span class="op">-</span>n)) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb435-5" data-line-number="5"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>artist,<span class="dt">y=</span>n))<span class="op">+</span></a>
 <a class="sourceLine" id="cb435-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_col</span>()</a></code></pre></div>
-<p><img src="tekstid_R_files/figure-html/unnamed-chunk-223-1.png" width="672" /></p>
+<p><img src="tekstid_R_2020_files/figure-html/unnamed-chunk-223-1.png" width="672" /></p>
 <p>Ilusama graafiku jaoks on võimalik jälle telgi sättida veidi, seekord võime ära vahetada x-telje ja y-telje. Selle jaoks on käsk coord_flip(). Sellisel juhul ehk sobib ka paremini järjestada artistid miinusmärgita n alusel.</p>
 <div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb436-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb436-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(artist,<span class="dt">sort=</span>T) <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -361,14 +361,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb436-5" data-line-number="5"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>artist,<span class="dt">y=</span>n))<span class="op">+</span></a>
 <a class="sourceLine" id="cb436-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_col</span>()<span class="op">+</span></a>
 <a class="sourceLine" id="cb436-7" data-line-number="7"><span class="st">  </span><span class="kw">coord_flip</span>()</a></code></pre></div>
-<p><img src="tekstid_R_files/figure-html/unnamed-chunk-224-1.png" width="672" /></p>
+<p><img src="tekstid_R_2020_files/figure-html/unnamed-chunk-224-1.png" width="672" /></p>
 <p>Me võime teha kõiki endale tuttavaid operatsioone oma andmetega. Me võime näiteks hea sarnase tulpdiagrammi Smilersi lugude nimedega. Paneme lugude arvu asemel y-teljele nende koha edetabelis. X-teljele läheb artisti asemele siis loo nimi. Teeme taaskord vahetatud telgedega tulpdiagrammi geom_col().</p>
 <div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb437-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb437-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(artist<span class="op">==</span><span class="st">&quot;Smilers&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb437-3" data-line-number="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>song,<span class="dt">y=</span>rank))<span class="op">+</span></a>
 <a class="sourceLine" id="cb437-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_col</span>()<span class="op">+</span></a>
 <a class="sourceLine" id="cb437-5" data-line-number="5"><span class="st">  </span><span class="kw">coord_flip</span>()</a></code></pre></div>
-<p><img src="tekstid_R_files/figure-html/unnamed-chunk-225-1.png" width="672" /></p>
+<p><img src="tekstid_R_2020_files/figure-html/unnamed-chunk-225-1.png" width="672" /></p>
 <p>Ja joondame nad fct_reorder() abil edetabelipositsiooni järgi.</p>
 <div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb438-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb438-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(artist<span class="op">==</span><span class="st">&quot;Smilers&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -376,7 +376,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb438-4" data-line-number="4"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>song,<span class="dt">y=</span>rank))<span class="op">+</span></a>
 <a class="sourceLine" id="cb438-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_col</span>()<span class="op">+</span></a>
 <a class="sourceLine" id="cb438-6" data-line-number="6"><span class="st">  </span><span class="kw">coord_flip</span>()</a></code></pre></div>
-<p><img src="tekstid_R_files/figure-html/unnamed-chunk-226-1.png" width="672" /></p>
+<p><img src="tekstid_R_2020_files/figure-html/unnamed-chunk-226-1.png" width="672" /></p>
 <p>Nüüd näeme tabelist, et kuna mõni lugu esines kaks korda, siis pole tulpdiagramm ehk selle jaoks parim. Muudame geom_col() geom_point()-iks, et teha tulpdiagrammist punktdiagramm.</p>
 <div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb439-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb439-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(artist<span class="op">==</span><span class="st">&quot;Smilers&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -384,7 +384,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb439-4" data-line-number="4"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>song,<span class="dt">y=</span>rank))<span class="op">+</span></a>
 <a class="sourceLine" id="cb439-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></a>
 <a class="sourceLine" id="cb439-6" data-line-number="6"><span class="st">  </span><span class="kw">coord_flip</span>()</a></code></pre></div>
-<p><img src="tekstid_R_files/figure-html/unnamed-chunk-227-1.png" width="672" /></p>
+<p><img src="tekstid_R_2020_files/figure-html/unnamed-chunk-227-1.png" width="672" /></p>
 <p>Tähele võib panna, et fct_reorder() võttis lugude järjestamisel aluseks punktide keskmise. See on antud vaikeväärtusena nii selles funktsioonis. Et meie võimalusi lähemalt uurida, võime kasutada ?fct_reorder, et näha selle võimalusi.</p>
 <div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb440-1" data-line-number="1">?fct_reorder</a></code></pre></div>
 <p>Selle põhjal näeme, et lisaks hädavajalikele parameetritele võib lisada ka sellele funktsioonile kolmanda parameetri, mis on vaikimisi <em>mean</em> ehk keskmise võtmine. Me võime selle asemele panna <em>min</em> ehk miinimumi võtmine ja siis me saame need lood järjestatud just parima koha alusel. Nüüd on järjekord veidi teistsugune ja mitu aastat tabelis olnud lood ei saa selle eest enam miinuspunkte.</p>
@@ -394,7 +394,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb441-4" data-line-number="4"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>song,<span class="dt">y=</span>rank))<span class="op">+</span></a>
 <a class="sourceLine" id="cb441-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></a>
 <a class="sourceLine" id="cb441-6" data-line-number="6"><span class="st">  </span><span class="kw">coord_flip</span>()</a></code></pre></div>
-<p><img src="tekstid_R_files/figure-html/unnamed-chunk-229-1.png" width="672" /></p>
+<p><img src="tekstid_R_2020_files/figure-html/unnamed-chunk-229-1.png" width="672" /></p>
 <p>Sarnaseid graafikuid võime teha ükskõik millest. Näiteks võime teha sama oma sagedussõnastikuga. Kõigepealt teeme laulude tekstid sõnadeks ja salvestame selle muutuja, kuna me kasutame seda korduvalt.</p>
 <div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb442-1" data-line-number="1">laulusonad &lt;-<span class="st"> </span>edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb442-2" data-line-number="2"><span class="st">  </span><span class="kw">unnest_tokens</span>(word,lyrics)</a></code></pre></div>
@@ -406,7 +406,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb443-5" data-line-number="5"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>word,<span class="dt">y=</span>n))<span class="op">+</span></a>
 <a class="sourceLine" id="cb443-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_col</span>()<span class="op">+</span></a>
 <a class="sourceLine" id="cb443-7" data-line-number="7"><span class="st">  </span><span class="kw">coord_flip</span>()</a></code></pre></div>
-<p><img src="tekstid_R_files/figure-html/unnamed-chunk-231-1.png" width="672" /></p>
+<p><img src="tekstid_R_2020_files/figure-html/unnamed-chunk-231-1.png" width="672" /></p>
 <p>Me võime kuvada ka mõne muu osa nendest sõnadest, näiteks siis sõnad mis olid 120.-130. kohal populaarsuselt. Nagu mujalgi, saame andmeid viia varem sellisele kujule nagu me soovime.</p>
 <div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb444-1" data-line-number="1">laulusonad <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb444-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(word,<span class="dt">sort=</span>T)<span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -415,7 +415,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb444-5" data-line-number="5"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>word,<span class="dt">y=</span>n))<span class="op">+</span></a>
 <a class="sourceLine" id="cb444-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_col</span>()<span class="op">+</span></a>
 <a class="sourceLine" id="cb444-7" data-line-number="7"><span class="st">  </span><span class="kw">coord_flip</span>()</a></code></pre></div>
-<p><img src="tekstid_R_files/figure-html/unnamed-chunk-232-1.png" width="672" /></p>
+<p><img src="tekstid_R_2020_files/figure-html/unnamed-chunk-232-1.png" width="672" /></p>
 <p>Võime ka kasutada sample_n() funktsiooni võtta 10 juhuslikku sõna. Iga kord kui me seda koodi jooksutame, saame sedasi uue tabeli.</p>
 <div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb445-1" data-line-number="1">laulusonad <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb445-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(word,<span class="dt">sort=</span>T)<span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -424,14 +424,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb445-5" data-line-number="5"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>word,<span class="dt">y=</span>n))<span class="op">+</span></a>
 <a class="sourceLine" id="cb445-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_col</span>()<span class="op">+</span></a>
 <a class="sourceLine" id="cb445-7" data-line-number="7"><span class="st">  </span><span class="kw">coord_flip</span>()</a></code></pre></div>
-<p><img src="tekstid_R_files/figure-html/unnamed-chunk-233-1.png" width="672" /></p>
+<p><img src="tekstid_R_2020_files/figure-html/unnamed-chunk-233-1.png" width="672" /></p>
 <p>Me võime samal viisil kuvada ka kõik sõnad. Kuna sõnu on kokku väga palju, siis tasub ehk neid kuvada mitte nimeliselt vaid mõne muu tunnuse alusel. Võtame selleks näiteks populaarsuse järjekorranumbri lihtsalt. Jooniselt on näha, keeleteaduses tuntud zipf-i seadust, et ainult üksikuid sõnu on tekstides väga palju, aga suurem osa sõnu on üpris haruldased.</p>
 <div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb446-1" data-line-number="1">laulusonad <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb446-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(word,<span class="dt">sort=</span>T)<span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb446-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">rownr=</span><span class="kw">row_number</span>()) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb446-4" data-line-number="4"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>rownr,<span class="dt">y=</span>n))<span class="op">+</span></a>
 <a class="sourceLine" id="cb446-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
-<p><img src="tekstid_R_files/figure-html/unnamed-chunk-234-1.png" width="672" /></p>
+<p><img src="tekstid_R_2020_files/figure-html/unnamed-chunk-234-1.png" width="672" /></p>
 <p>Saame ehk veidi parema pildi kasutades jälle logaritm-skaalat.</p>
 <div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb447-1" data-line-number="1">laulusonad <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb447-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(word,<span class="dt">sort=</span>T)<span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -439,7 +439,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb447-4" data-line-number="4"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>rownr,<span class="dt">y=</span>n))<span class="op">+</span></a>
 <a class="sourceLine" id="cb447-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></a>
 <a class="sourceLine" id="cb447-6" data-line-number="6"><span class="st">  </span><span class="kw">scale_y_log10</span>()</a></code></pre></div>
-<p><img src="tekstid_R_files/figure-html/unnamed-chunk-235-1.png" width="672" /></p>
+<p><img src="tekstid_R_2020_files/figure-html/unnamed-chunk-235-1.png" width="672" /></p>
 <p>Et joonisest veel paremini aru saada, võime lisada ka nimed mõnele punktidest. Selleks salvestame ajutiselt meie tabeli, kuna meil on vaja seda hiljem muundada ja võtta sealt kümme juhuslikku rida.</p>
 <div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb448-1" data-line-number="1">plotdata &lt;-<span class="st"> </span>laulusonad <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb448-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(word,<span class="dt">sort=</span>T)<span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -450,20 +450,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb449-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></a>
 <a class="sourceLine" id="cb449-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">data=</span>plotdata <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dv">10</span>),<span class="dt">vjust=</span><span class="op">-</span><span class="dv">1</span>)<span class="op">+</span></a>
 <a class="sourceLine" id="cb449-5" data-line-number="5"><span class="st">  </span><span class="kw">scale_y_log10</span>()</a></code></pre></div>
-<p><img src="tekstid_R_files/figure-html/unnamed-chunk-237-1.png" width="672" /></p>
+<p><img src="tekstid_R_2020_files/figure-html/unnamed-chunk-237-1.png" width="672" /></p>
 <p>Spetsiifilisemaid edetabeleid võib teha mitmeti. Näiteks võtame kõik Põhja-Tallinna lood ja kuvada nende saadud edetabelikohad läbi aastate.</p>
 <div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb450-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb450-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(artist<span class="op">==</span><span class="st">&quot;Põhja-Tallinn&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb450-3" data-line-number="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>year,<span class="dt">y=</span>rank))<span class="op">+</span></a>
 <a class="sourceLine" id="cb450-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
-<p><img src="tekstid_R_files/figure-html/unnamed-chunk-238-1.png" width="672" /></p>
+<p><img src="tekstid_R_2020_files/figure-html/unnamed-chunk-238-1.png" width="672" /></p>
 <p>Võime neile kõigile lisada ka nimed, kasutades selleks geom_text() funktsiooni ja label parameetrit.</p>
 <div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb451-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb451-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(artist<span class="op">==</span><span class="st">&quot;Põhja-Tallinn&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb451-3" data-line-number="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>year,<span class="dt">y=</span>rank, <span class="dt">label=</span>song))<span class="op">+</span></a>
 <a class="sourceLine" id="cb451-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></a>
 <a class="sourceLine" id="cb451-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">vjust=</span><span class="op">-</span><span class="dv">1</span>)</a></code></pre></div>
-<p><img src="tekstid_R_files/figure-html/unnamed-chunk-239-1.png" width="672" /></p>
+<p><img src="tekstid_R_2020_files/figure-html/unnamed-chunk-239-1.png" width="672" /></p>
 <p>Lisaks võime lisada neile ka joone. Ütleme, et graafik grupeeriks laule nende nimede alusel. Nii saavad sama loo eri aastakäigud ühendatud kokku.</p>
 <div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb452-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb452-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(artist<span class="op">==</span><span class="st">&quot;Põhja-Tallinn&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -471,7 +471,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb452-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></a>
 <a class="sourceLine" id="cb452-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span></a>
 <a class="sourceLine" id="cb452-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">vjust=</span><span class="op">-</span><span class="dv">1</span>)</a></code></pre></div>
-<p><img src="tekstid_R_files/figure-html/unnamed-chunk-240-1.png" width="672" /></p>
+<p><img src="tekstid_R_2020_files/figure-html/unnamed-chunk-240-1.png" width="672" /></p>
 <p>Lisaks võime värvida nad kõik ka aastakäigu järgi. Selleks et aastakäiku lugeda kategoorilise muutujana, paneme selle ümber funktsiooni factor().</p>
 <div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb453-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb453-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(artist<span class="op">==</span><span class="st">&quot;Põhja-Tallinn&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -479,7 +479,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb453-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></a>
 <a class="sourceLine" id="cb453-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span></a>
 <a class="sourceLine" id="cb453-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">vjust=</span><span class="op">-</span><span class="dv">1</span>)</a></code></pre></div>
-<p><img src="tekstid_R_files/figure-html/unnamed-chunk-241-1.png" width="672" /></p>
+<p><img src="tekstid_R_2020_files/figure-html/unnamed-chunk-241-1.png" width="672" /></p>
 <p>Viimaks võime anda tabelile ka pealkirja labs() funktsiooni kaudu. Sarnaselt nagu aes() funktsiooniski, tuleb lihtsalt anda parameetrite nimed selle järgi, kuhu info saata. title määrab pealkirja, x määrab x-telje väärtuse, y määrab y-telje väärtuse.</p>
 <div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb454-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb454-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(artist<span class="op">==</span><span class="st">&quot;Põhja-Tallinn&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -488,7 +488,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb454-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span></a>
 <a class="sourceLine" id="cb454-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">vjust=</span><span class="op">-</span><span class="dv">1</span>)<span class="op">+</span></a>
 <a class="sourceLine" id="cb454-7" data-line-number="7"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Pealkiri läheb siia&quot;</span>,<span class="dt">x=</span><span class="st">&quot;x-telg&quot;</span>,<span class="dt">y=</span><span class="st">&quot;y-telg&quot;</span>)</a></code></pre></div>
-<p><img src="tekstid_R_files/figure-html/unnamed-chunk-242-1.png" width="672" /></p>
+<p><img src="tekstid_R_2020_files/figure-html/unnamed-chunk-242-1.png" width="672" /></p>
 <p>Kui me oleme loendanud erinevat tüüpi andmeid, võiksime selle näitamiseks kasutada samuti värvi. Näiteks meie andmestikus leiame lugusid mitmes eri keeles ning me võime neid loendada.</p>
 <div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb455-1" data-line-number="1">edetabel <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb455-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(language)</a></code></pre></div>
@@ -523,7 +523,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb459-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(language,year) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb459-3" data-line-number="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>year,<span class="dt">y=</span>n,<span class="dt">fill=</span>language))<span class="op">+</span></a>
 <a class="sourceLine" id="cb459-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_col</span>()</a></code></pre></div>
-<p><img src="tekstid_R_files/figure-html/unnamed-chunk-245-1.png" width="672" /></p>
+<p><img src="tekstid_R_2020_files/figure-html/unnamed-chunk-245-1.png" width="672" /></p>
 <p>Joonisel on siis näha, mis keeles said lood eesti edetabelisse ja on ehk huvitav näha, et viimase 25 aasta jooksul on peaaegu alati olnud mõned lood inglise keeles, aga need on alati olnud üsna väike hulk tervest kogusest. Samas tuleb ka märgata, et paljudel lugudel on sõnad puudu ja seetõttu ka keel määramata.</p>
 <p>Me võime teha tulpdiagramme ka üksikute sõnade kohta. Võime näiteks võta Kuldse Trio kõige sagedamini kasutatud sõnad.</p>
 <div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb460-1" data-line-number="1">laulusonad <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -535,7 +535,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb460-7" data-line-number="7"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>word,<span class="dt">y=</span>n,<span class="dt">fill=</span>word))<span class="op">+</span></a>
 <a class="sourceLine" id="cb460-8" data-line-number="8"><span class="st">  </span><span class="kw">geom_col</span>()<span class="op">+</span></a>
 <a class="sourceLine" id="cb460-9" data-line-number="9"><span class="st">  </span><span class="kw">coord_flip</span>()</a></code></pre></div>
-<p><img src="tekstid_R_files/figure-html/unnamed-chunk-246-1.png" width="672" /></p>
+<p><img src="tekstid_R_2020_files/figure-html/unnamed-chunk-246-1.png" width="672" /></p>
 <p>Ja sama võime teha ka märksõnade kohta, järjestades nad selle alusel kui eristavad nad Kuldsele Triole on.</p>
 <div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb461-1" data-line-number="1">laulusonad <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb461-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(artist) <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -548,7 +548,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb461-9" data-line-number="9"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>word,<span class="dt">y=</span>tf_idf,<span class="dt">fill=</span>word))<span class="op">+</span></a>
 <a class="sourceLine" id="cb461-10" data-line-number="10"><span class="st">  </span><span class="kw">geom_col</span>()<span class="op">+</span></a>
 <a class="sourceLine" id="cb461-11" data-line-number="11"><span class="st">  </span><span class="kw">coord_flip</span>()</a></code></pre></div>
-<p><img src="tekstid_R_files/figure-html/unnamed-chunk-247-1.png" width="672" /></p>
+<p><img src="tekstid_R_2020_files/figure-html/unnamed-chunk-247-1.png" width="672" /></p>
 <p>Me võime ka uuesti vaadata sõnu laulude sees. Selleks taaselustame sõnade asukohad ja kordused ning salvestame nad muutujatena.</p>
 <div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb462-1" data-line-number="1">asukohad &lt;-<span class="st"> </span>laulusonad <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb462-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(artist,song,year) <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -578,14 +578,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb463-1" data-line-number="1">asukohad_ja_kordused <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb463-2" data-line-number="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>asukoht,<span class="dt">y=</span><span class="kw">interaction</span>(song,word)))<span class="op">+</span></a>
 <a class="sourceLine" id="cb463-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
-<p><img src="tekstid_R_files/figure-html/unnamed-chunk-249-1.png" width="672" /></p>
+<p><img src="tekstid_R_2020_files/figure-html/unnamed-chunk-249-1.png" width="672" /></p>
 <p>Viimaks võime trükkida ka varasemas peatükis trükitud tabeli graafiliselt, kus iga laul on jaotatud kümnendikeks ja igas kümnendikus on võetud selle sõna esinemise suhteline sagedus. Selleks sobib geom_tile() funktsioon, mis asetab väärtused graafikul ruudustikule.</p>
 <div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb464-1" data-line-number="1">kus_on_kordused <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb464-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(artist,song,word,year) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb464-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prop=</span>n<span class="op">/</span><span class="kw">sum</span>(n)) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb464-4" data-line-number="4"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>asukoht_perc,<span class="dt">y=</span><span class="kw">interaction</span>(song,word),<span class="dt">fill=</span>prop))<span class="op">+</span></a>
 <a class="sourceLine" id="cb464-5" data-line-number="5"><span class="st">           </span><span class="kw">geom_tile</span>()</a></code></pre></div>
-<p><img src="tekstid_R_files/figure-html/unnamed-chunk-250-1.png" width="672" /></p>
+<p><img src="tekstid_R_2020_files/figure-html/unnamed-chunk-250-1.png" width="672" /></p>
 </div>
 <div id="tabeli-viimistlemine" class="section level2">
 <h2><span class="header-section-number">7.3</span> Tabeli viimistlemine</h2>
@@ -621,7 +621,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb469-4" data-line-number="4"><span class="st">  </span><span class="kw">ggplot</span>()<span class="op">+</span></a>
 <a class="sourceLine" id="cb469-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>artist,<span class="dt">y=</span>first))<span class="op">+</span></a>
 <a class="sourceLine" id="cb469-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>artist,<span class="dt">y=</span>last))</a></code></pre></div>
-<p><img src="tekstid_R_files/figure-html/unnamed-chunk-254-1.png" width="672" /></p>
+<p><img src="tekstid_R_2020_files/figure-html/unnamed-chunk-254-1.png" width="672" /></p>
 <p>Vahetame ära x ja y telje.</p>
 <div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb470-1" data-line-number="1">top10 <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb470-2" data-line-number="2"><span class="st">  </span><span class="kw">inner_join</span>(artist_career,<span class="dt">by=</span><span class="st">&quot;artist&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -630,7 +630,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb470-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>artist,<span class="dt">y=</span>first))<span class="op">+</span></a>
 <a class="sourceLine" id="cb470-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>artist,<span class="dt">y=</span>last))<span class="op">+</span></a>
 <a class="sourceLine" id="cb470-7" data-line-number="7"><span class="st">  </span><span class="kw">coord_flip</span>()</a></code></pre></div>
-<p><img src="tekstid_R_files/figure-html/unnamed-chunk-255-1.png" width="672" /></p>
+<p><img src="tekstid_R_2020_files/figure-html/unnamed-chunk-255-1.png" width="672" /></p>
 <p>Seejärel võime lisada ka joone geom_segment(), mis algab esimesest aastast ja lõppeb viimase aastaga ning püsib kogu ulatuses artisti joonel. Näeme, et Smilers ja Terminaator on meid saatnud peaaegu kogu tabelite kestvuse aja. Caater oli küll äärmiselt populaarne, aga seda üsna lühikest aega. Ott Lepland ja Põhja-Tallinn on aga ilmselt alles tõusuteel.</p>
 <div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb471-1" data-line-number="1">top10 <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb471-2" data-line-number="2"><span class="st">  </span><span class="kw">inner_join</span>(artist_career,<span class="dt">by=</span><span class="st">&quot;artist&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -640,7 +640,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb471-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>artist,<span class="dt">y=</span>last))<span class="op">+</span></a>
 <a class="sourceLine" id="cb471-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x=</span>artist,<span class="dt">xend=</span>artist,<span class="dt">y=</span>first,<span class="dt">yend=</span>last))<span class="op">+</span></a>
 <a class="sourceLine" id="cb471-8" data-line-number="8"><span class="st">  </span><span class="kw">coord_flip</span>()</a></code></pre></div>
-<p><img src="tekstid_R_files/figure-html/unnamed-chunk-256-1.png" width="672" /></p>
+<p><img src="tekstid_R_2020_files/figure-html/unnamed-chunk-256-1.png" width="672" /></p>
 <p>Graafiku väljanägemise parandamiseks võime talle lisada ka visuaalse teema theme_bw() ehk mustvalge teema. Ja tegelikult olles lisanud geom_segment funktsiooni, ei ole need punktid joonte otstes enam vajalikud.</p>
 <div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb472-1" data-line-number="1">top10 <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb472-2" data-line-number="2"><span class="st">  </span><span class="kw">inner_join</span>(artist_career,<span class="dt">by=</span><span class="st">&quot;artist&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -650,7 +650,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb472-6" data-line-number="6"><span class="st">  </span><span class="kw">coord_flip</span>()<span class="op">+</span></a>
 <a class="sourceLine" id="cb472-7" data-line-number="7"><span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span></a>
 <a class="sourceLine" id="cb472-8" data-line-number="8"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Eesti artistide karjäärid SkyPlus Top 40-s 1994-2019&quot;</span>,<span class="dt">x=</span><span class="st">&quot;&quot;</span>,<span class="dt">y=</span><span class="st">&quot;&quot;</span>)</a></code></pre></div>
-<p><img src="tekstid_R_files/figure-html/unnamed-chunk-257-1.png" width="672" /></p>
+<p><img src="tekstid_R_2020_files/figure-html/unnamed-chunk-257-1.png" width="672" /></p>
 <p>Viimaks võime me salvestada selle graafiku ka eraldi failina. ggplot2-s on selle jaoks funktsioon ggsave(), mis vaikimisi võtab viimase trükitud graafiku ja salvestab selle meie nimetatud kohta. Graafiku tüübi võtab ta faili nime järgi. Salvestame selle näiteks .png failina. ggsave() määrab sellele ise suuruse - see ei pruugi minna alati täppi.</p>
 <div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb473-1" data-line-number="1"><span class="kw">ggsave</span>(<span class="st">&quot;figures/top10_parimad_aastad.png&quot;</span>)</a></code></pre></div>
 <pre><code>## Saving 7 x 5 in image</code></pre>
