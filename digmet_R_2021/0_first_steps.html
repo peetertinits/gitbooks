@@ -1829,8 +1829,9 @@ onefactor</code></pre>
 <pre class="r"><code>str(textvector)</code></pre>
 <pre><code>##  chr [1:10] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot; &quot;f&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot; &quot;j&quot;</code></pre>
 </div>
-<div id="r-packages" class="section level2">
-<h2>R packages</h2>
+</div>
+<div id="r-packages" class="section level1">
+<h1>R packages</h1>
 <p>In addition to basic commands, R has a lot of extra packages, that open up new use possibilities, and make the existing ones more convenient or efficient. Here, we look at the <em>tidyverse</em> packages, which aim to do both.</p>
 <p>For every package you need to first 1) install it in your computer, and second 2) turn it on every time you start R or RStudio.</p>
 <p>To install a package there is a command install.packages(). The same command can be found in the menu above Tools -&gt; Install Packages, where you can write the packages you want separated by comma and helped by a convenient autocomplete. Newer versions of RStudio will also show above the script window on a yellow bar if a script includes some packages that are not installed. If you pick install there, then it also runs the install.packages command.</p>
@@ -1864,8 +1865,8 @@ gapminder &lt;- read_csv(&quot;data/gapminder.csv&quot;)</code></pre>
 ##   gdpPercap = col_double()
 ## )</code></pre>
 </div>
-<div id="tidyverse-and-tidy-data-logic" class="section level2">
-<h2>Tidyverse and tidy data logic</h2>
+<div id="tidyverse-and-tidy-data-logic" class="section level1">
+<h1>Tidyverse and tidy data logic</h1>
 <p><em>Tidyverse</em> can be considered one of the dialects of R. Most common ones nowadays are maybe <em>base-R</em>, <em>tidyverse</em>, <em>data.table</em>, although there is a large variety of different ways to process data in R. The dialects vary in their functions and basic syntax, and afford some tasks to be done easier, while other tasks may be easier in other dialects.</p>
 <p><em>Tidyverse</em> packages aim to follow a common logic and grammar - and in its own words form “an opinionated collection of R packages designed for data science”. The packages work well with a standard format of a data. Here, this is often referred to as <em>tidy data</em>, which follows a very simple logic: each row of a table should be an observation, each column a variable and each field the corresponding value. The idea is not new, and many tables have followed this structure. However there are also many ways that data tables can differ from this. See some examples in the <a href="https://vita.had.co.nz/papers/tidy-data.pdf">Hadley, 2014 paper</a> describing these principles. For a human eye, this may not seem the most efficient way to keep data, but for machine processing, this is one way to keep it standard and simple. What exactly we want from a dataset, and what constitutes an “observation” is a also dependent on the questions that we ask.</p>
 <center>
@@ -1886,7 +1887,6 @@ gapminder &lt;- read_csv(&quot;data/gapminder.csv&quot;)</code></pre>
 <pre class="r"><code>var_temp &lt;- function1(data)
 var &lt;- function2(var1)</code></pre>
 <p>Which dialect you prefer will depend on individual preferences and experiences, the pipe %&gt;% however may considerably increase readability of the code if many sequential processing steps are involved. A pipe %&gt;% can be easily made in RStudio by pressint CTRL+M at the same time.</p>
-</div>
 </div>
 
 
